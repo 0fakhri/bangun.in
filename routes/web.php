@@ -40,7 +40,8 @@ Route::group(['middleware' => ['auth', 'CheckRole:admin']], function(){
 
 Route::get('/cv/home', 'c_home@indexCv');
 Route::get('/cv/data-produk', 'c_dataProduk@indexCv');
-Route::get('/cv/data-produk/create', 'c_dataProduk@createView');
+Route::get('/cv/data-produk/create', 'c_dataProduk@createView')->name('produk');
+Route::post('/cv/data-produk/post', 'c_dataProduk@create')->name('tambahProduk');
 
 Route::get('/customer/home', 'c_home@indexCustomer');
 Route::get('/customer/data-produk', 'c_dataProduk@indexCustomer');

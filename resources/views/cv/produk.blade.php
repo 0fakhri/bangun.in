@@ -64,17 +64,20 @@
                         <!-- card one -->
                         <div class="tab-pane fade show active" id="nav-Sofa" role="tabpanel" aria-labelledby="nav-Sofa-tab">
                             <div class="row">
+                                @foreach($produk as $li)
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="single-new-arrival mb-50 text-center">
                                         <div class="popular-img">
-                                            <img src="assets/img/gallery/popular1.png" alt="">
+                                            <img src=" {{ asset('storage/ . $li->foto') }} " alt="">
                                         </div>
                                         <div class="popular-caption">
-                                            <h3><a href="product_details.html">Bly Microfiber / Microsuede 56" Armless Loveseat</a></h3>
-                                            <span>$367</span>
+                                            <h3><a href="product_details.html">{{ $li->nama_produk }}</a></h3>
+                                            <span>Rp {{ $li->harga }}</span>
                                         </div>
+                                        <a href="">edit</a>
                                     </div>
                                 </div>
+                                @endforeach
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="single-new-arrival mb-50 text-center">
                                         <div class="popular-img">

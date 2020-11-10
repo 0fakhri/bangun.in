@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class m_dataProduk extends Model {   
     
-    protected $table = '';
+    protected $table = 'desain_rumah';
+    public $timestamps = false;
     
     protected $fillable = [
-        'transaksi_id', 'cv_id', 'harga', 'nama_produk', 'foto_produk'
+        'transaksi_id', 'cv_id', 'harga', 'nama_produk', 'foto'
     ];
 }

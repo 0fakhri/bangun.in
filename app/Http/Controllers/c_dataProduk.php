@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\m_dataProduk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class c_dataProduk extends Controller
 {
@@ -14,7 +15,9 @@ class c_dataProduk extends Controller
      */
     public function indexCv()
     {
-        return view('cv.produk');
+        $data = m_dataProduk::all();
+        // dd($data);
+        return view('cv.produk',['produk'=>$data]);
     }
 
     public function createView()
@@ -22,9 +25,35 @@ class c_dataProduk extends Controller
         return view('cv.inputProduk');
     }
 
-    public function create()
+    public function create(Request $data)
     {
-        //
+        $file = $data->file('img');
+        $name = time();
+        $extension = $file->getClientOriginalExtension();
+        $newName = $name . '.' .$extension;
+        // dd($newName);
+        Storage::putFileAs('public/img', $data->file('img'), $newName);
+
+        m_dataProduk::create([
+            'cv_id' => '1',
+            'nama_produk'  => $data['nama'],
+            'harga'  => $data['harga'],
+            'foto' => 'storage/img/' . $newName,
+        ]);
+
+        
+
+
+            
+
+
+        
+
+        // $user = new User($data);
+        // $user_details = new User($data);
+        // $user->save();
+        // $user->user()->save($user_details);
+        return redirect('/cv/data-produk');
     }
 
     /**
