@@ -15,15 +15,12 @@ class CreateDesainRumahsTable extends Migration
     {
         Schema::create('desain_rumah', function (Blueprint $table) {
             $table->integerIncrements('id');
-            $table->unsignedInteger('transaksi_id');
+            $table->unsignedInteger('transaksi_id')->nullable();
             $table->foreign('transaksi_id')->references('id')->on('transaksi');
             $table->unsignedInteger('cv_id');
             $table->foreign('cv_id')->references('id')->on('cv_perencana');
-            $table->string('panjang');
-            $table->string('lebar');
-            $table->string('tinggi');
-            $table->string('jumlah_kamar_tidur');
-            $table->string('jumlah_kamar_mandi');
+            $table->string('nama_produk');
+            $table->string('foto');
             $table->string('harga');
             
         });
