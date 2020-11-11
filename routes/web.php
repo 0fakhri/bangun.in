@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth', 'CheckRole:admin']], function(){
 });
 
 Route::get('/admin/home', 'c_home@indexAdmin');
+Route::get('/admin/data-produk', 'c_dataProduk@indexAdmin');
 
 Route::get('/cv/home', 'c_home@indexCv');
 Route::get('/cv/data-produk', 'c_dataProduk@indexCv');

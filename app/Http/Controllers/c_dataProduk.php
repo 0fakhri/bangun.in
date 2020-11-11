@@ -8,11 +8,14 @@ use Illuminate\Support\Facades\Storage;
 
 class c_dataProduk extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    public function indexAdmin()
+    {
+        $data = m_dataProduk::all();
+        // dd($data);
+        return view('admin.data-produk',['produk'=>$data]);
+    }
+
     public function indexCv()
     {
         $data = m_dataProduk::all();

@@ -13,7 +13,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="/dashboard">
+        <a class="nav-link" href="/admin/home">
           <i class="fas fa-fw fa-home"></i>
           <span>Dashboard</span></a>
       </li>
@@ -24,7 +24,7 @@
       <!-- Heading -->
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-people-carry"></i>
           <span>Data Layanan Pekerjaan</span>
@@ -35,10 +35,10 @@
             <a class="collapse-item" href="/notfound">Detail Order</a>
           </div>
         </div>
-      </li>
+      </li> -->
 
       <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-people-arrows"></i>
           <span>Data Pengguna</span>
@@ -49,11 +49,11 @@
             <a class="collapse-item" href="/datamaster">Data Master</a>
           </div>
         </div>
-      </li>
+      </li> -->
       <li class="nav-item">
-        <a class="nav-link" href="/notfound">
+        <a class="nav-link" href="/admin/data-produk">
           <i class="fas fa-handshake"></i>
-          <span>Data Transaksi</span></a>
+          <span>Data Produk</span></a>
       </li>
       <!-- Divider -->
       <hr class="sidebar-divider">
