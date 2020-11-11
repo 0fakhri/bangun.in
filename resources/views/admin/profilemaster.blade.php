@@ -7,7 +7,7 @@
                <div class="row col-12" style="margin-top: 5px;">
                 <div class="col-xl-2 sm-2 md-2">
                   <h4 style="text-align: center; color: #000">{{$master->name}}</h4>
-                  <div class="img rounded-circle" style="text-align: center; wid">
+                  <div class="img rounded-circle" style="text-align: center;">
                     <img src="{{$master->getPhoto()}}" alt="foto" style="width: 90px; margin-left:15px; margin-bottom: 15px;">
                   </div>
                   <h6 style="text-align: center">Master</h6>

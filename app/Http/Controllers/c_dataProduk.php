@@ -30,6 +30,13 @@ class c_dataProduk extends Controller
         return view('customer.produk',['produk'=>$data]);
     }
 
+    public function editView($id)
+    {
+        $data = m_dataProduk::find($id);
+        // dd($data);
+        return view('cv.inputProduk',['produk'=>$data]);
+    }
+
     public function createView()
     {
         return view('cv.inputProduk');
@@ -51,19 +58,33 @@ class c_dataProduk extends Controller
             'foto' => 'storage/img/' . $newName,
         ]);
 
-        
-
-
-            
-
-
-        
-
-        // $user = new User($data);
-        // $user_details = new User($data);
-        // $user->save();
-        // $user->user()->save($user_details);
         return redirect('/cv/data-produk');
+    }
+
+    public function updateProduk(Request $request){
+
+        $id = $request->id;
+        //dd($request->all());
+        // dd($id);
+        $produk = \App\m_dataProduk::find($id);
+        // dd($produk->foto != null);
+
+        if($produk->foto != null){
+            Storage::delete($produk->foto);
+        }
+
+        $file = $request->file('img');
+        $name = time();
+        $extension = $file->getClientOriginalExtension();
+        $newName = $name . '.' .$extension;
+        // dd($newName);
+        Storage::putFileAs('public/img', $request->file('img'), $newName);
+
+        $produk->nama_produk = $request->nama;
+        $produk->foto = 'storage/img/' . $newName;
+        $produk->harga = $request->harga;
+        $produk->save();
+        return redirect('/cv/data-produk')->with('sukses', 'data berhasil diubah');
     }
 
     /**
@@ -94,10 +115,6 @@ class c_dataProduk extends Controller
      * @param  \App\m_dataProduk  $m_dataProduk
      * @return \Illuminate\Http\Response
      */
-    public function edit(m_dataProduk $m_dataProduk)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

@@ -73,8 +73,10 @@
                                         <div class="popular-caption">
                                             <h3><a href="product_details.html">{{ $li->nama_produk }}</a></h3>
                                             <span>Rp {{ $li->harga }}</span>
+                                            <br>
+                                            <h4><a href="/cv/data-produk/edit/{{ $li->id }}">Edit</a></h4>
                                         </div>
-                                        <a href="">edit</a>
+                                        
                                     </div>
                                 </div>
                                 @endforeach
