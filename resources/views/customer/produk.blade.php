@@ -1,4 +1,4 @@
-@extends('cv.layout.app')
+@extends('customer.layout.app')
 
 @section('content')
 
@@ -14,8 +14,8 @@
                                     <h1 data-animation="fadeInUp" data-delay=".4s" >Products</h1>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="/cv/home">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="/cv/data-produk">Products</a></li> 
+                                            <li class="breadcrumb-item"><a href="/customer/home">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="#">Products</a></li> 
                                         </ol>
                                     </nav>
                                 </div>
@@ -45,7 +45,6 @@
                             <nav>                         
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <!-- <a class="nav-item nav-link active" id="nav-Sofa-tab" data-toggle="tab" href="#nav-Sofa" role="tab" aria-controls="nav-Sofa" aria-selected="true">Sofa</a> -->
-                                    <a class="nav-item nav-link" href="/cv/data-produk/create" role="tab" aria-controls="nav-Bed" aria-selected="false">Tambah Produk</a>
                                     <!-- <a class="nav-item nav-link" id="nav-Table-tab" data-toggle="tab" href="#nav-Table" role="tab" aria-controls="nav-Table" aria-selected="false">Table</a>
                                     <a class="nav-item nav-link" id="nav-Chair-tab" data-toggle="tab" href="#nav-Chair" role="tab" aria-controls="nav-Chair" aria-selected="false">Chair</a>
 
@@ -74,11 +73,10 @@
                                             <h3><a href="product_details.html">{{ $li->nama_produk }}</a></h3>
                                             <span>Rp {{ $li->harga }}</span>
                                         </div>
-                                        <a href="">edit</a>
                                     </div>
                                 </div>
                                 @endforeach
-                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                <!-- <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="single-new-arrival mb-50 text-center">
                                         <div class="popular-img">
                                             <img src="assets/img/gallery/popular2.png" alt="">
@@ -88,7 +86,7 @@
                                             <span>$367</span>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <!-- Card two -->

@@ -20,6 +20,13 @@ class c_dataProduk extends Controller
         return view('cv.produk',['produk'=>$data]);
     }
 
+    public function indexCustomer()
+    {
+        $data = m_dataProduk::all();
+        // dd($data);
+        return view('customer.produk',['produk'=>$data]);
+    }
+
     public function createView()
     {
         return view('cv.inputProduk');

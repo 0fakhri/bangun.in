@@ -24,7 +24,7 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 
 
 Route::group(['middleware' => ['auth', 'CheckRole:admin']], function(){
-    Route::get('/dashboard', 'AdminController@dashboard');
+    // Route::get('/dashboard', 'AdminController@dashboard');
     // Route::get('/dataart', 'AdminController@dataart');
     // Route::get('/datamaster', 'AdminController@datamaster');
     // Route::post('/dataart/create','AdminController@create');
@@ -37,6 +37,8 @@ Route::group(['middleware' => ['auth', 'CheckRole:admin']], function(){
     // Route::get('master/profile/{id}','AdminController@profilmaster');
     // Route::get('dataku/{id}','AdminController@profiladmin');
 });
+
+Route::get('/admin/home', 'c_home@indexAdmin');
 
 Route::get('/cv/home', 'c_home@indexCv');
 Route::get('/cv/data-produk', 'c_dataProduk@indexCv');
