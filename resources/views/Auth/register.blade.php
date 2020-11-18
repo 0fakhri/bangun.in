@@ -36,7 +36,7 @@
                             </div>
                             <!-- Single Input Fields -->
                             <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="tab-pane fade" id="Customer" role="tabpanel" aria-labelledby="home-tab">
                                     <form class="input-box" method="POST" action="/regCu">
                                         @csrf
                                         <!-- <div class="input-box"> -->

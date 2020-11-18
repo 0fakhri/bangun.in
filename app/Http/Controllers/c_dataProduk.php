@@ -44,6 +44,17 @@ class c_dataProduk extends Controller
 
     public function create(Request $data)
     {
+        $data->validate([
+            'nama' => 'required',
+            'harga' => 'required',
+            'img' => 'required',
+        ],[
+            'nama.required' => 'Mohon mengisi data dengan lengkap',
+            'harga.required' => 'Mohon mengisi data dengan lengkap',
+            'img.required' => 'Mohon mengisi data dengan lengkap',
+        ]);
+        
+            
         $file = $data->file('img');
         $name = time();
         $extension = $file->getClientOriginalExtension();
@@ -63,28 +74,34 @@ class c_dataProduk extends Controller
 
     public function updateProduk(Request $request){
 
-        $id = $request->id;
-        //dd($request->all());
-        // dd($id);
-        $produk = \App\m_dataProduk::find($id);
-        // dd($produk->foto != null);
-
-        if($produk->foto != null){
-            Storage::delete($produk->foto);
+        if($request->nama == null or $request->harga == null){
+            return redirect('#')->with('status', 'Data harap diisi');
         }
+        else{
+            $id = $request->id;
+            //dd($request->all());
+            // dd($id);
+            $produk = \App\m_dataProduk::find($id);
+            // dd($produk->foto != null);
+            
+            if($produk->foto != null){
+                Storage::delete($produk->foto);
+            }
 
-        $file = $request->file('img');
-        $name = time();
-        $extension = $file->getClientOriginalExtension();
-        $newName = $name . '.' .$extension;
-        // dd($newName);
-        Storage::putFileAs('public/img', $request->file('img'), $newName);
+            $file = $request->file('img');
+            $name = time();
+            $extension = $file->getClientOriginalExtension();
+            $newName = $name . '.' .$extension;
+            // dd($newName);
+            Storage::putFileAs('public/img', $request->file('img'), $newName);
 
-        $produk->nama_produk = $request->nama;
-        $produk->foto = 'storage/img/' . $newName;
-        $produk->harga = $request->harga;
-        $produk->save();
-        return redirect('/cv/data-produk')->with('sukses', 'data berhasil diubah');
+            $produk->nama_produk = $request->nama;
+            $produk->foto = 'storage/img/' . $newName;
+            $produk->harga = $request->harga;
+            $produk->save();
+
+            return redirect('/cv/data-produk')->with('sukses', 'Data berhasil disimpan');
+        }
     }
 
     /**

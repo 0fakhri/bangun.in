@@ -1,6 +1,18 @@
 @extends('cv.layout.app')
 
 @section('content')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+@if(session('sukses'))
+<script>
+    swal({
+        title: "Data berhasil ditambahkan",
+        
+        icon: "success",
+        button: "Ok",
+    });
+    </script>
+@endif
 
 <main>
     <!--? slider Area Start-->
