@@ -68,10 +68,10 @@
                                                 <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
-                                        <div class="single-input-fields">
+                                        <!-- <div class="single-input-fields">
                                             <label>Confirm Password</label>
                                             <input name="password_confirmation" type="password" placeholder="Confirm Password" >
-                                        </div>
+                                        </div> -->
                                         <!-- form Footer -->
                                         <div class="register-footer">
                                             <p> Already have an account? <a href="{{ route('login') }}"> Login</a> here</p>
@@ -96,10 +96,10 @@
                                             <input name="password" type="password" placeholder="Masukkan Password">
                                         </div>
                                         <input type="hidden" name="role" value="cv">
-                                        <div class="single-input-fields">
+                                        <!-- <div class="single-input-fields">
                                             <label>Confirm Password</label>
                                             <input type="password" placeholder="Confirm Password">
-                                        </div>
+                                        </div> -->
                                         <div class="single-input-fields">
                                             <label>Alamat</label>
                                             <input name="alamat" type="text" placeholder="Alamat">

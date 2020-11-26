@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CV extends Model
+class m_dataCV extends Model
 {
     public $timestamps = false;
     

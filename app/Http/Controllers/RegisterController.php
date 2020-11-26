@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
+use App\m_dataCV;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -52,7 +54,7 @@ class RegisterController extends Controller {
         ]);
 
         if ($data['role'] == "customer") {
-            $customer = \App\Customer::create([
+            Customer::create([
                 'user_id' => $user->id,
                 'nama'    => $data['nama'],
             ]);
@@ -66,7 +68,7 @@ class RegisterController extends Controller {
             // dd($newName);
             Storage::putFileAs('public/img', $data->file('img'), $newName);
 
-            \App\CV::create([
+            m_dataCV::create([
                 'user_id' => $user->id,
                 'nama_cv' => $data['nama_cv'],
                 'alamat' => $data['alamat'],

@@ -1,43 +1,32 @@
-@extends('cv.layout.app')
-
+@extends('customer.layout.app')
 @section('content')
 
-@error('nama')
-    <script>
-    swal({
-        title: "Data harap diisi",
-        
-        icon: "warning",
-        button: "Ok",
-    });
-    </script>
-@enderror
-@error('harga')
-    <script>
-    swal({
-        title: "Data harap diisi",
-        
-        icon: "warning",
-        button: "Ok",
-    });
-    </script>
-@enderror
-@error('img')
-    <script>
-    swal({
-        title: "Data harap diisi",
-        
-        icon: "warning",
-        button: "Ok",
-    });
-    </script>
-@enderror
-
-
-
-
 <main class="login-bg">
-    <!-- login Area Start -->
+    <!--? slider Area Start-->
+    <!-- <div class="slider-area ">
+        <div class="slider-active">
+            <div class="single-slider hero-overly2  slider-height2 d-flex align-items-center slider-bg2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-8 col-md-8">
+                            <div class="hero__caption hero__caption2">
+                                <h1 data-animation="fadeInUp" data-delay=".4s" >Pemesanan</h1>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/customer/home">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Pemesanan</a></li> 
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- slider Area End-->
+
+    <!--? Checkout Area Start-->
     <div class="login-form-area">
         <div class="container">
             <div class="row justify-content-center">
@@ -51,7 +40,7 @@
                         </div>
                         <form method="POST" action="post" enctype="multipart/form-data">
                             @csrf
-                        <!-- Single Input Fields -->
+                            <!-- Single Input Fields -->
                             <div class="input-box">
                                 <div class="single-input-fields">
                                     <label>Nama Produk</label>
@@ -110,7 +99,7 @@
                             <!-- form Footer -->
                             <div class="login-footer">
                                 <button type="submit" class="submit-btn3">Simpan</button>
-                                <a href="../" class="btn btn-secondary">Batal</a>
+                                <a href="./" class="btn btn-secondary">Batal</a>
                             </div>
                         </form>
                     @endif
@@ -119,7 +108,39 @@
             </div>
         </div>
     </div>
+    <!--End Checkout Area -->
 </main>
 
-    
+    <!-- popup  -->
+    @error('nama')
+    <script>
+    swal({
+        title: "Data harap diisi",
+        
+        icon: "warning",
+        button: "Ok",
+    });
+    </script>
+    @enderror
+    @error('harga')
+        <script>
+        swal({
+            title: "Data harap diisi",
+            
+            icon: "warning",
+            button: "Ok",
+        });
+        </script>
+    @enderror
+    @error('img')
+        <script>
+        swal({
+            title: "Data harap diisi",
+            
+            icon: "warning",
+            button: "Ok",
+        });
+        </script>
+    @enderror
+
 @endsection

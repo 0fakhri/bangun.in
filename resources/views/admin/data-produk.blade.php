@@ -31,7 +31,6 @@
               <td><img src="{{url($li->foto)}}" style="width: 50px"></td>
               <td><a href="">{{$li->nama_produk}}</a></td>
               <td><a href="">{{$li->harga}}</a></td>
-              
           </tr>
           </tbody>
           @endforeach

@@ -10,9 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// route::auth();
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/login', 'LoginController@login')->name('login');
@@ -24,34 +25,25 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 
 
 Route::group(['middleware' => ['auth', 'CheckRole:admin']], function(){
-    // Route::get('/dashboard', 'AdminController@dashboard');
-    // Route::get('/dataart', 'AdminController@dataart');
-    // Route::get('/datamaster', 'AdminController@datamaster');
-    // Route::post('/dataart/create','AdminController@create');
-    // Route::get('/art/edit/{id}', 'AdminController@edit');
-    // Route::get('/edit/{id}', 'AdminController@editadmin');
-    // Route::post('/art/{id}/update', 'AdminController@update');
-    // Route::post('/admin/{id}/update', 'AdminController@updateadmin');
-    // Route::get('/notfound', 'notfoundController@notfound');
-    // Route::get('art/profile/{id}','AdminController@profilart');
-    // Route::get('master/profile/{id}','AdminController@profilmaster');
-    // Route::get('dataku/{id}','AdminController@profiladmin');
+
 });
 
 Route::get('/admin/home', 'c_home@indexAdmin');
-Route::get('/admin/data-produk', 'c_dataProduk@indexAdmin');
+Route::get('/admin/data-produk', 'c_designRumah@indexAdmin');
 
 Route::get('/cv/home', 'c_home@indexCv');
-Route::get('/cv/data-produk', 'c_dataProduk@indexCv');
-Route::get('/cv/data-produk/create', 'c_dataProduk@createView')->name('produk');
-Route::post('/cv/data-produk/post', 'c_dataProduk@create')->name('tambahProduk');
-Route::get('/cv/data-produk/edit/{id}', 'c_dataProduk@editView')->name('edit');
-Route::post('/cv/data-produk/postEdit', 'c_dataProduk@updateProduk')->name('editProduk');
+Route::get('/cv/data-produk', 'c_designRumah@indexCv');
+Route::get('/cv/data-produk/create', 'c_designRumah@createView')->name('produk');
+Route::post('/cv/data-produk/post', 'c_designRumah@create')->name('tambahProduk');
+Route::get('/cv/data-produk/edit/{id}', 'c_designRumah@editView')->name('edit');
+Route::post('/cv/data-produk/postEdit', 'c_designRumah@updateProduk')->name('editProduk');
 
 Route::get('/customer/home', 'c_home@indexCustomer');
-Route::get('/customer/data-produk', 'c_dataProduk@indexCustomer');
-
-
+Route::get('/customer/data-produk', 'c_designRumah@indexCustomer');
+Route::get('/customer/pemesanan-design', 'c_pemesananDesign@pemesanandesignaction');
+Route::get('/profil-cv/{id}', 'c_profilCV@profilCVaction');
+Route::get('/detail/{id}', 'c_detailProduk@produkAction');
+Route::get('/detail/{id}/beli', 'c_formPesanan@beliDesignAction');
 
 Route::group(['middleware' => ['auth', 'CheckRole:cv']], function () {
     

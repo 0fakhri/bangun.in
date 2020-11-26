@@ -70,7 +70,8 @@
                                     <ul id="navigation">
                                         <li><a href="/customer/home">Home</a></li> 
                                         <li><a href="/customer/data-produk">Data Produk</a></li>
-                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="/customer/pemesanan-design">Pemesanan Design</a>
+                                        <!-- <li><a href="about.html">About</a></li>
                                         <li><a href="#">Page</a>
                                             <ul class="submenu">
                                                 <li><a href="login.html">Login</a></li>
@@ -87,32 +88,37 @@
                                                 <li><a href="elements.html">Elements</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="contact.html">Contact</a></li> -->
                                     </ul>
                                 </nav>
                             </div>   
                         </div>
-                        <div class="header-right1 d-flex align-items-center">
+                        <div class="main-menu  d-none d-lg-block header-right1 d-flex align-items-center">
                             <div class="search">
                                 <ul class="d-flex align-items-center">
+                                    <li><a href="#">Profil</a>
+                                        <ul class="submenu">
+                                            <li><a href="/logout">Logout</a></li>
+                                        </ul>
+                                    </li>
                                     <li>
                                         <!-- Search Box -->
-                                        <form action="#" class="form-box f-right ">
+                                        <!-- <form action="#" class="form-box f-right ">
                                             <input type="text" name="Search" placeholder="Search products">
                                             <div class="search-icon">
                                                 <i class="ti-search"></i>
                                             </div>
-                                        </form>
+                                        </form> -->
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a href="login.html" class="account-btn" target="_blank">My Account</a>
-                                    </li>
-                                    <li>
+                                    </li> -->
+                                    <!-- <li>
                                         <div class="card-stor">
                                             <img src="assets/img/icon/card.svg" alt="">
                                             <span>0</span>
                                         </div>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -264,4 +270,7 @@
     <!-- Jquery Plugins, main Jquery -->	
     <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+
+    <!-- sweet alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </html>

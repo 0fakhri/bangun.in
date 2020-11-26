@@ -17,10 +17,10 @@ class LoginController extends Controller
         if (Auth::attempt($request->only('email', 'password'))) {
             if (Auth()->user()->role == 'admin') {
                 return redirect('/admin/home');
-            }else if (Auth()->user()->role == 'admin') {
-                return view('homeAdmin');
-            }else if (Auth()->user()->role == 'ahli gizi') {
-                return view('homeAhliGizi');
+            }else if (Auth()->user()->role == 'customer') {
+                return redirect('/customer/home');
+            }else if (Auth()->user()->role == 'cv') {
+                return redirect('/cv/home');
             }
         }
         return redirect('/login');

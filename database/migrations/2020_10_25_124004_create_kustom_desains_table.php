@@ -17,10 +17,8 @@ class CreateKustomDesainsTable extends Migration
             $table->integerIncrements('id');
             $table->unsignedInteger('transaksi_id');
             $table->foreign('transaksi_id')->references('id')->on('transaksi');
-            $table->string('panjang',50);
-            $table->string('lebar',50);
-            $table->string('tinggi',50);
-            $table->string('harga',50);
+            $table->string('deskripsi',255);
+            $table->string('harga',255);
             $table->string('FOTO',50);
             
         });
