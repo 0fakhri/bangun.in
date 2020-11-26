@@ -1,6 +1,17 @@
 @extends('customer.layout.app')
 @section('content')
 
+@if(session('sukses'))
+<script>
+  swal({
+      title: "Pesanan berhasil dibuat",
+      
+      icon: "success",
+      button: "Ok",
+  });
+</script>
+@endif
+
 <main>
     <!--? slider Area Start-->
     <div class="slider-area ">
@@ -73,7 +84,7 @@
                     <span class="number-increment"> <i class="ti-plus"></i></span>
                   </div> -->
                   <div class="add_to_cart">
-                    <a href="/detail/{{$li->id}}/beli" class="btn">BELI DESIGN</a>
+                    <a href="/detail/{{$li->id_desain}}/beli" class="btn">BELI DESIGN</a>
                     <!-- <a href="#" class="like_us"> <i class="ti-heart"></i> </a> -->
                   </div>
                   

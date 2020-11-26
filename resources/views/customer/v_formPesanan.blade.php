@@ -1,118 +1,10 @@
 @extends('customer.layout.app')
 @section('content')
 
-<main class="login-bg">
-    <!--? slider Area Start-->
-    <!-- <div class="slider-area ">
-        <div class="slider-active">
-            <div class="single-slider hero-overly2  slider-height2 d-flex align-items-center slider-bg2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-8 col-md-8">
-                            <div class="hero__caption hero__caption2">
-                                <h1 data-animation="fadeInUp" data-delay=".4s" >Pemesanan</h1>
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="/customer/home">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Pemesanan</a></li> 
-                                    </ol>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- slider Area End-->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <!--? Checkout Area Start-->
-    <div class="login-form-area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-7 col-lg-8">
-                    <div class="login-form">
-                        <!-- Login Heading -->
-                    @if(empty($produk))
-                        <div class="login-heading">
-                            <span>Tambah produk</span>
-                            <p></p>
-                        </div>
-                        <form method="POST" action="post" enctype="multipart/form-data">
-                            @csrf
-                            <!-- Single Input Fields -->
-                            <div class="input-box">
-                                <div class="single-input-fields">
-                                    <label>Nama Produk</label>
-                                    <input name="nama" class="@error('nama') is-invalid @enderror" type="text" >
-                                </div>
-                                <div class="single-input-fields">
-                                    <label>Harga Produk</label>
-                                
-                                    <input name="harga" class="@error('harga') is-invalid @enderror" type="number" placeholder="">
-                                </div>
-                                <div class="single-input-fields">
-                                    <label>Foto produk</label>
-                                    <input type="file" name="img" placeholder="foto" class="@error('img') is-invalid @enderror" >
-                                </div>
-                                
-                            </div>
-                            <!-- form Footer -->
-                            <div class="login-footer">
-                                <button type="submit" class="submit-btn3">Simpan</button>
-                                <a href="./" class="btn btn-secondary">Batal</a>
-                            </div>
-                            
-                        </form>
-                        
-                    @elseif(!empty($produk))
-                        <!-- Login Heading -->
-                        <div class="login-heading">
-                            <span>Update produk</span>
-                            <p></p>
-                        </div>
-                        <form method="POST" action="../postEdit" enctype="multipart/form-data">
-                            @csrf
-                        <!-- Single Input Fields -->
-                            <div class="input-box">
-                                <div class="single-input-fields">
-                                    <label>Nama Produk</label>
-                                    <input name="nama" class="@error('email') is-invalid @enderror" type="text" value=" {{ $produk->nama_produk }} ">
-                                    
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <input type="hidden" name="id" value=" {{ $produk->id }} ">
-                                <div class="single-input-fields">
-                                    <label>Harga Produk</label>
-                                
-                                    <input name="harga" class="@error('password') is-invalid @enderror" type="number" placeholder="" value="{{ $produk->harga }}">
-                                </div>
-                                <div class="single-input-fields">
-                                    <label> produk</label>
-                                    <input type="file" name="img" placeholder="foto">
-                                </div>
-                            </div>
-                            <!-- form Footer -->
-                            <div class="login-footer">
-                                <button type="submit" class="submit-btn3">Simpan</button>
-                                <a href="./" class="btn btn-secondary">Batal</a>
-                            </div>
-                        </form>
-                    @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--End Checkout Area -->
-</main>
-
-    <!-- popup  -->
-    @error('nama')
+<!-- popup  -->
+@error('nama')
     <script>
     swal({
         title: "Data harap diisi",
@@ -132,7 +24,7 @@
         });
         </script>
     @enderror
-    @error('img')
+    @error('email')
         <script>
         swal({
             title: "Data harap diisi",
@@ -142,5 +34,114 @@
         });
         </script>
     @enderror
+
+<main>
+    <!--? slider Area Start-->
+    <div class="slider-area ">
+            <div class="slider-active">
+                <div class="single-slider hero-overly2  slider-height2 d-flex align-items-center slider-bg2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-8 col-md-8">
+                                <div class="hero__caption hero__caption2">
+                                    <h1 data-animation="fadeInUp" data-delay=".4s" >Checkout</h1>
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="#">checkout</a></li> 
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- slider Area End-->
+
+        <!--? Checkout Area Start-->
+        <section class="checkout_area section-padding40">
+            <div class="container">
+                <div class="billing_details">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h3>Billing Details</h3>
+                            @foreach($data as $li)
+                            <form class="row contact_form" action="/postPesanan" method="POST">
+                                @csrf
+                                <div class="col-md-12 form-group">
+                                    <input type="hidden" name="idDetail" value="{{$li->id_desain}}">
+                                    <input type="text" class="@error('nama') is-invalid @enderror form-control"  name="nama" placeholder="Nama Customer" value=""/>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <input type="text" class="@error('produk') is-invalid @enderror form-control"  name="produk" placeholder="Nama produk"/>           
+                                    <!-- <input type="text" class="@error('produk') is-invalid @enderror form-control"  name="produk" placeholder="Nama produk : {{$li->nama_produk}}" value="{{$li->nama_produk}}" disabled/> -->
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <input type="number" class="@error('harga') is-invalid @enderror form-control"  name="notlp" placeholder="No Tlp" value=""/>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <input type="email" class="@error('email') is-invalid @enderror form-control" name="email" placeholder="Email" value=""/>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <input type="text" class="@error('variasi') is-invalid @enderror form-control"  name="variasi" placeholder="Variasi Produk" value=""/>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <input type="number" class="@error('harga') is-invalid @enderror form-control"  name="harga" placeholder="Harga Produk" />
+                                    <!-- <input type="number" class="@error('harga') is-invalid @enderror form-control"  name="harga" placeholder="Harga Produk : {{$li->harga}}" value="{{$li->harga}}" disabled/> -->
+                                </div>
+                                <div class="login-footer">
+                                    <button type="submit" class="submit-btn3">Simpan</button>
+                                    <a href="./" class="btn btn-secondary">Batal</a>
+                                </div>
+                            </form>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End Checkout Area -->
+
+
+                        <!-- <form method="POST" action="/postPesanan" >
+                            
+                            
+                            <div class="input-box">
+                                <div class="single-input-fields">
+                                    <label>Nama Customer</label>
+                                    <input name="nama" class="@error('nama') is-invalid @enderror" type="text" >
+                                </div>
+                                <div class="single-input-fields">
+                                    <label>Nama Produk Design</label>
+                                    <input name="produk" class="@error('produk') is-invalid @enderror" type="text">
+                                </div>
+                                <div class="single-input-fields">
+                                    <label>No Tlp</label>
+                                    <input name="notlp" class="@error('harga') is-invalid @enderror" type="number">
+                                </div>
+                                <div class="single-input-fields">
+                                    <label>Email</label>
+                                    <input name="email" class="@error('email') is-invalid @enderror" type="text" >
+                                </div>
+                                <div class="single-input-fields">
+                                    <label>Variasi Produk</label>
+                                    <input name="variasi" class="@error('variasi') is-invalid @enderror" type="text" >
+                                </div>
+                                <div class="single-input-fields">
+                                    <label>Harga Produk</label>
+                                    <input name="harga" class="@error('harga') is-invalid @enderror" type="number">
+                                </div>
+                            </div>
+                      
+                            <div class="login-footer">
+                                <button type="submit" class="submit-btn3">Simpan</button>
+                                <a href="./" class="btn btn-secondary">Batal</a>
+                            </div> -->
+                         
+</main>
+
+    
 
 @endsection
