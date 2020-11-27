@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
 use App\m_dataProduk;
 use App\m_pesanan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class c_formPesanan extends Controller
@@ -18,8 +20,15 @@ class c_formPesanan extends Controller
     
     public function inputPesanan(Request $request){
 
-        $id=$request['id_desain'];
-        dd($id);
+        $id=$request['idDetail'];
+        $getid = Auth()->User()->id;
+        $idcus = Customer::where('user_id',$getid)->get('id');
+
+        foreach ($idcus as $li){
+            $idnya = $li->id;
+        }
+        // dd($request['idcv']);
+
         $request->validate([
             'nama' => 'required',
             'harga' => 'required',
@@ -37,6 +46,8 @@ class c_formPesanan extends Controller
         ]);
 
         m_pesanan::create([
+            'cv_id' => $request['idcv'],
+            'customer_id' => $idnya,
             'nama_customer'  => $request['nama'],
             'harga_produk'  => $request['harga'],
             'email' => $request['email'],

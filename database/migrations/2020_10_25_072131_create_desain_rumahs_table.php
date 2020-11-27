@@ -14,7 +14,7 @@ class CreateDesainRumahsTable extends Migration
     public function up()
     {
         Schema::create('desain_rumah', function (Blueprint $table) {
-            $table->integerIncrements('id');
+            $table->integerIncrements('id_desain');
             $table->unsignedInteger('transaksi_id')->nullable();
             $table->foreign('transaksi_id')->references('id')->on('transaksi');
             $table->unsignedInteger('cv_id');

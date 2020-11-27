@@ -4,7 +4,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- popup  -->
-@error('nama')
+@error('deskripsi')
     <script>
     swal({
         title: "Data harap diisi",
@@ -13,27 +13,8 @@
         button: "Ok",
     });
     </script>
-    @enderror
-    @error('harga')
-        <script>
-        swal({
-            title: "Data harap diisi",
-            
-            icon: "warning",
-            button: "Ok",
-        });
-        </script>
-    @enderror
-    @error('email')
-        <script>
-        swal({
-            title: "Data harap diisi",
-            
-            icon: "warning",
-            button: "Ok",
-        });
-        </script>
-    @enderror
+@enderror
+    
 
 <main>
     <!--? slider Area Start-->
@@ -44,11 +25,11 @@
                         <div class="row">
                             <div class="col-xl-6 col-lg-8 col-md-8">
                                 <div class="hero__caption hero__caption2">
-                                    <h1 data-animation="fadeInUp" data-delay=".4s" >Pesan desain</h1>
+                                    <h1 data-animation="fadeInUp" data-delay=".4s" >Kustom Desain</h1>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="/customer/home">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="#">Pesan desain</a></li> 
+                                            <li class="breadcrumb-item"><a href="#">Kustom Desain</a></li> 
                                         </ol>
                                     </nav>
                                 </div>
@@ -66,38 +47,20 @@
                 <div class="billing_details">
                     <div class="row">
                         <div class="col-lg-8">
-                            <h3>Billing Details</h3>
-                            @foreach($data as $li)
-                            <form class="row contact_form" action="/postPesanan" method="POST">
+                            <h3>Form Desain Kustom</h3>
+                            
+                            <form class="row contact_form" action="/postKustom" method="POST">
                                 @csrf
                                 <div class="col-md-12 form-group">
-                                    <input type="hidden" name="idDetail" value="{{$li->id_desain}}">
-                                    <input type="hidden" name="idcv" value="{{$li->id}}">
-                                    <input type="text" class="@error('nama') is-invalid @enderror form-control"  name="nama" placeholder="Nama Customer" />
-                                </div>
-                                <div class="col-md-12 form-group">
-                                    <!-- <input type="text" class="@error('produk') is-invalid @enderror form-control"  name="produk" placeholder="Nama produk"/>            -->
-                                    <input type="text" class="@error('produk') is-invalid @enderror form-control"  name="produk" placeholder="Nama produk" value="{{$li->nama_produk}}" />
-                                </div>
-                                <div class="col-md-12 form-group">
-                                    <input type="number" class="@error('harga') is-invalid @enderror form-control"  name="notlp" placeholder="No Tlp" value=""/>
-                                </div>
-                                <div class="col-md-12 form-group">
-                                    <input type="email" class="@error('email') is-invalid @enderror form-control" name="email" placeholder="Email" value=""/>
-                                </div>
-                                <div class="col-md-12 form-group">
-                                    <input type="text" class="@error('variasi') is-invalid @enderror form-control"  name="variasi" placeholder="Variasi Produk" value=""/>
-                                </div>
-                                <div class="col-md-12 form-group">
-                                    <!-- <input type="number" class="@error('harga') is-invalid @enderror form-control"  name="harga" placeholder="Harga Produk" /> -->
-                                    <input type="number" class="@error('harga') is-invalid @enderror form-control"  name="harga" placeholder="Harga Produk" value="{{$li->harga}}" />
+                                    
+                                    <textarea class="@error('deskripsi') is-invalid @enderror form-control" name="deskripsi" id="message" rows="1" placeholder="Deskripsi"></textarea>
                                 </div>
                                 <div class="login-footer">
                                     <button type="submit" class="submit-btn3">Simpan</button>
                                     <a href="./" class="btn btn-secondary">Batal</a>
                                 </div>
                             </form>
-                            @endforeach
+
                         </div>
                     </div>
                 </div>

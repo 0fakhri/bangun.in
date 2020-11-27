@@ -45,6 +45,8 @@ Route::get('/profil-cv/{id}', 'c_profilCV@profilCVaction');
 Route::get('/detail/{id}', 'c_detailProduk@produkAction');
 Route::get('/detail/{id}/beli', 'c_formPesanan@beliDesignAction');
 Route::post('/postPesanan', 'c_formPesanan@inputPesanan');
+Route::get('/customer/pemesanan-design/kustom-pesanan', 'c_formDesignCustom@requestFormDesignAction');
+Route::post('/postKustom', 'c_formDesignCustom@inputPesanan');
 
 Route::group(['middleware' => ['auth', 'CheckRole:cv']], function () {
     

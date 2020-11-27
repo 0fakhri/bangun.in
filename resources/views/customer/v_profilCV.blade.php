@@ -10,9 +10,9 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-8 col-md-8">
                             <div class="hero__caption hero__caption2">
-                                @foreach($data as $li)
-                                <h1 data-animation="fadeInUp" data-delay=".4s">Profil {{$li->nama_cv}}</h1>
-                                @endforeach
+                                
+                                <h1 data-animation="fadeInUp" data-delay=".4s">Profil CV</h1>
+  
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="/customer/home">Home</a></li>
@@ -71,7 +71,7 @@
                                         <img src=" {{url($li->foto)}} " alt="">
                                     </div>
                                     <div class="popular-caption">
-                                        <h3><a href="/detail/{{$li->id}}">{{ $li->nama_produk }}</a></h3>
+                                        <h3><a href="/detail/{{$li->id_desain}}">{{ $li->nama_produk }}</a></h3>
                                         <h3><a href="/profil-cv/{{ $li->cv_id }}">{{ $li->nama_cv }}</a></h3>
                                         <span>Rp {{ $li->harga }}</span>
                                     </div>

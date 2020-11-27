@@ -23,11 +23,11 @@
                         <div class="row">
                             <div class="col-xl-6 col-lg-8 col-md-8">
                                 <div class="hero__caption hero__caption2">
-                                    <h1 data-animation="fadeInUp" data-delay=".4s" >Products</h1>
+                                    <h1 data-animation="fadeInUp" data-delay=".4s" >Desain Rumah</h1>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="/cv/home">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="/cv/data-produk">Products</a></li> 
+                                            <li class="breadcrumb-item"><a href="/cv/data-produk">Desain Rumah</a></li> 
                                         </ol>
                                     </nav>
                                 </div>
@@ -45,8 +45,8 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8 col-md-10">
                         <div class="section-tittle mb-60 text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
-                            <h2>Popular products</h2>
-                            <P>Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.</P>
+                            <h2>Desain Rumah</h2>
+                            <!-- <P>Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.</P> -->
                         </div>
                     </div>
                 </div>

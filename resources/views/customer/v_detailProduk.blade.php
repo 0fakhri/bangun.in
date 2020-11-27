@@ -27,6 +27,7 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="/customer/home">Home</a></li>
+                                        <!-- <li class="breadcrumb-item"><a href="/">Provil CV</a></li>  -->
                                         <li class="breadcrumb-item"><a href="#">Detail Produk</a></li> 
                                     </ol>
                                 </nav>

@@ -13,7 +13,7 @@
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="/customer/home">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="/customer/pemesanan_design">Pemesanan Design</a></li> 
+                                            <li class="breadcrumb-item"><a href="/customer/pemesanan-design">Pemesanan Design</a></li> 
                                         </ol>
                                     </nav>
                                 </div>
@@ -37,15 +37,16 @@
                 </div>
                 <div class="row">
                     <div class="col-xl-12">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist" style="background-color: #f2f2f2">
+                        <ul class="nav nav-tabs bg-dark" id="myTab" role="tablist">
 						  <li class="nav-item" role="presentation">
 						    <a class="nav-link active" id="Penerimaan-tab" data-toggle="tab" href="#Penerimaan" role="tab" aria-controls="Penerimaan" aria-selected="true">Pemesanan Design</a>
 						  </li>
                             <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="custom-tab" data-toggle="tab" href="#custom" role="tab" aria-controls="custom" aria-selected="true"> Design Custom</a>
+                                <a href="/customer/pemesanan-design/kustom-pesanan">Custom</a>
+                            <!-- <a class="nav-link" id="custom-tab"  href="/" role="tab" aria-controls="custom" aria-selected="true">Custom</a> -->
                             </li>
 						</ul>				
-<!-- Tab panes -->
+                    <!-- Tab panes -->
 					<div class="tab-content">
 					  <div class="tab-pane active" id="Penerimaan" role="tabpanel" aria-labelledby="Penerimaan-tab">
 					    <br>
@@ -74,7 +75,7 @@
 					          	</tbody>
 					      	</table>
 					  </div>
-                      <div class="tab-pane active" id="custom" role="tabpanel" aria-labelledby="custom-tab">belum ada data</div>
+                      <!-- <div class="tab-pane active" id="custom" role="tabpanel" aria-labelledby="custom-tab">belum ada data</div> -->
 					</div> 
                     
 					</div>
