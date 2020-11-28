@@ -70,7 +70,7 @@
                                     <ul id="navigation">
                                         <li><a href="/cv/home">Home</a></li> 
                                         <li><a href="/cv/data-produk">Data Produk</a></li>
-                                        <!-- <li><a href="about.html">About</a></li> -->
+                                        <li><a href="/cv/pesanan-masuk">Pesanan masuk</a></li>
                                         
                                         <!-- <li><a href="blog.html">Blog</a>
                                             <ul class="submenu">

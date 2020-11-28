@@ -1,4 +1,4 @@
-@extends('customer.layout.app')
+@extends('cv.layout.app')
 @section('content')
 
 @if(session('sukses'))
@@ -24,8 +24,8 @@
                                     <h1 data-animation="fadeInUp" data-delay=".4s" >Pemesanan Design</h1>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="/customer/home">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="/customer/pemesanan-design">Pemesanan Design</a></li> 
+                                            <li class="breadcrumb-item"><a href="/cv/home">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="/cv/pemesanan-design">Pemesanan Design</a></li> 
                                         </ol>
                                     </nav>
                                 </div>
@@ -57,7 +57,7 @@
                                 <a class="nav-link" id="custom-tab"  href="#custom" role="tab" aria-controls="custom" aria-selected="true">Custom</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="custom-tab" href="/customer/pemesanan-design/kustom-pesanan">Pesan kustom</a>
+                                <a class="nav-link" id="custom-tab" href="/cv/pemesanan-design/kustom-pesanan">Pesan kustom</a>
                             </li>
 						</ul>				
                     <!-- Tab panes -->
@@ -82,7 +82,20 @@
                                         <td>{{$li->nama_produk_design}}</td>
                                         <td>{{$li->variasi_produk}}</td>
                                         <td>{{$li->harga_produk}}</td>
-                                        <td>{{$li->status}}</td>
+                                        <td>
+                                            <form action="/verifikasi" method="post">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{ $li->id }}">
+                                                <input type="hidden" name="status" value="Ya">
+                                                <button type="submit" class="btn">Ya</button>
+                                            </form>
+                                            <form action="/verifikasi" method="post">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{ $li->id }}">
+                                                <input type="hidden" name="status" value="Tidak">
+                                                <button type="submit" class="btn">Tidak</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -91,7 +104,7 @@
 					  </div>
                       <div class="tab-pane active" id="custom" role="tabpanel" aria-labelledby="custom-tab">
                       <br>
-                      <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+					      <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
 					          <thead class="dark-bg">
                                     <tr>
                                         <!-- <th>Nama</th> -->
@@ -109,7 +122,7 @@
                                         <td>{{$li->deskripsi}}</td>
                                         <td>{{$li->foto}}</td>
                                         <td>{{$li->harga_produk}}</td>
-                                        
+                                        <td><a class="btn btn-primary" href="/cv/pesanan-masuk/pesanan/{{$li->id}}">Custom</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

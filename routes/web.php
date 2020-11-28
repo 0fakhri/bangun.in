@@ -37,6 +37,11 @@ Route::get('/cv/data-produk/create', 'c_designRumah@createView')->name('produk')
 Route::post('/cv/data-produk/post', 'c_designRumah@create')->name('tambahProduk');
 Route::get('/cv/data-produk/edit/{id}', 'c_designRumah@editView')->name('edit');
 Route::post('/cv/data-produk/postEdit', 'c_designRumah@updateProduk')->name('editProduk');
+Route::get('/cv/pesanan-masuk', 'c_pesananMasuk@pesananMasukAction');
+Route::get('/cv/pesanan-masuk/pesanan/{id}', 'c_formDesignCustom@requestFormDesignActionCV');
+Route::post('/postDesain', 'c_formDesignCustom@updateDesain');
+Route::post('/postHarga', 'c_formDesignCustom@updateHarga');
+Route::post('/verifikasi', 'c_pesananMasuk@updatePesanan');
 
 Route::get('/customer/home', 'c_home@indexCustomer');
 Route::get('/customer/data-produk', 'c_designRumah@indexCustomer');
