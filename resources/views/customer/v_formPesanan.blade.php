@@ -34,6 +34,46 @@
         });
         </script>
     @enderror
+    @error('luas')
+        <script>
+        swal({
+            title: "Data harap diisi",
+            
+            icon: "warning",
+            button: "Ok",
+        });
+        </script>
+    @enderror
+    @error('deskripsi')
+        <script>
+        swal({
+            title: "Data harap diisi",
+            
+            icon: "warning",
+            button: "Ok",
+        });
+        </script>
+    @enderror
+    @error('email')
+        <script>
+        swal({
+            title: "Data harap diisi",
+            
+            icon: "warning",
+            button: "Ok",
+        });
+        </script>
+    @enderror
+    @error('variasi')
+        <script>
+        swal({
+            title: "Data harap diisi",
+            
+            icon: "warning",
+            button: "Ok",
+        });
+        </script>
+    @enderror
 
 <main>
     <!--? slider Area Start-->
@@ -66,37 +106,74 @@
                 <div class="billing_details">
                     <div class="row">
                         <div class="col-lg-8">
-                            <h3>Billing Details</h3>
                             @foreach($data as $li)
-                            <form class="row contact_form" action="/postPesanan" method="POST">
-                                @csrf
-                                <div class="col-md-12 form-group">
-                                    <input type="hidden" name="idDetail" value="{{$li->id_desain}}">
-                                    <input type="hidden" name="idcv" value="{{$li->id}}">
-                                    <input type="text" class="@error('nama') is-invalid @enderror form-control"  name="nama" placeholder="Nama Customer" />
-                                </div>
-                                <div class="col-md-12 form-group">
-                                    <!-- <input type="text" class="@error('produk') is-invalid @enderror form-control"  name="produk" placeholder="Nama produk"/>            -->
-                                    <input type="text" class="@error('produk') is-invalid @enderror form-control"  name="produk" placeholder="Nama produk" value="{{$li->nama_produk}}" />
-                                </div>
-                                <div class="col-md-12 form-group">
-                                    <input type="number" class="@error('harga') is-invalid @enderror form-control"  name="notlp" placeholder="No Tlp" value=""/>
-                                </div>
-                                <div class="col-md-12 form-group">
-                                    <input type="email" class="@error('email') is-invalid @enderror form-control" name="email" placeholder="Email" value=""/>
-                                </div>
-                                <div class="col-md-12 form-group">
-                                    <input type="text" class="@error('variasi') is-invalid @enderror form-control"  name="variasi" placeholder="Variasi Produk" value=""/>
-                                </div>
-                                <div class="col-md-12 form-group">
-                                    <!-- <input type="number" class="@error('harga') is-invalid @enderror form-control"  name="harga" placeholder="Harga Produk" /> -->
-                                    <input type="number" class="@error('harga') is-invalid @enderror form-control"  name="harga" placeholder="Harga Produk" value="{{$li->harga}}" />
-                                </div>
-                                <div class="login-footer">
-                                    <button type="submit" class="submit-btn3">Simpan</button>
-                                    <a href="./" class="btn btn-secondary">Batal</a>
-                                </div>
-                            </form>
+                            @if( $li->id_desain != null )
+                            <h3>Pemesanan Design</h3>
+                            
+                                <form class="row contact_form" action="/postPesanan" method="POST">
+                                    @csrf
+                                    <div class="col-md-12 form-group">
+                                        <input type="hidden" name="idDetail" value="{{$li->id_desain}}">
+                                        <input type="hidden" name="idcv" value="{{$li->id}}">
+                                        <input type="text" class="@error('nama') is-invalid @enderror form-control"  name="nama" placeholder="Nama Customer" />
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <!-- <input type="text" class="@error('produk') is-invalid @enderror form-control"  name="produk" placeholder="Nama produk"/>            -->
+                                        <input type="text" class="@error('produk') is-invalid @enderror form-control"  name="produk" placeholder="Nama produk" value="{{$li->nama_produk}}" readonly/>
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <input type="number" class="@error('notlp') is-invalid @enderror form-control"  name="notlp" placeholder="No Tlp" value=""/>
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <input type="email" class="@error('email') is-invalid @enderror form-control" name="email" placeholder="Email" value=""/>
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <input type="text" class="@error('variasi') is-invalid @enderror form-control"  name="variasi" placeholder="variasi" value=""/>
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <!-- <input type="number" class="@error('harga') is-invalid @enderror form-control"  name="harga" placeholder="Harga Produk" /> -->
+                                        <input type="number" class="@error('harga') is-invalid @enderror form-control"  name="harga" placeholder="Harga Produk" value="{{$li->harga}}" readonly/>
+                                    </div>
+                                    <div class="login-footer">
+                                        <button type="submit" class="submit-btn3">Simpan</button>
+                                        <a href="./" class="btn btn-secondary">Batal</a>
+                                    </div>
+                                </form>
+                                @elseif($li->id_desain == null)
+                                <h3>Custom</h3>
+                                <form class="row contact_form" action="/postPesananCustom" method="POST">
+                                    @csrf
+                                    <div class="col-md-12 form-group">
+                                        <!-- <input type="hidden" name="idDetail" value="{{$li->id_desain}}"> -->
+                                        <input type="hidden" name="idcv" value="{{$li->id}}">
+                                        <input type="text" class="@error('nama') is-invalid @enderror form-control"  name="nama" placeholder="Nama Customer" />
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <!-- <input type="text" class="@error('produk') is-invalid @enderror form-control"  name="produk" placeholder="Nama produk"/>            -->
+                                        <input type="text" class="@error('produk') is-invalid @enderror form-control"  name="produk" placeholder="Nama produk" value="Custom" readonly/>
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <input type="number" class="@error('notlp') is-invalid @enderror form-control"  name="notlp" placeholder="No Tlp" value=""/>
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <input type="email" class="@error('email') is-invalid @enderror form-control" name="email" placeholder="Email" value=""/>
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <input type="" class="@error('luas') is-invalid @enderror form-control"  name="luas" placeholder="Luas Bangunan" value=""/>
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <!-- <input type="number" class="@error('harga') is-invalid @enderror form-control"  name="harga" placeholder="Harga Produk" /> -->
+                                        <input type="number" class="@error('harga') is-invalid @enderror form-control"  name="harga" placeholder="Harga Produk" value="0" readonly/>
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <textarea name="deskripsi" id="" class="form-control" placeholder="Deskripsi Produk"></textarea>
+                                    </div>
+                                    <div class="login-footer">
+                                        <button type="submit" class="submit-btn3">Simpan</button>
+                                        <a href="./" class="btn btn-secondary">Batal</a>
+                                    </div>
+                                </form>
+                                @endif
                             @endforeach
                         </div>
                     </div>

@@ -6,7 +6,17 @@
 @if(session('sukses'))
 <script>
     swal({
-        title: "Data berhasil ditambahkan",
+        title: "Data berhasil diubah",
+        
+        icon: "success",
+        button: "Ok",
+    });
+    </script>
+@endif
+@if(session('eror'))
+<script>
+    swal({
+        title: "Data berhasil ditambah",
         
         icon: "success",
         button: "Ok",
@@ -23,11 +33,11 @@
                         <div class="row">
                             <div class="col-xl-6 col-lg-8 col-md-8">
                                 <div class="hero__caption hero__caption2">
-                                    <h1 data-animation="fadeInUp" data-delay=".4s" >Desain Rumah</h1>
+                                    <h1 data-animation="fadeInUp" data-delay=".4s" >Data Produk</h1>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="/cv/home">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="/cv/data-produk">Desain Rumah</a></li> 
+                                            <li class="breadcrumb-item"><a href="/cv/data-produk">Data Produk</a></li> 
                                         </ol>
                                     </nav>
                                 </div>
@@ -45,7 +55,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8 col-md-10">
                         <div class="section-tittle mb-60 text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
-                            <h2>Desain Rumah</h2>
+                            <h2>Data Produk</h2>
                             <!-- <P>Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.</P> -->
                         </div>
                     </div>
@@ -57,7 +67,7 @@
                             <nav>                         
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <!-- <a class="nav-item nav-link active" id="nav-Sofa-tab" data-toggle="tab" href="#nav-Sofa" role="tab" aria-controls="nav-Sofa" aria-selected="true">Sofa</a> -->
-                                    <a class="nav-item nav-link" href="/cv/data-produk/create" role="tab" aria-controls="nav-Bed" aria-selected="false">Tambah Produk</a>
+                                    <a class="nav-item nav-link" href="/cv/data-produk/create" role="tab" aria-controls="nav-Bed" aria-selected="false">Tambah Produk Baru</a>
                                     <!-- <a class="nav-item nav-link" id="nav-Table-tab" data-toggle="tab" href="#nav-Table" role="tab" aria-controls="nav-Table" aria-selected="false">Table</a>
                                     <a class="nav-item nav-link" id="nav-Chair-tab" data-toggle="tab" href="#nav-Chair" role="tab" aria-controls="nav-Chair" aria-selected="false">Chair</a>
 
@@ -83,10 +93,10 @@
                                             <img src=" {{url($li->foto)}} " alt="">
                                         </div>
                                         <div class="popular-caption">
-                                            <h3><a href="product_details.html">{{ $li->nama_produk }}</a></h3>
+                                            <h3>{{ $li->nama_produk }}</h3>
                                             <span>Rp {{ $li->harga }}</span>
                                             <br>
-                                            <h4><a href="/cv/data-produk/edit/{{ $li->id }}">Edit</a></h4>
+                                            <h4><a href="/cv/data-produk/edit/{{ $li->id_desain }}">Edit produk</a></h4>
                                         </div>
                                         
                                     </div>
@@ -101,11 +111,7 @@
                     <!-- End Nav Card -->
                 </div>
                 <!-- Button -->
-                <div class="row justify-content-center">
-                    <div class="room-btn">
-                        <a href="product.html" class="border-btn">Discover More</a>
-                    </div>
-                </div>
+               
             </div>
         </section>
         <!-- Properties End -->

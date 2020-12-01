@@ -40,7 +40,7 @@ class c_formDesignCustom extends Controller
         ]);
 
         m_desainCustom::create([
-            'cv_id' => '1',
+            'cv_id' => $request[''],
             'customer_id' => $idnya,
             'deskripsi'  => $request['deskripsi'],
         ]);
@@ -48,6 +48,8 @@ class c_formDesignCustom extends Controller
         return redirect('/customer/pemesanan-design')->with('sukses' , 'Data berhasil disimpan');
         // return redirect('/detail/{{$id}}')->with('sukses', 'Data berhasil disimpan');
     }
+
+    
 
     public function updateDesain(Request $request){
 

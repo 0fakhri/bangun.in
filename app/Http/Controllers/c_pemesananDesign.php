@@ -18,9 +18,9 @@ class c_pemesananDesign extends Controller
      }
       // dd($idnya);
       $get = m_pesanan::where('customer_id',$idnya)->get();
-      $get2 = m_desainCustom::where('customer_id',$idnya)->get();
+      // $get2 = m_desainCustom::where('customer_id',$idnya)->get();
       // dd($get);
-   	return view('customer.v_pemesananDesign',['data'=>$get],['data2'=>$get2]);
+   	return view('customer.v_pemesananDesign',['data'=>$get]);
    }
 
    

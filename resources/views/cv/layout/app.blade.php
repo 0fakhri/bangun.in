@@ -69,7 +69,7 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a href="/cv/home">Home</a></li> 
-                                        <li><a href="/cv/data-produk">Data Produk</a></li>
+                                        <li><a href="/cv/data-produk">Data produk</a></li>
                                         <li><a href="/cv/pesanan-masuk">Pesanan masuk</a></li>
                                         
                                         <!-- <li><a href="blog.html">Blog</a>

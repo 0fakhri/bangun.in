@@ -17,7 +17,8 @@
           <tr class="text-center">
               <th>Foto</th>
               <th>Nama produk</th>
-              <th>Harga</th>
+              <th>Nama CV</th>
+              <th>Harga produk</th>
               <!-- <th>E-mail</th>
               <th>No HP</th>
               <th>Kecamatan</th>
@@ -29,8 +30,9 @@
         <tbody>
           <tr class="text-center">
               <td><img src="{{url($li->foto)}}" style="width: 50px"></td>
-              <td><a href="">{{$li->nama_produk}}</a></td>
-              <td><a href="">{{$li->harga}}</a></td>
+              <td>{{$li->nama_produk}}</td>
+              <td>{{$li->nama_cv}}</td>
+              <td>{{$li->harga}}</td>
           </tr>
           </tbody>
           @endforeach

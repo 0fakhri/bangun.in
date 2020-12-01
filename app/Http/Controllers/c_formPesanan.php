@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\m_dataCV;
 use App\m_dataProduk;
 use App\m_pesanan;
 use Illuminate\Http\Request;
@@ -14,6 +15,14 @@ class c_formPesanan extends Controller
     public function beliDesignAction($id) {
         
         $get = m_dataProduk::join('cv_perencana','desain_rumah.cv_id','=','cv_perencana.id')->where('id_desain',$id)->get();
+        // dd($get);
+        return view('customer.v_formPesanan',['data'=>$get]);
+    }
+
+    public function beliCustomAction($id) {
+        $get = m_dataCV::where('id',$id)->get();
+        
+        // $get = m_dataProduk::join('cv_perencana','desain_rumah.cv_id','=','cv_perencana.id')->where('cv_id',$id)->get();
         // dd($get);
         return view('customer.v_formPesanan',['data'=>$get]);
     }
@@ -53,10 +62,70 @@ class c_formPesanan extends Controller
             'email' => $request['email'],
             'nama_produk_design' => $request['produk'],
             'no_tlp' => $request['email'],
-            'variasi_produk' => $request['variasi'],
+            'variasi' => $request['variasi'],
         ]);
         // return redirect()->route('seller/sms',[$id]);
-        return redirect('/detail/'.$id)->with('sukses' , 'Data berhasil disimpan');
+        return redirect('/customer/pemesanan-design')->with('sukses' , 'Data berhasil disimpan');
         // return redirect('/detail/{{$id}}')->with('sukses', 'Data berhasil disimpan');
+    }
+
+    public function inputPesananCustom(Request $request){
+
+        $id=$request['idcv'];
+        $getid = Auth()->User()->id;
+        $idcus = Customer::where('user_id',$getid)->get('id');
+
+        foreach ($idcus as $li){
+            $idnya = $li->id;
+        }
+        // dd($request);
+
+        $request->validate([
+            'nama' => 'required',
+            'harga' => 'required',
+            'email' => 'required',
+            'produk' => 'required',
+            'notlp' => 'required',
+            'luas' => 'required',
+            'deskripsi' => 'required',
+        ],[
+            'nama.required' => 'Data harus diisi',
+            'harga.required' => 'Data harus diisi',
+            'email.required' => 'Data harus diisi',
+            'produk.required' => 'Data harus diisi',
+            'notlp.required' => 'Data harus diisi',
+            'luas.required' => 'Data harus diisi',
+            'deskripsi.required' => 'Data harus diisi',
+        ]);
+
+        m_pesanan::create([
+            'cv_id' => $request['idcv'],
+            'customer_id' => $idnya,
+            'nama_customer'  => $request['nama'],
+            'harga_produk'  => $request['harga'],
+            'email' => $request['email'],
+            'nama_produk_design' => $request['produk'],
+            'no_tlp' => $request['email'],
+            'luas' => $request['luas'],
+            'deskripsi' => $request['deskripsi'],
+        ]);
+        // return redirect()->route('seller/sms',[$id]);
+        return redirect('/customer/pemesanan-design')->with('sukses' , 'Data berhasil disimpan');
+        // return redirect('/detail/{{$id}}')->with('sukses', 'Data berhasil disimpan');
+    }
+
+    public function batalAction(Request $request){
+
+        $id = $request->id;
+        //dd($request->all());
+        // dd($id);
+        $produk = m_pesanan::find($id);
+        // dd($produk);
+        
+        $produk->batal = $request->pembatalan;
+        $produk->save();
+
+        return redirect('/customer/pemesanan-design');
+        
     }
 }

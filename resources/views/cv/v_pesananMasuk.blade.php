@@ -48,16 +48,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-12">
-                        <ul class="nav nav-tabs bg-dark" id="myTab" role="tablist">
-						    <li class="nav-item" role="presentation">
-						        <a class="nav-link active" id="Penerimaan-tab" data-toggle="tab" href="#Penerimaan" role="tab" aria-controls="Penerimaan" aria-selected="true">Pemesanan Design</a>
-						    </li>
+                <div class="col-xl-12">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist" style="background-color: #696969">
+						  <li class="nav-item" role="presentation">
+						    <a class="nav-link active" id="Penerimaan-tab" data-toggle="tab" href="#Penerimaan" role="tab" aria-controls="Penerimaan" aria-selected="true">Pemesanan Design</a>
+						  </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="custom-tab"  href="#custom" role="tab" aria-controls="custom" aria-selected="true">Custom</a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="custom-tab" href="/cv/pemesanan-design/kustom-pesanan">Pesan kustom</a>
+                            <a class="nav-link" id="custom-tab" data-toggle="tab" href="#custom" role="tab" aria-controls="custom" aria-selected="true"> Design Custom</a>
                             </li>
 						</ul>				
                     <!-- Tab panes -->
@@ -78,6 +75,7 @@
 					        
 					        	<tbody>
                                 @foreach($data as $li)
+                                    @if($li->batal != null)
                                     <tr>
                                         <td>{{$li->nama_produk_design}}</td>
                                         <td>{{$li->variasi_produk}}</td>
@@ -97,6 +95,7 @@
                                             </form>
                                         </td>
                                     </tr>
+                                    @endif
                                 @endforeach
                                 </tbody>
                             

@@ -11,11 +11,11 @@
                         <div class="row">
                             <div class="col-xl-6 col-lg-8 col-md-8">
                                 <div class="hero__caption hero__caption2">
-                                    <h1 data-animation="fadeInUp" data-delay=".4s">Design Rumah</h1>
+                                    <h1 data-animation="fadeInUp" data-delay=".4s">List CV</h1>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="/customer/home">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="#">Design Rumah</a></li> 
+                                            <li class="breadcrumb-item"><a href="#">List CV</a></li> 
                                         </ol>
                                     </nav>
                                 </div>
@@ -33,7 +33,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8 col-md-10">
                         <div class="section-tittle mb-60 text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
-                            <h2>Design Rumah</h2>
+                            <h2>List CV</h2>
                             <!-- <P>Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.</P> -->
                         </div>
                     </div>
@@ -63,20 +63,35 @@
                         <!-- card one -->
                         <div class="tab-pane fade show active" id="nav-Sofa" role="tabpanel" aria-labelledby="nav-Sofa-tab">
                             <div class="row">
-                                @foreach($produk as $li)
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="single-new-arrival mb-50 text-center">
-                                        <div class="popular-img">
-                                            <img src=" {{url($li->foto)}} " alt="">
-                                        </div>
-                                        <div class="popular-caption">
-                                            <h3><a href="">{{ $li->nama_produk }}</a></h3>
-                                            <h3><a href="/profil-cv/{{ $li->cv_id }}">{{ $li->nama_cv }}</a></h3>
-                                            <span>Rp {{ $li->harga }}</span>
-                                        </div>
-                                    </div>
+                                <div class="tab-pane active" id="Penerimaan" role="tabpanel" aria-labelledby="Penerimaan-tab">
+                                    <br>
+                                    <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                                        <thead class="dark-bg">
+                                                <tr>
+                                                    <!-- <th>Nama</th> -->
+                                                    <!-- <th>No</th> -->
+                                                    <th>Nama CV</th>
+                                                    
+                                                    <!-- <th>Status</th> -->
+
+                                                </tr>
+                                        </thead>
+                                    
+                                        <tbody>
+                                        @foreach($produk as $li)
+
+                                            <tr>
+
+                                                <td><a href="/profil-cv/{{ $li->id }}" style="color: black;">{{ $li->nama_cv }}</a></td>
+                                                
+                                            </tr>
+                                            
+                                        @endforeach
+                                        </tbody>
+                                        
+                                    </table>
                                 </div>
-                                @endforeach
+                                
                                 <!-- <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="single-new-arrival mb-50 text-center">
                                         <div class="popular-img">

@@ -48,18 +48,15 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-12">
-                        <ul class="nav nav-tabs bg-dark" id="myTab" role="tablist">
-						    <li class="nav-item" role="presentation">
-						        <a class="nav-link active" id="Penerimaan-tab" data-toggle="tab" href="#Penerimaan" role="tab" aria-controls="Penerimaan" aria-selected="true">Pemesanan Design</a>
-						    </li>
+                <div class="col-xl-12">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist" style="background-color: #696969">
+						  <li class="nav-item" role="presentation">
+						    <a class="nav-link active" id="Penerimaan-tab" data-toggle="tab" href="#Penerimaan" role="tab" aria-controls="Penerimaan" aria-selected="true">Pemesanan Design</a>
+						  </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="custom-tab"  href="#custom" role="tab" aria-controls="custom" aria-selected="true">Custom</a>
+                            <a class="nav-link" id="custom-tab" data-toggle="tab" href="#custom" role="tab" aria-controls="custom" aria-selected="true">Custom</a>
                             </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="custom-tab" href="/customer/pemesanan-design/kustom-pesanan">Pesan kustom</a>
-                            </li>
-						</ul>				
+						</ul>					
                     <!-- Tab panes -->
 					<div class="tab-content" id="myTabContent">
 					  <div class="tab-pane active" id="Penerimaan" role="tabpanel" aria-labelledby="Penerimaan-tab">
@@ -68,9 +65,12 @@
 					          <thead class="dark-bg">
                                     <tr>
                                         <!-- <th>Nama</th> -->
-                                        <th>Nama produk</th>
+                                        <th>Nama produk design</th>
+                                        <th>Nama customer</th>
                                         <th>Variasi produk</th>
-                                        <th>Harga</th>
+                                        <th>Harga produk</th>
+                                        <th>Email</th>
+                                        <th>No telp</th>
                                         <th>Status</th>
                                         <!-- <th>1</th> -->
                                     </tr>
@@ -78,12 +78,33 @@
 					        
 					        	<tbody>
                                 @foreach($data as $li)
+                                    @if($li->deskripsi == null & $li->batal == null)
                                     <tr>
                                         <td>{{$li->nama_produk_design}}</td>
-                                        <td>{{$li->variasi_produk}}</td>
-                                        <td>{{$li->harga_produk}}</td>
-                                        <td>{{$li->status}}</td>
+                                        <td>{{$li->nama_customer}}</td>
+                                        <td>{{$li->variasi}}</td>
+                                        <td>Rp {{$li->harga_produk}}</td>
+                                        <td>{{$li->email}}</td>
+                                        <td>{{$li->no_tlp}}</td>
+                                        <td>
+                                            @if($li->status == null)
+                                                Sedang diproses
+                                            @elseif($li->status == 'Ya')
+                                                Disetujui
+                                            @else
+                                                Ditolak
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <form action="/batal" method="post">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{$li->id}}">
+                                                <input type="hidden" name="pembatalan" value="ya" >
+                                                <button type="submit" class="btn">Batalkan pesanan</button>
+                                            </form>
+                                        </td>
                                     </tr>
+                                    @endif
                                 @endforeach
                                 </tbody>
                             
@@ -95,22 +116,49 @@
 					          <thead class="dark-bg">
                                     <tr>
                                         <!-- <th>Nama</th> -->
-                                        <th>Nama produk</th>
-                                        <th>Desain</th>
-                                        <th>Harga</th>
+                                        <th>Deskripsi produk</th>
+                                        <th>Nama produk design</th>
+                                        <th>Nama customer</th>
+                                        <th>Luas bangunan</th>
+                                        <th>Harga produk</th>
+                                        <th>Email</th>
+                                        <th>No telp</th>
+                                        <th>Status</th>
                                         <!-- <th>Tanggapi</th> -->
                                         <!-- <th>1</th> -->
                                     </tr>
 					        	</thead>
 					        
 					        	<tbody>
-                                @foreach($data2 as $li)
+                                @foreach($data as $li)
+                                    @if($li->deskripsi != null & $li->batal == null)
                                     <tr>
                                         <td>{{$li->deskripsi}}</td>
-                                        <td>{{$li->foto}}</td>
-                                        <td>{{$li->harga_produk}}</td>
-                                        
+                                        <td>{{$li->nama_produk_design}}</td>
+                                        <td>{{$li->nama_customer}}</td>
+                                        <td>{{$li->luas}}m³</td>
+                                        <td>Rp {{$li->harga_produk}}</td>
+                                        <td>{{$li->email}}</td>
+                                        <td>{{$li->no_tlp}}</td>
+                                        <td>
+                                            @if($li->status == null)
+                                                Sedang diproses
+                                            @elseif($li->status == 'Ya')
+                                                Disetujui
+                                            @else
+                                                Ditolak
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <form action="/batal" method="post">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{$li->id}}">
+                                                <input type="hidden" name="pembatalan" value="ya" >
+                                                <button type="submit" class="btn">Batalkan pesanan</button>
+                                            </form>
+                                        </td>
                                     </tr>
+                                    @endif
                                 @endforeach
                                 </tbody>
                             

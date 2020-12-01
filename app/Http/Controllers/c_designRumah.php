@@ -18,7 +18,8 @@ class c_designRumah extends Controller
 
     public function indexAdmin()
     {
-        $data = m_dataProduk::all();
+        // $data = m_dataProduk::join();
+        $data = m_dataCV::join('desain_rumah','cv_perencana.id','=','desain_rumah.cv_id')->get();
         // dd($data);
         return view('admin.data-produk',['produk'=>$data]);
     }
@@ -35,21 +36,25 @@ class c_designRumah extends Controller
 
     public function indexCustomer()
     {
-        $data = m_dataProduk::join('cv_perencana','desain_rumah.cv_id','=','cv_perencana.id')->get();
+        // $data = m_dataProduk::join('cv_perencana','desain_rumah.cv_id','=','cv_perencana.id')->get();
+        // dd($data);
+        $data = m_dataCV::all();
         // dd($data);
         return view('customer.v_designRumah',['produk'=>$data]);
     }
 
     public function editView($id)
     {
-        $data = m_dataProduk::find($id);
+        $data = m_dataProduk::where('id_desain',$id)->get();
         // dd($data);
-        return view('cv.inputProduk',['produk'=>$data]);
+        return view('cv.editProduk',['produk'=>$data]);
     }
 
     public function createView()
     {
-        return view('cv.inputProduk');
+        $data = m_dataProduk::all();
+        // dd($data);
+        return view('cv.inputProduk',['produk'=>$data]);
     }
 
     public function create(Request $data)
@@ -81,10 +86,20 @@ class c_designRumah extends Controller
             'foto' => 'storage/img/' . $newName,
         ]);
 
-        return redirect('/cv/data-produk')->with('sukses', 'Data berhasil disimpan');
+        return redirect('/cv/data-produk')->with('eror', 'Data berhasil disimpan');
     }
 
     public function updateProduk(Request $request){
+
+        $request->validate([
+            'nama' => 'required',
+            'harga' => 'required',
+            'img' => 'required',
+        ],[
+            'nama.required' => 'Mohon mengisi data dengan lengkap',
+            'harga.required' => 'Mohon mengisi data dengan lengkap',
+            'img.required' => 'Mohon mengisi data dengan lengkap',
+        ]);
 
         if($request->nama == null or $request->harga == null){
             return redirect('#')->with('status', 'Data harap diisi');
@@ -93,13 +108,6 @@ class c_designRumah extends Controller
             $id = $request->id;
             //dd($request->all());
             // dd($id);
-            $produk = \App\m_dataProduk::find($id);
-            // dd($produk->foto != null);
-            
-            if($produk->foto != null){
-                Storage::delete($produk->foto);
-            }
-
             $file = $request->file('img');
             $name = time();
             $extension = $file->getClientOriginalExtension();
@@ -107,10 +115,23 @@ class c_designRumah extends Controller
             // dd($newName);
             Storage::putFileAs('public/img', $request->file('img'), $newName);
 
-            $produk->nama_produk = $request->nama;
-            $produk->foto = 'storage/img/' . $newName;
-            $produk->harga = $request->harga;
-            $produk->save();
+            $produk = \App\m_dataProduk::where('id_desain',$id)->update([
+                'nama_produk' => $request->nama,
+                'foto' => 'storage/img/' . $newName,
+                'harga' => $request->harga,
+                
+            ]);
+            // $file = $request->file('img');
+            // $name = time();
+            // $extension = $file->getClientOriginalExtension();
+            // $newName = $name . '.' .$extension;
+            // // dd($newName);
+            // Storage::putFileAs('public/img', $request->file('img'), $newName);
+
+            // $produk->nama_produk = $request->nama;
+            // $produk->foto = 'storage/img/' . $newName;
+            // $produk->harga = $request->harga;
+            // $produk->save();
 
             return redirect('/cv/data-produk')->with('sukses', 'Data berhasil disimpan');
         }

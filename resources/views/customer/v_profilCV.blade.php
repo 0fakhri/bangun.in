@@ -9,17 +9,21 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6 col-lg-8 col-md-8">
+                            @foreach($data2 as $li)
                             <div class="hero__caption hero__caption2">
                                 
-                                <h1 data-animation="fadeInUp" data-delay=".4s">Profil CV</h1>
+                                <h1 data-animation="fadeInUp" data-delay=".4s">Profil {{ $li->nama_cv }}</h1>
   
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="/customer/home">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Profil CV</a></li> 
+                                        
+                                        <li class="breadcrumb-item"><a href="#">Profil {{ $li->nama_cv }}</a></li> 
+                                        
                                     </ol>
                                 </nav>
                             </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -72,12 +76,13 @@
                                     </div>
                                     <div class="popular-caption">
                                         <h3><a href="/detail/{{$li->id_desain}}">{{ $li->nama_produk }}</a></h3>
-                                        <h3><a href="/profil-cv/{{ $li->cv_id }}">{{ $li->nama_cv }}</a></h3>
+                                        <!-- <h3><a href="/profil-cv/{{ $li->cv_id }}"></a></h3> -->
                                         <span>Rp {{ $li->harga }}</span>
                                     </div>
                                 </div>
                             </div>
                             @endforeach
+                            
                             <!-- <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="single-new-arrival mb-50 text-center">
                                     <div class="popular-img">
@@ -90,6 +95,7 @@
                                 </div>
                             </div> -->
                         </div>
+                        <a class="btn" href="/profil-cv/{{ $li->cv_id }}/beli">Custom</a>
                     </div>
                     <!-- Card two -->
                     <div class="tab-pane fade" id="nav-Table" role="tabpanel" aria-labelledby="nav-Table-tab">

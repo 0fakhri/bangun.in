@@ -12,6 +12,7 @@
 */
 // route::auth();
 
+
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -50,8 +51,10 @@ Route::get('/profil-cv/{id}', 'c_profilCV@profilCVaction');
 Route::get('/detail/{id}', 'c_detailProduk@produkAction');
 Route::get('/detail/{id}/beli', 'c_formPesanan@beliDesignAction');
 Route::post('/postPesanan', 'c_formPesanan@inputPesanan');
-Route::get('/customer/pemesanan-design/kustom-pesanan', 'c_formDesignCustom@requestFormDesignAction');
-Route::post('/postKustom', 'c_formDesignCustom@inputPesanan');
+Route::get('/customer/profil-cv/1kustom-pesanan', 'c_formDesignCustom@requestFormDesignAction');
+Route::get('/profil-cv/{id}/beli', 'c_formPesanan@beliCustomAction');
+Route::post('/postPesananCustom', 'c_formPesanan@inputPesananCustom');
+Route::post('/batal', 'c_formPesanan@batalAction');
 
 Route::group(['middleware' => ['auth', 'CheckRole:cv']], function () {
     

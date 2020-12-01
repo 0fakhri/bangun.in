@@ -33,7 +33,7 @@ class c_pesananMasuk extends Controller
       // dd($request->status);
       // dd($id);
       $produk = m_pesanan::find($id);
-      dd($produk);
+    //   dd($produk);
 
       $produk->status = $request->status;
       $produk->save();

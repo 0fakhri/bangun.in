@@ -69,7 +69,7 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a href="/customer/home">Home</a></li> 
-                                        <li><a href="/customer/data-produk">Data Produk</a></li>
+                                        <li><a href="/customer/data-produk">Design Rumah</a></li>
                                         <li><a href="/customer/pemesanan-design">Pemesanan Design</a>
                                         <!-- <li><a href="about.html">About</a></li>
                                         <li><a href="#">Page</a>
