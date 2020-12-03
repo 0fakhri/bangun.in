@@ -99,6 +99,11 @@
                                             @endif
                                         </td>
                                         <td>
+                                            @if($li->status == 'Ya')
+                                                <a href="customer/pemesanan-design/bayar/{{$li->id}}" class="btn">Bayar</a>
+                                                <!-- <button type="submit" class="btn">Bayar</button> -->
+
+                                            @endif
                                             <form action="/batal" method="post">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{$li->id}}">
@@ -154,6 +159,11 @@
                                             @endif
                                         </td>
                                         <td>
+                                            @if($li->status == 'Ya')
+                                                <a href="pemesanan-design/bayar/{{$li->id}}" class="btn">Bayar</a>
+                                                <!-- <button type="submit" class="btn">Bayar</button> -->
+
+                                            @endif
                                             <form action="/batal" method="post">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{$li->id}}">

@@ -65,16 +65,18 @@
                         <div class="row">
                             @foreach($produk as $li)
                             <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="single-new-arrival mb-50 text-center" style="">
-                                    <div class="popular-img">
-                                        <img src=" https://ipac.page/images/brand-logo-1.jpg " alt="">
+                                <a href="/profil-cv/{{ $li->id }}">
+                                    <div class="single-new-arrival mb-50 text-center" >
+                                        <div class="popular-img">
+                                            <img src=" https://ipac.page/images/brand-logo-1.jpg " alt="">
+                                        </div>
+                                        <div class="popular-caption">
+                                            <h3><a href="/profil-cv/{{ $li->id }}">{{ $li->nama_cv }}</a></h3>
+                                            <!-- <h3><a href="/profil-cv/{{ $li->cv_id }}"></a></h3> -->
+                                            <!-- <span>Rp {{ $li->harga }}</span> -->
+                                        </div>
                                     </div>
-                                    <div class="popular-caption">
-                                        <h3><a href="/profil-cv/{{ $li->id }}">{{ $li->nama_cv }}</a></h3>
-                                        <!-- <h3><a href="/profil-cv/{{ $li->cv_id }}"></a></h3> -->
-                                        <!-- <span>Rp {{ $li->harga }}</span> -->
-                                    </div>
-                                </div>
+                                </a>
                             </div>
                             @endforeach
                             

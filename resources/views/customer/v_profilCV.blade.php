@@ -12,7 +12,7 @@
                             @foreach($data2 as $li)
                             <div class="hero__caption hero__caption2">
                                 
-                                <h1 data-animation="fadeInUp" data-delay=".4s">Profil {{ $li->nama_cv }}</h1>
+                                <h1 data-animation="fadeInUp" data-delay=".4s">Profil CV {{ $li->nama_cv }}</h1>
   
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">

@@ -150,7 +150,7 @@
                                         <td>{{$li->deskripsi}}</td>
                                         <td>{{$li->nama_produk_design}}</td>
                                         <td>{{$li->nama_customer}}</td>
-                                        <td>{{$li->luas}}m³</td>
+                                        <td>{{$li->luas}} m</td>
                                         <td>Rp {{$li->harga_produk}}</td>
                                         <td>{{$li->email}}</td>
                                         <td>{{$li->no_tlp}}</td>

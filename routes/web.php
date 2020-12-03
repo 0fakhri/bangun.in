@@ -26,42 +26,37 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 
 
 Route::group(['middleware' => ['auth', 'CheckRole:admin']], function(){
-
+    Route::get('/admin/home', 'c_home@indexAdmin');
+    Route::get('/admin/data-produk', 'c_designRumah@indexAdmin');
 });
 
-Route::get('/admin/home', 'c_home@indexAdmin');
-Route::get('/admin/data-produk', 'c_designRumah@indexAdmin');
-
-Route::get('/cv/home', 'c_home@indexCv');
-Route::get('/cv/data-produk', 'c_designRumah@indexCv');
-Route::get('/cv/data-produk/create', 'c_designRumah@createView')->name('produk');
-Route::post('/cv/data-produk/post', 'c_designRumah@create')->name('tambahProduk');
-Route::get('/cv/data-produk/edit/{id}', 'c_designRumah@editView')->name('edit');
-Route::post('/cv/data-produk/postEdit', 'c_designRumah@updateProduk')->name('editProduk');
-Route::get('/cv/pesanan-masuk', 'c_pesananMasuk@pesananMasukAction');
-Route::get('/cv/pesanan-masuk/pesanan/{id}', 'c_formDesignCustom@requestFormDesignActionCV');
-Route::post('/postDesain', 'c_formDesignCustom@updateDesain');
-Route::post('/postHarga', 'c_formDesignCustom@updateHarga');
-Route::post('/verifikasi', 'c_pesananMasuk@updatePesanan');
-
-Route::get('/customer/home', 'c_home@indexCustomer');
-Route::get('/customer/data-produk', 'c_designRumah@indexCustomer');
-Route::get('/customer/pemesanan-design', 'c_pemesananDesign@pemesanandesignaction');
-Route::get('/profil-cv/{id}', 'c_profilCV@profilCVaction');
-Route::get('/detail/{id}', 'c_detailProduk@produkAction');
-Route::get('/detail/{id}/beli', 'c_formPesanan@beliDesignAction');
-Route::post('/postPesanan', 'c_formPesanan@inputPesanan');
-Route::get('/customer/profil-cv/1kustom-pesanan', 'c_formDesignCustom@requestFormDesignAction');
-Route::get('/profil-cv/{id}/beli', 'c_formPesanan@beliCustomAction');
-Route::post('/postPesananCustom', 'c_formPesanan@inputPesananCustom');
-Route::post('/batal', 'c_formPesanan@batalAction');
 
 Route::group(['middleware' => ['auth', 'CheckRole:cv']], function () {
-    
+    Route::get('/cv/home', 'c_home@indexCv');
+    Route::get('/cv/data-produk', 'c_designRumah@indexCv');
+    Route::get('/cv/data-produk/create', 'c_designRumah@createView')->name('produk');
+    Route::post('/cv/data-produk/post', 'c_designRumah@create')->name('tambahProduk');
+    Route::get('/cv/data-produk/edit/{id}', 'c_designRumah@editView')->name('edit');
+    Route::post('/cv/data-produk/postEdit', 'c_designRumah@updateProduk')->name('editProduk');
+    Route::get('/cv/pesanan-masuk', 'c_pesananMasuk@pesananMasukAction');
+    Route::get('/cv/pesanan-masuk/pesanan/{id}', 'c_formDesignCustom@requestFormDesignActionCV');
+    Route::post('/postDesain', 'c_formDesignCustom@updateDesain');
+    Route::post('/postHarga', 'c_formDesignCustom@updateHarga');
+    Route::post('/verifikasi', 'c_pesananMasuk@updatePesanan');
     
 });
 
 Route::group(['middleware' => ['auth', 'CheckRole:customer']], function () {
-    
-    
+    Route::get('/customer/home', 'c_home@indexCustomer');
+    Route::get('/customer/data-produk', 'c_designRumah@indexCustomer');
+    Route::get('/customer/pemesanan-design', 'c_pemesananDesign@pemesanandesignaction');
+    Route::get('/profil-cv/{id}', 'c_profilCV@profilCVaction');
+    Route::get('/detail/{id}', 'c_detailProduk@produkAction');
+    Route::get('/detail/{id}/beli', 'c_formPesanan@beliDesignAction');
+    Route::post('/postPesanan', 'c_formPesanan@inputPesanan');
+    Route::get('/customer/profil-cv/1kustom-pesanan', 'c_formDesignCustom@requestFormDesignAction');
+    Route::get('/profil-cv/{id}/beli', 'c_formPesanan@beliCustomAction');
+    Route::post('/postPesananCustom', 'c_formPesanan@inputPesananCustom');
+    Route::post('/batal', 'c_formPesanan@batalAction');
+    Route::get('/customer/pemesanan-design/bayar/{id}', 'c_pembayaranDesign@requestPembayaranDesign');
 });
