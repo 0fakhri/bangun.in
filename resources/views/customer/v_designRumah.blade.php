@@ -62,51 +62,29 @@
                     <div class="tab-content" id="nav-tabContent">
                         <!-- card one -->
                         <div class="tab-pane fade show active" id="nav-Sofa" role="tabpanel" aria-labelledby="nav-Sofa-tab">
-                            <div class="row">
-                                <div class="tab-pane active" id="Penerimaan" role="tabpanel" aria-labelledby="Penerimaan-tab">
-                                    <br>
-                                    <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
-                                        <thead class="dark-bg">
-                                                <tr>
-                                                    <!-- <th>Nama</th> -->
-                                                    <!-- <th>No</th> -->
-                                                    <th>Nama CV</th>
-                                                    
-                                                    <!-- <th>Status</th> -->
-
-                                                </tr>
-                                        </thead>
-                                    
-                                        <tbody>
-                                        @foreach($produk as $li)
-
-                                            <tr>
-
-                                                <td><a href="/profil-cv/{{ $li->id }}" style="color: black;">{{ $li->nama_cv }}</a></td>
-                                                
-                                            </tr>
-                                            
-                                        @endforeach
-                                        </tbody>
-                                        
-                                    </table>
-                                </div>
-                                
-                                <!-- <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="single-new-arrival mb-50 text-center">
-                                        <div class="popular-img">
-                                            <img src="assets/img/gallery/popular2.png" alt="">
-                                        </div>
-                                        <div class="popular-caption">
-                                            <h3><a href="product_details.html">Bly Microfiber / Microsuede 56" Armless Loveseat</a></h3>
-                                            <span>$367</span>
-                                        </div>
+                        <div class="row">
+                            @foreach($produk as $li)
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="single-new-arrival mb-50 text-center" style="">
+                                    <div class="popular-img">
+                                        <img src=" https://ipac.page/images/brand-logo-1.jpg " alt="">
                                     </div>
-                                </div> -->
+                                    <div class="popular-caption">
+                                        <h3><a href="/profil-cv/{{ $li->id }}">{{ $li->nama_cv }}</a></h3>
+                                        <!-- <h3><a href="/profil-cv/{{ $li->cv_id }}"></a></h3> -->
+                                        <!-- <span>Rp {{ $li->harga }}</span> -->
+                                    </div>
+                                </div>
                             </div>
+                            @endforeach
+                            
+                            
                         </div>
+                        <!-- <a class="btn" href="/profil-cv/{{ $li->cv_id }}/beli">Custom</a> -->
+                    </div>
+                        
                         <!-- Card two -->
-                        <div class="tab-pane fade" id="nav-Table" role="tabpanel" aria-labelledby="nav-Table-tab">
+                        <!-- <div class="tab-pane fade" id="nav-Table" role="tabpanel" aria-labelledby="nav-Table-tab">
                             <div class="row">
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="single-new-arrival mb-50 text-center">
@@ -120,7 +98,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         
                     </div>
                     <!-- End Nav Card -->

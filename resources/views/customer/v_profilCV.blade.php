@@ -56,6 +56,9 @@
                                 <a class="nav-item nav-link" id="nav-Bed-tab" data-toggle="tab" href="#nav-Bed" role="tab" aria-controls="nav-Bed" aria-selected="false">Bed</a>
                                 <a class="nav-item nav-link" id="nav-Lightning-tab" data-toggle="tab" href="#nav-Lightning" role="tab" aria-controls="nav-Lightning" aria-selected="false">Lightning</a>
                                 <a class="nav-item nav-link" id="nav-Decore-tab" data-toggle="tab" href="#nav-Decore" role="tab" aria-controls="nav-Decore" aria-selected="false">Decore</a> -->
+                                @foreach($data as $li)
+                                @endforeach
+                                <a class="nav-item nav-link" href="/profil-cv/{{ $li->cv_id }}/beli" role="tab" aria-controls="nav-Bed" aria-selected="false">Custom</a>
                             </div>
                         </nav>
                         <!--End Nav Button  -->
@@ -95,7 +98,7 @@
                                 </div>
                             </div> -->
                         </div>
-                        <a class="btn" href="/profil-cv/{{ $li->cv_id }}/beli">Custom</a>
+                        <!-- <a class="btn" href="/profil-cv/{{ $li->cv_id }}/beli">Custom</a> -->
                     </div>
                     <!-- Card two -->
                     <div class="tab-pane fade" id="nav-Table" role="tabpanel" aria-labelledby="nav-Table-tab">
