@@ -1,10 +1,12 @@
 @extends('customer.layout.app')
 @section('content')
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 @if(session('sukses'))
 <script>
     swal({
-        title: "Data berhasil ditambahkan",
+        title: "Pesanan berhasil dibuat",
         
         icon: "success",
         button: "Ok",
@@ -72,6 +74,7 @@
                                         <th>Email</th>
                                         <th>No telp</th>
                                         <th>Status</th>
+                                        <th>Aksi</th>
                                         <!-- <th>1</th> -->
                                     </tr>
 					        	</thead>
@@ -124,6 +127,7 @@
                                         <th>Email</th>
                                         <th>No telp</th>
                                         <th>Status</th>
+                                        <th>Aksi</th>
                                         <!-- <th>Tanggapi</th> -->
                                         <!-- <th>1</th> -->
                                     </tr>
@@ -136,7 +140,7 @@
                                         <td>{{$li->deskripsi}}</td>
                                         <td>{{$li->nama_produk_design}}</td>
                                         <td>{{$li->nama_customer}}</td>
-                                        <td>{{$li->luas}}m³</td>
+                                        <td>{{$li->luas}} m</td>
                                         <td>Rp {{$li->harga_produk}}</td>
                                         <td>{{$li->email}}</td>
                                         <td>{{$li->no_tlp}}</td>

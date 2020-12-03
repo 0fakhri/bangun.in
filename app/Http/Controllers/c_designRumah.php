@@ -94,11 +94,9 @@ class c_designRumah extends Controller
         $request->validate([
             'nama' => 'required',
             'harga' => 'required',
-            'img' => 'required',
         ],[
             'nama.required' => 'Mohon mengisi data dengan lengkap',
             'harga.required' => 'Mohon mengisi data dengan lengkap',
-            'img.required' => 'Mohon mengisi data dengan lengkap',
         ]);
 
         if($request->nama == null or $request->harga == null){
@@ -115,12 +113,19 @@ class c_designRumah extends Controller
             // dd($newName);
             Storage::putFileAs('public/img', $request->file('img'), $newName);
 
-            $produk = \App\m_dataProduk::where('id_desain',$id)->update([
-                'nama_produk' => $request->nama,
-                'foto' => 'storage/img/' . $newName,
-                'harga' => $request->harga,
-                
-            ]);
+            if($file != null){
+                m_dataProduk::where('id_desain',$id)->update([
+                    'nama_produk' => $request->nama,
+                    'foto' => 'storage/img/' . $newName,
+                    'harga' => $request->harga,
+                ]);
+            }
+            elseif($file == null){
+                m_dataProduk::where('id_desain',$id)->update([
+                    'nama_produk' => $request->nama,
+                    'harga' => $request->harga,
+                ]);
+            }
             // $file = $request->file('img');
             // $name = time();
             // $extension = $file->getClientOriginalExtension();

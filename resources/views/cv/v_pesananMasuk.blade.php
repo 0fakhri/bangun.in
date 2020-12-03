@@ -1,10 +1,12 @@
 @extends('cv.layout.app')
 @section('content')
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 @if(session('sukses'))
 <script>
     swal({
-        title: "Data berhasil ditambahkan",
+        title: "Data berhasil disimpan",
         
         icon: "success",
         button: "Ok",
@@ -21,11 +23,11 @@
                         <div class="row">
                             <div class="col-xl-6 col-lg-8 col-md-8">
                                 <div class="hero__caption hero__caption2">
-                                    <h1 data-animation="fadeInUp" data-delay=".4s" >Pemesanan Design</h1>
+                                    <h1 data-animation="fadeInUp" data-delay=".4s" >Pesanan Masuk</h1>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="/cv/home">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="/cv/pemesanan-design">Pemesanan Design</a></li> 
+                                            <li class="breadcrumb-item"><a href="/cv/pemesanan-masuk">Pesanan Masuk</a></li> 
                                         </ol>
                                     </nav>
                                 </div>
@@ -43,49 +45,68 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8 col-md-10">
                         <div class="section-tittle mb-60 text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
-                            <h2>Design Rumah</h2>
+                            <h2>Pemesanan design</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                 <div class="col-xl-12">
                         <ul class="nav nav-tabs" id="myTab" role="tablist" style="background-color: #696969">
-						  <li class="nav-item" role="presentation">
+						  <!-- <li class="nav-item" role="presentation">
 						    <a class="nav-link active" id="Penerimaan-tab" data-toggle="tab" href="#Penerimaan" role="tab" aria-controls="Penerimaan" aria-selected="true">Pemesanan Design</a>
-						  </li>
-                            <li class="nav-item" role="presentation">
+						  </li> -->
+                            <!-- <li class="nav-item" role="presentation">
                             <a class="nav-link" id="custom-tab" data-toggle="tab" href="#custom" role="tab" aria-controls="custom" aria-selected="true"> Design Custom</a>
-                            </li>
+                            </li> -->
 						</ul>				
                     <!-- Tab panes -->
 					<div class="tab-content" id="myTabContent">
 					  <div class="tab-pane active" id="Penerimaan" role="tabpanel" aria-labelledby="Penerimaan-tab">
 					    <br>
 					      <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
-					          <thead class="dark-bg">
+                            Pesanan masuk    
+                          <thead class="dark-bg">
                                     <tr>
                                         <!-- <th>Nama</th> -->
-                                        <th>Nama produk</th>
+                                        <th>Nama produk design</th>
+                                        <th>Nama customer</th>
                                         <th>Variasi produk</th>
-                                        <th>Harga</th>
+                                        <th>Harga produk</th>
+                                        <th>Email</th>
+                                        <th>No telp</th>
                                         <th>Status</th>
+                                        <th>Aksi</th>
+                                        
                                         <!-- <th>1</th> -->
                                     </tr>
 					        	</thead>
 					        
 					        	<tbody>
                                 @foreach($data as $li)
-                                    @if($li->batal != null)
+                                    @if($li->batal != null & $li->deskripsi == null )
                                     <tr>
                                         <td>{{$li->nama_produk_design}}</td>
-                                        <td>{{$li->variasi_produk}}</td>
-                                        <td>{{$li->harga_produk}}</td>
+                                        <td>{{$li->nama_customer}}</td>
+                                        <td>{{$li->variasi}}</td>
+                                        <td>Rp {{$li->harga_produk}}</td>
+                                        <td>{{$li->email}}</td>
+                                        <td>{{$li->no_tlp}}</td>
                                         <td>
+                                            @if($li->status == null)
+                                                Sedang diproses
+                                            @elseif($li->status == 'Ya')
+                                                Disetujui
+                                            @else
+                                                Ditolak
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($li->status == null)
                                             <form action="/verifikasi" method="post">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{ $li->id }}">
                                                 <input type="hidden" name="status" value="Ya">
-                                                <button type="submit" class="btn">Ya</button>
+                                                <button type="submit" class="btn">Iya</button>
                                             </form>
                                             <form action="/verifikasi" method="post">
                                                 @csrf
@@ -93,6 +114,8 @@
                                                 <input type="hidden" name="status" value="Tidak">
                                                 <button type="submit" class="btn">Tidak</button>
                                             </form>
+                                            
+                                            @endif
                                         </td>
                                     </tr>
                                     @endif
@@ -101,28 +124,66 @@
                             
 					      	</table>
 					  </div>
-                      <div class="tab-pane active" id="custom" role="tabpanel" aria-labelledby="custom-tab">
-                      <br>
+                      
 					      <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
-					          <thead class="dark-bg">
+                            Custom  
+                          <thead class="dark-bg">
                                     <tr>
                                         <!-- <th>Nama</th> -->
-                                        <th>Nama produk</th>
-                                        <th>Desain</th>
-                                        <th>Harga</th>
-                                        <!-- <th>Tanggapi</th> -->
-                                        <!-- <th>1</th> -->
+                                        <th>Deskripsi produk</th>
+                                        <th>Nama produk design</th>
+                                        <th>Nama customer</th>
+                                        <th>Luas bangunan</th>
+                                        <th>Harga produk</th>
+                                        <th>Email</th>
+                                        <th>No telp</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
+
                                     </tr>
 					        	</thead>
 					        
 					        	<tbody>
-                                @foreach($data2 as $li)
+                                @foreach($data as $li)
+                                    @if($li->deskripsi != null )
                                     <tr>
                                         <td>{{$li->deskripsi}}</td>
-                                        <td>{{$li->foto}}</td>
-                                        <td>{{$li->harga_produk}}</td>
-                                        <td><a class="btn btn-primary" href="/cv/pesanan-masuk/pesanan/{{$li->id}}">Custom</a></td>
+                                        <td>{{$li->nama_produk_design}}</td>
+                                        <td>{{$li->nama_customer}}</td>
+                                        <td>{{$li->luas}}m³</td>
+                                        <td>Rp {{$li->harga_produk}}</td>
+                                        <td>{{$li->email}}</td>
+                                        <td>{{$li->no_tlp}}</td>
+                                        <td>
+                                            @if($li->status == null)
+                                                Sedang diproses
+                                            @elseif($li->status == 'Ya')
+                                                Disetujui
+                                            @else
+                                                Ditolak
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($li->status == null)
+                                            <form action="/verifikasi" method="post">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{ $li->id }}">
+                                                <input type="hidden" name="status" value="Ya">
+                                                <button type="submit" class="btn">Iya</button>
+                                            </form>
+                                            <form action="/verifikasi" method="post">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{ $li->id }}">
+                                                <input type="hidden" name="status" value="Tidak">
+                                                <button type="submit" class="btn">Tidak</button>
+                                            </form>
+                                            @elseif($li->status == 'Ya' & $li->harga_produk == 0)
+                                                <a class="btn btn-primary" href="/cv/pesanan-masuk/pesanan/{{$li->id}}">Custom</a>
+                                            
+                                            @endif
+                                        </td>
                                     </tr>
+                                    @endif
                                 @endforeach
                                 </tbody>
                             

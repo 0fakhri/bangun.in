@@ -18,9 +18,9 @@ class c_pesananMasuk extends Controller
      }
       // dd($idnya);
       $get = m_pesanan::where('cv_id',$idnya)->get();
-      $get2 = m_desainCustom::where('cv_id',$idnya)->get();
-    //   dd($get2);
-   	return view('cv.v_pesananMasuk',['data'=>$get],['data2'=>$get2]);
+      // $get2 = m_desainCustom::where('cv_id',$idnya)->get();
+      // dd($get);
+   	return view('cv.v_pesananMasuk',['data'=>$get]);
    }
 
    public function updatePesanan(Request $request){

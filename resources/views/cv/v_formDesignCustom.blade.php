@@ -45,11 +45,11 @@
                         <div class="row">
                             <div class="col-xl-6 col-lg-8 col-md-8">
                                 <div class="hero__caption hero__caption2">
-                                    <h1 data-animation="fadeInUp" data-delay=".4s" >Kustom Desain</h1>
+                                    <h1 data-animation="fadeInUp" data-delay=".4s" >Harga Design Custom</h1>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="/cv/home">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="#">Kustom Desain</a></li> 
+                                            <li class="breadcrumb-item"><a href="#">Harga Design Custom</a></li> 
                                         </ol>
                                     </nav>
                                 </div>
@@ -67,38 +67,26 @@
                 <div class="billing_details">
                     <div class="row">
                         <div class="col-lg-8">
-                            <h3>Form Desain Kustom</h3>
+                            <h3>Harga Design Custom</h3>
                             @foreach($data as $li)
                             
-                            @if($li->deskripsi!=null)
-                            <form class="row contact_form" action="/postDesain" method="POST">
-                                @csrf
-                                <input type="hidden" name="id" value="{{$li->id}}">
-                                <div class="col-md-12 form-group">
-                                    <label for="foto">Upload desain</label>
-                                    <input class="@error('img') is-invalid @enderror" type="file" name="foto">
-                                </div>
-                                <div class="login-footer">
-                                    <button type="submit" class="submit-btn3">Simpan</button>
-                                    <a href="./" class="btn btn-secondary">Batal</a>
-                                </div>
-                            </form>
-                            @elseif($li->foto!=null)
+                            
+                           
                             <form class="row contact_form" action="/postHarga" method="POST">
                                 @csrf
                                 <input type="hidden" name="id" value="{{$li->id}}">
-                                <div class="col-md-12 form-group">
+                                <!-- <div class="col-md-12 form-group">
                                     <textarea class="@error('deskripsi') is-invalid @enderror form-control" name="deskripsi" id="message" rows="1" placeholder="Deskripsi">{{$li->deskripsi}}</textarea>
-                                </div>
+                                </div> -->
                                 <div class="col-md-12 form-group">
-                                    <input class="@error('harga') is-invalid @enderror" type="number" name="harga" id="">Harga</input>
+                                    <input class="@error('harga') is-invalid @enderror form-control" type="number" name="harga" placeholder="Harga"></input>
                                 </div>
                                 <div class="login-footer">
                                     <button type="submit" class="submit-btn3">Simpan</button>
                                     <a href="./" class="btn btn-secondary">Batal</a>
                                 </div>
                             </form>
-                            @endif
+                            
                             @endforeach
                         </div>
                     </div>

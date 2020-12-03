@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
-use App\m_desainCustom;
+use App\m_pesanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,7 +16,7 @@ class c_formDesignCustom extends Controller
 
    public function requestFormDesignActionCv($id){
 
-        $get = m_desainCustom::where('id',$id)->get();
+        $get = m_pesanan::where('id',$id)->get();
         // dd($get);
         return view('cv.v_formDesignCustom',['data'=>$get]);
    }
@@ -32,17 +32,15 @@ class c_formDesignCustom extends Controller
         // dd($request['idcv']);
 
         $request->validate([
-            'deskripsi' => 'required',
+            'harga' => 'required',
             
         ],[
-            'deskripsi.required' => 'Data harus diisi',
+            'harga.required' => 'Data harus diisi',
             
         ]);
 
-        m_desainCustom::create([
-            'cv_id' => $request[''],
-            'customer_id' => $idnya,
-            'deskripsi'  => $request['deskripsi'],
+        m_pesanan::create([
+            'harga'  => $request['deskripsi'],
         ]);
         // return redirect()->route('seller/sms',[$id]);
         return redirect('/customer/pemesanan-design')->with('sukses' , 'Data berhasil disimpan');
@@ -61,7 +59,7 @@ class c_formDesignCustom extends Controller
         $id = $request->id;
         //dd($request->all());
         // dd($id);
-        $produk = m_desainCustom::find($id);
+        $produk = m_pesanan::find($id);
         // dd($produk);
 
         $file = $request->file('img');
@@ -82,16 +80,15 @@ class c_formDesignCustom extends Controller
     public function updateHarga(Request $request){
 
         $request->validate([
-            'deskripsi' => 'required',
             'harga' => 'required',
         ]);
         $id = $request->id;
         //dd($request->all());
         // dd($id);
-        $produk = m_desainCustom::find($id);
+        $produk = m_pesanan::find($id);
         // dd($produk);
-        $produk->deskripsi = $request->deskripsi;
-        $produk->harga = $request->harga;
+        // $produk->deskripsi = $request->deskripsi;
+        $produk->harga_produk = $request->harga;
         $produk->save();
 
         return redirect('/cv/pesanan-masuk')->with('sukses', 'Data berhasil disimpan');

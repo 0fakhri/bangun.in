@@ -105,7 +105,7 @@ class c_formPesanan extends Controller
             'harga_produk'  => $request['harga'],
             'email' => $request['email'],
             'nama_produk_design' => $request['produk'],
-            'no_tlp' => $request['email'],
+            'no_tlp' => $request['notlp'],
             'luas' => $request['luas'],
             'deskripsi' => $request['deskripsi'],
         ]);
