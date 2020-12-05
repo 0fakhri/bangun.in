@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth', 'CheckRole:cv']], function () {
     Route::post('/postDesain', 'c_formDesignCustom@updateDesain');
     Route::post('/postHarga', 'c_formDesignCustom@updateHarga');
     Route::post('/verifikasi', 'c_pesananMasuk@updatePesanan');
-    
+    Route::get('/cv/pembayaran-masuk', 'c_pembayaranMasuk@setPembayaran');
 });
 
 Route::group(['middleware' => ['auth', 'CheckRole:customer']], function () {
@@ -58,5 +58,7 @@ Route::group(['middleware' => ['auth', 'CheckRole:customer']], function () {
     Route::get('/profil-cv/{id}/beli', 'c_formPesanan@beliCustomAction');
     Route::post('/postPesananCustom', 'c_formPesanan@inputPesananCustom');
     Route::post('/batal', 'c_formPesanan@batalAction');
-    Route::get('/customer/pemesanan-design/bayar/{id}', 'c_pembayaranDesign@requestPembayaranDesign');
+    Route::get('/customer/pemesanan-design/bayar/{id}', 'c_formPembayaran@setFormPembayaran');
+    Route::get('/customer/pembayaran-design', 'c_pembayaranDesign@setPembayaran');
+    Route::post('/postPembayaran', 'c_formPembayaran@inputPembayaran');
 });

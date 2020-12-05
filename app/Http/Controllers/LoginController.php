@@ -23,7 +23,7 @@ class LoginController extends Controller
                 return redirect('/cv/home');
             }
         }
-        return redirect('/login');
+        return redirect('/login')->with('pesan', 'Harap memasukan data dengan benar');;
     }
 
     public function logout()

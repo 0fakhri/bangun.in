@@ -83,7 +83,7 @@
 					        
 					        	<tbody>
                                 @foreach($data as $li)
-                                    @if($li->batal != null & $li->deskripsi == null )
+                                    @if($li->batal == null & $li->deskripsi == null )
                                     <tr>
                                         <td>{{$li->nama_produk_design}}</td>
                                         <td>{{$li->nama_customer}}</td>
@@ -145,7 +145,7 @@
 					        
 					        	<tbody>
                                 @foreach($data as $li)
-                                    @if($li->deskripsi != null )
+                                    @if($li->batal == null & $li->deskripsi != null )
                                     <tr>
                                         <td>{{$li->deskripsi}}</td>
                                         <td>{{$li->nama_produk_design}}</td>

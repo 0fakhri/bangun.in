@@ -62,7 +62,7 @@ class c_designRumah extends Controller
         $data->validate([
             'nama' => 'required',
             'harga' => 'required',
-            'img' => 'required',
+            'img' => 'required|image|mimes:jpeg,png,jpg,svg',
         ],[
             'nama.required' => 'Mohon mengisi data dengan lengkap',
             'harga.required' => 'Mohon mengisi data dengan lengkap',
@@ -94,6 +94,7 @@ class c_designRumah extends Controller
         $request->validate([
             'nama' => 'required',
             'harga' => 'required',
+            'img' => 'image|mimes:jpeg,png,jpg,svg',
         ],[
             'nama.required' => 'Mohon mengisi data dengan lengkap',
             'harga.required' => 'Mohon mengisi data dengan lengkap',
@@ -106,14 +107,17 @@ class c_designRumah extends Controller
             $id = $request->id;
             //dd($request->all());
             // dd($id);
+            
             $file = $request->file('img');
             $name = time();
-            $extension = $file->getClientOriginalExtension();
-            $newName = $name . '.' .$extension;
-            // dd($newName);
-            Storage::putFileAs('public/img', $request->file('img'), $newName);
 
             if($file != null){
+                $extension = $file->getClientOriginalExtension();
+                $newName = $name . '.' .$extension;
+                // dd($newName);
+                Storage::putFileAs('public/img', $request->file('img'), $newName);
+
+            
                 m_dataProduk::where('id_desain',$id)->update([
                     'nama_produk' => $request->nama,
                     'foto' => 'storage/img/' . $newName,

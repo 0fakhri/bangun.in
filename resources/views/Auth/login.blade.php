@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if(session('pesan'))
+<!-- Modal -->
+    <div class="alert alert-danger" role="alert">
+    {{session('pesan')}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
+
 <main class="login-bg">
         <!-- login Area Start -->
         <div class="login-form-area">
@@ -11,15 +22,15 @@
                             <!-- Login Heading -->
                             <div class="login-heading">
                                 <span>Login</span>
-                                <p>Enter Login details to get access</p>
+                                <!-- <p>Enter Login details to get access</p> -->
                             </div>
                             <form method="POST" action="postlogin">
                                 @csrf
                             <!-- Single Input Fields -->
                                 <div class="input-box">
                                     <div class="single-input-fields">
-                                        <label>Username or Email Address</label>
-                                        <input name="email" class="@error('email') is-invalid @enderror" type="text" placeholder="Username / Email address">
+                                        <label>Email</label>
+                                        <input name="email" class="@error('email') is-invalid @enderror" type="text" placeholder="Msukkan email">
                                         
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -29,7 +40,7 @@
                                     </div>
                                     <div class="single-input-fields">
                                         <label>Password</label>
-                                        <input name="password" class="@error('password') is-invalid @enderror" type="password" placeholder="Enter Password">
+                                        <input name="password" class="@error('password') is-invalid @enderror" type="password" placeholder="Masukkan password">
                                     
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
@@ -39,16 +50,16 @@
                                     </div>
                                     <div class="single-input-fields login-check">
                                         <!-- <input type="checkbox" id="fruit1" name="keep-log" {{ old('remember') ? 'checked' : '' }}> -->
-                                        <label for="fruit1">Keep me logged in</label>
+                                        <!-- <label for="fruit1">Keep me logged in</label> -->
 
                                         @if (Route::has('password.request'))
-                                            <a href="{{ route('password.request') }}" class="f-right">Forgot Password?</a>
+                                            <!-- <a href="{{ route('password.request') }}" class="f-right">Forgot Password?</a> -->
                                         @endif
                                     </div>
                                 </div>
                                 <!-- form Footer -->
                                 <div class="login-footer">
-                                    <p>Don’t have an account? <a href="{{ route('register') }}">Sign Up</a>  here</p>
+                                    <p>Belum punya akun? <a href="{{ route('register') }}">Daftar</a>  disini</p>
                                     <button type="submit" class="submit-btn3">Login</button>
                                 </div>
                             </form>

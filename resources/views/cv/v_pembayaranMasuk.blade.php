@@ -1,4 +1,4 @@
-@extends('customer.layout.app')
+@extends('cv.layout.app')
 @section('content')
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -23,11 +23,11 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-8 col-md-8">
                             <div class="hero__caption hero__caption2">
-                                <h1 data-animation="fadeInUp" data-delay=".4s" >Pembayaran Design</h1>
+                                <h1 data-animation="fadeInUp" data-delay=".4s" >Pembayaran Masuk</h1>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="/customer/home">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="/customer/pembayaran-design">Pembayaran Design</a></li> 
+                                        <li class="breadcrumb-item"><a href="/cv/home">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="/cv/pembayaran-design">Pembayaran Masuk</a></li> 
                                     </ol>
                                 </nav>
                             </div>
@@ -69,6 +69,7 @@
                                     <th>Nama rekening</th>
                                     <th>Nomer rekening</th>
                                     <th>Bukti pembayaran</th>
+                                    <th>Aksi</th>
                                     
                                 </tr>
                             </thead>
@@ -80,6 +81,20 @@
                                     <td>Diluc</td>
                                     <td>98798673</td>
                                     <td><img src="" alt=""></td>
+                                    <td>
+                                        <form action="/verifikasi" method="post">
+                                            @csrf
+                                            
+                                            <input type="hidden" name="status" value="Ya">
+                                            <button type="submit" class="btn">Disetujui</button>
+                                        </form>
+                                        <form action="/verifikasi" method="post">
+                                            @csrf
+                                            
+                                            <input type="hidden" name="status" value="Tidak">
+                                            <button type="submit" class="btn">Ditolak</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             
                             </tbody>

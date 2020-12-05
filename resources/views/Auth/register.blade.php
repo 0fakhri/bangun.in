@@ -12,15 +12,15 @@
   @endif
     <main class="login-bg">
         <!-- Register Area Start -->
-        <div class="register-form-area">
+        <div class="register-form-area" >
             <div class="container">
-                <div class="row justify-content-center">
+                <div class="row justify-content-center" >
                     <div class="col-xl-6 col-lg-8">
-                        <div class="register-form text-center">
+                        <div class="register-form text-center" style="margin-top: 150px;">
                             <!-- Login Heading -->
                             <div class="register-heading">
-                                <span>Sign Up</span>
-                                <p>Create your account to get full access</p>
+                                <span>Daftar</span>
+                                <p>Daftar sebagai</p>
                             </div>
                             <div class="container row justify-content-center">
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -41,8 +41,8 @@
                                         @csrf
                                         <!-- <div class="input-box"> -->
                                         <div class="single-input-fields">
-                                            <label>Full name</label>
-                                            <input name="nama" type="text" placeholder="Masukkan full name" class="@error('name') is-invalid @enderror">
+                                            <label>Nama lengkap</label>
+                                            <input name="nama" type="text" placeholder="Masukkan nama lengkap" class="@error('name') is-invalid @enderror">
                                             @error('name')
                                                 <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -50,8 +50,8 @@
                                             @enderror
                                         </div>
                                         <div class="single-input-fields">
-                                            <label>Email Address</label>
-                                            <input name="email" type="email" placeholder="Masukkan email address" class="@error('name') is-invalid @enderror">
+                                            <label>Email</label>
+                                            <input name="email" type="email" placeholder="Masukkan email" class="@error('name') is-invalid @enderror">
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                 <strong>{{session('error')}}</strong>
@@ -74,12 +74,12 @@
                                         </div> -->
                                         <!-- form Footer -->
                                         <div class="register-footer">
-                                            <p> Already have an account? <a href="{{ route('login') }}"> Login</a> here</p>
-                                            <button type="submit" class="submit-btn3">Sign Up</button>
+                                            <p> Sudah punya akun? <a href="{{ route('login') }}"> Login</a> disini</p>
+                                            <button type="submit" class="submit-btn3">Daftar</button>
                                         </div>
                                     </form>
                                 </div>
-                                <div class="tab-pane fade" id="CV" role="tabpanel" aria-labelledby="CV-tab">
+                                <div class="tab-pane fade" id="CV" role="tabpanel" aria-labelledby="CV-tab" >
                                     <form class="input-box" method="POST" action="/regCu" enctype="multipart/form-data">
                                         @csrf
                                     <!-- <div class="input-box"> -->
@@ -88,8 +88,8 @@
                                             <input name="nama_cv" type="text" placeholder="Masukkan nama CV">
                                         </div>
                                         <div class="single-input-fields">
-                                            <label>Email Address</label>
-                                            <input name="email" type="email" placeholder="Masukkan email address">
+                                            <label>Email</label>
+                                            <input name="email" type="email" placeholder="Masukkan email">
                                         </div>
                                         <div class="single-input-fields">
                                             <label>Password</label>
@@ -111,8 +111,8 @@
                                         </div>
                                         <!-- form Footer -->
                                         <div class="register-footer">
-                                            <p> Already have an account? <a href="{{ route('login') }}"> Login</a> here</p>
-                                            <button type="submit" class="submit-btn3">Sign Up</button>
+                                            <p> Sudah punya akun? <a href="{{ route('login') }}"> Login</a> disini</p>
+                                            <button type="submit" class="submit-btn3">Daftar</button>
                                         </div>
                                     </form>
                                 </div>

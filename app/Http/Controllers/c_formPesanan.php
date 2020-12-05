@@ -125,7 +125,7 @@ class c_formPesanan extends Controller
         $produk->batal = $request->pembatalan;
         $produk->save();
 
-        return redirect('/customer/pemesanan-design');
+        return redirect('/customer/pemesanan-design')->with('batal', 'Data berhasil disimpan');
         
     }
 }

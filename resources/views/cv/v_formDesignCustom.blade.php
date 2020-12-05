@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="login-footer">
                                     <button type="submit" class="submit-btn3">Simpan</button>
-                                    <a href="./" class="btn btn-secondary">Batal</a>
+                                    <a href="../" class="btn btn-secondary">Batal</a>
                                 </div>
                             </form>
                             
