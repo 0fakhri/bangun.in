@@ -23,6 +23,16 @@
     });
     </script>
 @endif
+@if(session('sukses'))
+<script>
+    swal({
+        title: "Data berhasil disimpan",
+        
+        icon: "success",
+        button: "Ok",
+    });
+    </script>
+@endif
 
 <main>
     <!--? slider Area Start-->
@@ -59,6 +69,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="row">
                 <div class="col-xl-12">
                         <ul class="nav nav-tabs" id="myTab" role="tablist" style="background-color: #696969">
@@ -71,6 +82,7 @@
 						</ul>					
                     <!-- Tab panes -->
 					<div class="tab-content" id="myTabContent">
+                    
 					  <div class="tab-pane active" id="Penerimaan" role="tabpanel" aria-labelledby="Penerimaan-tab">
 					    <br>
 					      <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
@@ -112,67 +124,7 @@
                                             @if($li->status == 'Ya')
                                                 <a href="customer/pemesanan-design/bayar/{{$li->id}}" class="btn">Bayar</a>
                                                 <!-- <button type="submit" class="btn">Bayar</button> -->
-
-                                            @endif
-                                            <form action="/batal" method="post">
-                                                @csrf
-                                                <input type="hidden" name="id" value="{{$li->id}}">
-                                                <input type="hidden" name="pembatalan" value="ya" >
-                                                <button type="submit" class="btn">Batalkan pesanan</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    @endif
-                                @endforeach
-                                </tbody>
-                            
-					      	</table>
-					  </div>
-                      <div class="tab-pane active" id="custom" role="tabpanel" aria-labelledby="custom-tab">
-                      <br>
-                      <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
-					          <thead class="dark-bg">
-                                    <tr>
-                                        <!-- <th>Nama</th> -->
-                                        <th>Deskripsi produk</th>
-                                        <th>Nama produk design</th>
-                                        <th>Nama customer</th>
-                                        <th>Luas bangunan</th>
-                                        <th>Harga produk</th>
-                                        <th>Email</th>
-                                        <th>No telp</th>
-                                        <th>Status</th>
-                                        <th>Aksi</th>
-                                        <!-- <th>Tanggapi</th> -->
-                                        <!-- <th>1</th> -->
-                                    </tr>
-					        	</thead>
-					        
-					        	<tbody>
-                                @foreach($data as $li)
-                                    @if($li->deskripsi != null & $li->batal == null)
-                                    <tr>
-                                        <td>{{$li->deskripsi}}</td>
-                                        <td>{{$li->nama_produk_design}}</td>
-                                        <td>{{$li->nama_customer}}</td>
-                                        <td>{{$li->luas}} m</td>
-                                        <td>Rp {{$li->harga_produk}}</td>
-                                        <td>{{$li->email}}</td>
-                                        <td>{{$li->no_tlp}}</td>
-                                        <td>
-                                            @if($li->status == null)
-                                                Sedang diproses
-                                            @elseif($li->status == 'Ya')
-                                                Disetujui
-                                            @else
-                                                Ditolak
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if($li->status == 'Ya')
-                                                <a href="pemesanan-design/bayar/{{$li->id}}" class="btn">Bayar</a>
-                                                <!-- <button type="submit" class="btn">Bayar</button> -->
-
+                                            
                                             @endif
                                             <form action="/batal" method="post">
                                                 @csrf
@@ -188,6 +140,76 @@
                             
 					      	</table>
                       </div>
+                      <!-- <div class="table-responsive tab-pane active" id="custom" role="tabpanel" aria-labelledby="custom-tab"> -->
+                      <div class="table-responsive tab-pane active" id="custom" role="tabpanel" aria-labelledby="custom-tab">
+                          <br>
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead style="background-color: #ddd;">
+                            <tr class="text-center">
+                                <!-- <th>Nama</th> -->
+                                <th>Deskripsi produk</th>
+                                <th>Nama produk design</th>
+                                <th>Nama customer</th>
+                                <th>Luas bangunan</th>
+                                <th>Harga produk</th>
+                                <th>Email</th>
+                                <th>No telp</th>
+                                <th>Status</th>
+                                <th>Hasil desgin</th>
+                                <th>Aksi</th>
+
+                                <!-- <th>Tanggapi</th> -->
+                                <!-- <th>1</th> -->
+                            </tr>
+                        </thead>
+                        @foreach($data as $li)
+                        @if($li->deskripsi != null & $li->batal == null) 
+                        <tbody>
+                            <tr>
+                                <td>{{$li->deskripsi}}</td>
+                                <td>{{$li->nama_produk_design}}</td>
+                                <td>{{$li->nama_customer}}</td>
+                                <td>{{$li->luas}} m</td>
+                                <td>Rp {{$li->harga_produk}}</td>
+                                <td>{{$li->email}}</td>
+                                <td>{{$li->no_tlp}}</td>
+                                <td>
+                                    @if($li->status == null)
+                                        Sedang diproses
+                                    @elseif($li->status == 'Ya')
+                                        Disetujui
+                                    @else
+                                        Ditolak
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($li->id_pembayaran != null & $li->desain != null)
+                                    <img src="{{url($li->desain)}}" alt="" >
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($li->id_pembayaran == null)
+                                        @if($li->status == 'Ya')
+                                            <a href="pemesanan-design/bayar/{{$li->id}}" class="btn">Bayar</a>
+                                            <!-- <button type="submit" class="btn">Bayar</button> -->
+
+                                        @endif
+                                        <form action="/batal" method="post">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{$li->id}}">
+                                            <input type="hidden" name="pembatalan" value="ya" >
+                                            <button type="submit" class="btn">Batalkan pesanan</button>
+                                        </form>
+                                    
+                                    @endif
+                                </td>
+                            </tr> 
+                        </tbody>
+                        @endif
+                        @endforeach
+                    </table>
+                    </div>
+                      
 					</div> 
                     
 					</div>

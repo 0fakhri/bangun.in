@@ -15,10 +15,11 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead style="background-color: #ddd;">
           <tr class="text-center">
-              <th>Foto</th>
+              
               <th>Nama produk</th>
               <th>Nama CV</th>
               <th>Harga produk</th>
+              <th>Foto</th>
               <!-- <th>E-mail</th>
               <th>No HP</th>
               <th>Kecamatan</th>
@@ -29,10 +30,11 @@
               @foreach($produk as $li)
         <tbody>
           <tr class="text-center">
-              <td><img src="{{url($li->foto)}}" style="width: 50px"></td>
+              
               <td>{{$li->nama_produk}}</td>
               <td>{{$li->nama_cv}}</td>
               <td>{{$li->harga}}</td>
+              <td><img src="{{url($li->foto)}}" style="width: 45%"></td>
           </tr>
           </tbody>
           @endforeach

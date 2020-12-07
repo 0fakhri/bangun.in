@@ -17,13 +17,13 @@ class c_formPembayaran extends Controller
     }
     // 'status'
     public function inputPembayaran(Request $data){
-        // dd($data['id']);
+        // dd($data['img']);
         $data->validate([
             'id' => 'required',
             'bank' => 'required',
             'namaRek' => 'required',
             'noRek'  => 'required',
-            'img'  => 'required|image',
+            'img' => 'required|image|mimes:jpeg,png,jpg,svg',
         ]);
         
         $file = $data->file('img');

@@ -179,7 +179,8 @@
                                             </form>
                                             @elseif($li->status == 'Ya' & $li->harga_produk == 0)
                                                 <a class="btn btn-primary" href="/cv/pesanan-masuk/pesanan/{{$li->id}}">Custom</a>
-                                            
+                                            @elseif($li->status == 'Ya' & $li->harga_produk != 0 & $li->desain == null)
+                                                <a class="btn btn-primary" href="/cv/pesanan-masuk/pesanan/{{$li->id}}">Custom</a>
                                             @endif
                                         </td>
                                     </tr>

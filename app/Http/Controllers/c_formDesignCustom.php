@@ -69,7 +69,7 @@ class c_formDesignCustom extends Controller
         // dd($newName);
         Storage::putFileAs('public/img', $request->file('img'), $newName);
 
-        $produk->foto = 'storage/img/' . $newName;
+        $produk->desain = 'storage/img/' . $newName;
         // $produk->harga = $request->harga;
         $produk->save();
 
@@ -93,6 +93,8 @@ class c_formDesignCustom extends Controller
 
         return redirect('/cv/pesanan-masuk')->with('sukses', 'Data berhasil disimpan');
     }
+
+    
 
     
 }

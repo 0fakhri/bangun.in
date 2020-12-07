@@ -69,19 +69,35 @@
                                     <th>Nama rekening</th>
                                     <th>Nomer rekening</th>
                                     <th>Bukti pembayaran</th>
-                                    
+                                    <th>Status</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                         
                             <tbody>
-                                                      
+                            @foreach($data as $li)                     
                                 <tr>
-                                    <td>BRI</td>
-                                    <td>Diluc</td>
-                                    <td>98798673</td>
-                                    <td><img src="" alt=""></td>
+                                    <td>{{$li->bank_tujuan}}</td>
+                                    <td>{{$li->nama_rekening_pengirim}}</td>
+                                    <td>{{$li->no_rek_pengirim}}</td>
+                                    <td style="width: 50%; height: 100%;"><img src="{{url($li->bukti_pembayaran)}}" alt="" width="40%"></td>
+                                    <td>
+                                        @if($li->status_bayar == null)
+                                            Sedang diproses
+                                        @elseif($li->status_bayar == 'Ya')
+                                            Disetujui
+                                            
+                                        @else
+                                            Ditolak
+                                        @endif
+                                    </td>
+                                    @if($li->status_bayar == 'Ya')
+                                    <td>
+                                        <a href="/invoice/{{$li->id_pembayaran}}" target="_blank"><i class="fas fa-print"></i>Print</a>
+                                    </td>
+                                    @endif
                                 </tr>
-                            
+                            @endforeach
                             </tbody>
                         
                         </table>

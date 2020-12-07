@@ -80,7 +80,7 @@
 
                         <h3>Pembayaran Design</h3>
                         
-                        <form class="row contact_form" action="/postPembayaran" method="POST">
+                        <form class="row contact_form" action="/postPembayaran" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="col-md-12 form-group">
@@ -98,9 +98,9 @@
                                 <input type="number" class="@error('noRek') is-invalid @enderror form-control" name="noRek" placeholder="Nomer rekening" />
                             </div>
                             <div class="col-md-12 form-group">
-                                    <label>Foto produk</label>
-                                    <input type="file" name="img" placeholder="foto" class="@error('img') is-invalid @enderror" >
-                                </div>
+                                <label>Foto produk</label>
+                                <input type="file" name="img" placeholder="foto" class="@error('img') is-invalid @enderror form-control" >
+                            </div>
                             <!-- <div class="col-md-12 form-group">
                                 <input type="text" class="@error('variasi') is-invalid @enderror form-control"  name="variasi" placeholder="variasi" value=""/>
                             </div>

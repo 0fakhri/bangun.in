@@ -4,16 +4,18 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- popup  -->
-    @error('bank')
-    <script>
+
+@if(session('sukses'))
+<script>
     swal({
-        title: "Data harap diisi",
+        title: "Data berhasil disimpan",
         
-        icon: "warning",
+        icon: "success",
         button: "Ok",
     });
     </script>
-    @enderror
+@endif
+
 <main>
 <!--? slider Area Start-->
     <div class="slider-area ">
@@ -61,7 +63,7 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane active" id="Penerimaan" role="tabpanel" aria-labelledby="Penerimaan-tab">
                     <br>
-                        <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" >
                             <thead class="dark-bg">
                                 <tr>
                                     <!-- <th>Nama</th> -->
@@ -75,28 +77,31 @@
                             </thead>
                         
                             <tbody>
-                                                      
+                                @foreach($data as $li)
+                                @if($li->status_bayar == null)
                                 <tr>
-                                    <td>BRI</td>
-                                    <td>Diluc</td>
-                                    <td>98798673</td>
-                                    <td><img src="" alt=""></td>
+                                    <td>{{$li->bank_tujuan}}</td>
+                                    <td>{{$li->nama_rekening_pengirim}}</td>
+                                    <td>{{$li->no_rek_pengirim}}</td>
+                                    <td style="width: 50%; height: 100%;"><img src="{{url($li->bukti_pembayaran)}}" alt="" width="40%"></td>
+                                    
                                     <td>
-                                        <form action="/verifikasi" method="post">
+                                        <form action="/verifBayar" method="post">
                                             @csrf
-                                            
+                                            <input type="hidden" name="id" value="{{$li->id_pembayaran}}">
                                             <input type="hidden" name="status" value="Ya">
                                             <button type="submit" class="btn">Disetujui</button>
                                         </form>
-                                        <form action="/verifikasi" method="post">
+                                        <form action="/verifBayar" method="post">
                                             @csrf
-                                            
+                                            <input type="hidden" name="id" value="{{$li->id_pembayaran}}">
                                             <input type="hidden" name="status" value="Tidak">
                                             <button type="submit" class="btn">Ditolak</button>
                                         </form>
                                     </td>
                                 </tr>
-                            
+                                @endif
+                            @endforeach
                             </tbody>
                         
                         </table>

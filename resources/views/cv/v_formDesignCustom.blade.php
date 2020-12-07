@@ -24,16 +24,7 @@
     });
     </script>
 @enderror
-@error('deskripsi')
-    <script>
-    swal({
-        title: "Data harap diisi",
-        
-        icon: "warning",
-        button: "Ok",
-    });
-    </script>
-@enderror
+
     
 
 <main>
@@ -67,11 +58,12 @@
                 <div class="billing_details">
                     <div class="row">
                         <div class="col-lg-8">
-                            <h3>Harga Design Custom</h3>
+                            
                             @foreach($data as $li)
                             
                             
-                           
+                            @if($li->harga_produk == 0)
+                            <h3>Harga Design Custom</h3>
                             <form class="row contact_form" action="/postHarga" method="POST">
                                 @csrf
                                 <input type="hidden" name="id" value="{{$li->id}}">
@@ -86,7 +78,25 @@
                                     <a href="../" class="btn btn-secondary">Batal</a>
                                 </div>
                             </form>
-                            
+                            @elseif($li->harga_produk != 0)
+                            <h3>Design Custom</h3>
+                                <form class="row contact_form" action="/postDesain" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{$li->id}}">
+                                    <!-- <div class="col-md-12 form-group">
+                                        <textarea class="@error('deskripsi') is-invalid @enderror form-control" name="deskripsi" id="message" rows="1" placeholder="Deskripsi">{{$li->deskripsi}}</textarea>
+                                    </div> -->
+                                    <div class="col-md-12 form-group">
+                                        <label>Desain</label>
+                                        <input type="file" name="img" placeholder="foto" class="@error('img') is-invalid @enderror" >
+                                    </div>
+                                    <div class="login-footer">
+                                        <button type="submit" class="submit-btn3">Simpan</button>
+                                        <a href="../" class="btn btn-secondary">Batal</a>
+                                    </div>
+                                </form>
+                            @endif
+
                             @endforeach
                         </div>
                     </div>

@@ -16,7 +16,28 @@ class c_pembayaranMasuk extends Controller
         }
         // dd($idnya);
         $get = m_pembayaran::join('pesanan','pembayaran.id_pesanan','=','pesanan.id')->where('cv_id',$idnya)->get();
-        dd($get);
+        // dd($get);
         return view('cv.v_pembayaranMasuk',['data'=>$get]);
+    }
+
+    public function updatePembayaran(Request $request){
+
+        $request->validate([
+            'status' => 'required',
+        ]);
+  
+        $id = $request->id;
+        // dd($request->status);
+        // dd($id);
+        m_pembayaran::where('id_pembayaran',$id)->update([
+            'status_bayar' => $request->status,
+        ]);
+        // $produk = m_pembayaran::where('id_pembayaran',$id)->get();
+      //   dd($produk);
+  
+        // $produk->status = $request->status;
+        // $produk->save();
+  
+        return redirect('/cv/pembayaran-masuk')->with('sukses', 'Data berhasil disimpan');
     }
 }
