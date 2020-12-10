@@ -7,7 +7,7 @@
 @error('img')
     <script>
     swal({
-        title: "Data harap diisi",
+        title: "Data harus diisi",
         
         icon: "warning",
         button: "Ok",
@@ -63,7 +63,7 @@
                             
                             
                             @if($li->harga_produk == 0)
-                            <h3>Harga Design Custom</h3>
+                            <h3>Hasil Design Custom</h3>
                             <form class="row contact_form" action="/postHarga" method="POST">
                                 @csrf
                                 <input type="hidden" name="id" value="{{$li->id}}">
@@ -79,7 +79,7 @@
                                 </div>
                             </form>
                             @elseif($li->harga_produk != 0)
-                            <h3>Design Custom</h3>
+                            <h3>Design Visual 3D</h3>
                                 <form class="row contact_form" action="/postDesain" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="id" value="{{$li->id}}">

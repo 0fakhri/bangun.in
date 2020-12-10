@@ -90,6 +90,7 @@
                                 <ul class="d-flex align-items-center" >
                                     <li><a href="#">Profil</a>
                                         <ul class="submenu">
+                                            <li><a href="/profil">Anu profil</a></li>
                                             <li><a href="/logout">Logout</a></li>
                                         </ul>
                                     </li>

@@ -10,6 +10,6 @@ class m_pesanan extends Model
     public $timestamps = false;
     
     protected $fillable = [
-        'cv_id','customer_id','nama_customer','nama_produk_design','no_tlp','email','variasi','harga_produk','luas','deskripsi','foto','status','batal'
+        'id_desain', 'cv_id','customer_id','nama_customer','nama_produk_design','no_tlp','email','variasi','harga_produk','luas','deskripsi','foto','status','batal'
     ];
 }

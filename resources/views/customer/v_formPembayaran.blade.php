@@ -82,23 +82,34 @@
                         
                         <form class="row contact_form" action="/postPembayaran" method="POST" enctype="multipart/form-data">
                             @csrf
-
+                            <div class="col-md-12 form-group">
+                                
+                            </div>
                             <div class="col-md-12 form-group">
                                 @foreach($get as $li)
-                               <input type="hidden" name="id" value="{{$li->id}}">
-                               <h4>{{$li->id}}</h4>
-                               <h4>{{$li->nama_customer}}</h4>
+
+                                <h4>Bank {{$li->bank1}} -> {{$li->norek1}}</h4>
+                                <h4>Bank {{$li->bank2}} -> {{$li->norek2}}</h4>
+                                <h4>Bank {{$li->bank3}} -> {{$li->norek3}}</h4>
+                               <input type="hidden" name="id" value="{{$li->id_pesan}}">
+                                
+                                
+                                <select class="form-control" name="bank" id="pilih" class="@error('bank3') is-invalid @enderror form-control">
+                                    <option selected disabled>Pilih Bank</option>
+                                    <option value="{{$li->bank1}}">{{$li->bank1}}</option>
+                                    <option value="{{$li->bank2}}">{{$li->bank2}}</option>
+                                    <option value="{{$li->bank3}}">{{$li->bank3}}</option>
+                                </select>
                                 @endforeach
-                                <input type="text" class="@error('bank') is-invalid @enderror form-control"  name="bank" placeholder="Bank Pengirim" />
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="text" class="@error('namaRek') is-invalid @enderror form-control"  name="namaRek" placeholder="Nama rekening" />
+                                <input type="text" class="@error('namaRek') is-invalid @enderror form-control"  name="namaRek" placeholder="Nama rekening pengirim" />
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="number" class="@error('noRek') is-invalid @enderror form-control" name="noRek" placeholder="Nomer rekening" />
+                                <input type="number" class="@error('noRek') is-invalid @enderror form-control" name="noRek" placeholder="Nomer rekening pengirim" />
                             </div>
                             <div class="col-md-12 form-group">
-                                <label>Foto produk</label>
+                                <label>Upload bukti pembayaran (jpg, jpeg, png)</label>
                                 <input type="file" name="img" placeholder="foto" class="@error('img') is-invalid @enderror form-control" >
                             </div>
                             <!-- <div class="col-md-12 form-group">

@@ -10,8 +10,9 @@ use Illuminate\Support\Facades\Storage;
 class c_formPembayaran extends Controller
 {
     public function setFormPembayaran($id)
-    {
-        $data = m_pesanan::where('id',$id)->get();
+    {   
+        // dd($id);
+        $data = m_pesanan::join('cv_perencana','pesanan.cv_id','=','cv_perencana.id')->where('id_pesan',$id)->get();
         // dd($data);
         return view('customer.v_formPembayaran',['get'=>$data]);
     }
@@ -41,6 +42,6 @@ class c_formPembayaran extends Controller
             'bukti_pembayaran' => 'storage/img/' . $newName,
         ]);
 
-        return redirect('/customer/pemesanan-design')->with('bayar', 'Data berhasil disimpan');
+        return redirect('/customer/pembayaran-design')->with('bayar', 'Data berhasil disimpan');
     }
 }

@@ -36,7 +36,7 @@ class c_formPesanan extends Controller
         foreach ($idcus as $li){
             $idnya = $li->id;
         }
-        // dd($request['idcv']);
+        // dd( $request['idDetail']);
 
         $request->validate([
             'nama' => 'required',
@@ -55,13 +55,14 @@ class c_formPesanan extends Controller
         ]);
 
         m_pesanan::create([
+            'id_desain' => $request['idDetail'],
             'cv_id' => $request['idcv'],
             'customer_id' => $idnya,
             'nama_customer'  => $request['nama'],
             'harga_produk'  => $request['harga'],
             'email' => $request['email'],
             'nama_produk_design' => $request['produk'],
-            'no_tlp' => $request['email'],
+            'no_tlp' => $request['notlp'],
             'variasi' => $request['variasi'],
         ]);
         // return redirect()->route('seller/sms',[$id]);
@@ -78,7 +79,7 @@ class c_formPesanan extends Controller
         foreach ($idcus as $li){
             $idnya = $li->id;
         }
-        // dd($request);
+        // dd($request['idcv']);
 
         $request->validate([
             'nama' => 'required',

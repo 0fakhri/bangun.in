@@ -38,6 +38,6 @@ class c_pembayaranMasuk extends Controller
         // $produk->status = $request->status;
         // $produk->save();
   
-        return redirect('/cv/pembayaran-masuk')->with('sukses', 'Data berhasil disimpan');
+        return redirect('/cv/pembayaran-masuk');
     }
 }

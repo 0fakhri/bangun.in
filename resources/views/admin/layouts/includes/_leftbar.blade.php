@@ -55,6 +55,11 @@
           <i class="fas fa-handshake"></i>
           <span>Data Produk</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/data-pembayaran">
+          <i class="fas fa-handshake"></i>
+          <span>Data Pembayaran</span></a>
+      </li>
       <!-- Divider -->
       <hr class="sidebar-divider">
 

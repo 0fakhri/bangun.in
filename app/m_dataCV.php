@@ -10,7 +10,20 @@ class m_dataCV extends Model
     
     protected $table = 'cv_perencana';
     protected $fillable = [
-        'user_id', 'nama_cv', 'alamat', 'status', 'sertifikat', 
+        'user_id', 
+        'nama_cv', 
+        'alamat', 
+        'status_akun', 
+        'license', 
+        'logo', 
+        'noTelp', 
+        'deskripsi_cv', 
+        'bank1', 
+        'bank2', 
+        'bank3',
+        'norek1',
+        'norek2',
+        'norek3',
     ];
 
     public function user(){

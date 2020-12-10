@@ -28,6 +28,7 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::group(['middleware' => ['auth', 'CheckRole:admin']], function(){
     Route::get('/admin/home', 'c_home@indexAdmin');
     Route::get('/admin/data-produk', 'c_designRumah@indexAdmin');
+    Route::get('/admin/data-pembayaran', 'c_dataPembayaran@setPembayaran');
 });
 
 
@@ -46,6 +47,8 @@ Route::group(['middleware' => ['auth', 'CheckRole:cv']], function () {
     Route::post('/verifBayar', 'c_pembayaranMasuk@updatePembayaran');
     Route::get('/cv/pembayaran-masuk', 'c_pembayaranMasuk@setPembayaran');
     // Route::get('/cv/pesanan-masuk/pesanan/{id}/desain', 'c_formDesignCustom@setFormDesignCustom');
+    Route::get('/form-profil', 'c_home@formProfil');
+    Route::post('/postProfil', 'c_home@updateProfil');
 });
 
 Route::group(['middleware' => ['auth', 'CheckRole:customer']], function () {

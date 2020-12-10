@@ -72,7 +72,7 @@ class RegisterController extends Controller {
                 'user_id' => $user->id,
                 'nama_cv' => $data['nama_cv'],
                 'alamat' => $data['alamat'],
-                'sertifikat' => 'storage/' . $newName,
+                'license' => 'storage/img' . $newName,
             ]);
 
         }

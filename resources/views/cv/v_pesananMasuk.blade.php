@@ -75,6 +75,7 @@
                                         <th>Email</th>
                                         <th>No telp</th>
                                         <th>Status</th>
+                                        <th>Design rumah</th>
                                         <th>Aksi</th>
                                         
                                         <!-- <th>1</th> -->
@@ -93,13 +94,14 @@
                                         <td>{{$li->no_tlp}}</td>
                                         <td>
                                             @if($li->status == null)
-                                                Sedang diproses
+                                                Belum diproses
                                             @elseif($li->status == 'Ya')
                                                 Disetujui
                                             @else
                                                 Ditolak
                                             @endif
                                         </td>
+                                        <td><img src="{{url($li->foto)}}" alt="" width="200px"></td>
                                         <td>
                                             @if($li->status == null)
                                             <form action="/verifikasi" method="post">
@@ -129,15 +131,18 @@
                             Custom  
                           <thead class="dark-bg">
                                     <tr>
-                                        <!-- <th>Nama</th> -->
+                                    
                                         <th>Deskripsi produk</th>
                                         <th>Nama produk design</th>
+                                        
                                         <th>Nama customer</th>
                                         <th>Luas bangunan</th>
                                         <th>Harga produk</th>
                                         <th>Email</th>
                                         <th>No telp</th>
+                                        <th>Hasil design custom</th>
                                         <th>Status</th>
+                                        <!-- <th>Hasil design</th> -->
                                         <th>Aksi</th>
 
                                     </tr>
@@ -147,6 +152,7 @@
                                 @foreach($data as $li)
                                     @if($li->batal == null & $li->deskripsi != null )
                                     <tr>
+                                        
                                         <td>{{$li->deskripsi}}</td>
                                         <td>{{$li->nama_produk_design}}</td>
                                         <td>{{$li->nama_customer}}</td>
@@ -154,6 +160,14 @@
                                         <td>Rp {{$li->harga_produk}}</td>
                                         <td>{{$li->email}}</td>
                                         <td>{{$li->no_tlp}}</td>
+                                        <td>
+                                        @if($li->status == 'Ya' & $li->harga_produk != 0 & $li->desain == null)
+                                                <a class="btn btn-primary" href="/cv/pesanan-masuk/pesanan/{{$li->id}}">Design Visual 3D</a>
+                                        @endif
+                                        </td>
+                                        @if($li->desain != null)
+                                        <td><img src="{{url($li->desain)}}" alt="" width="200px"></td>
+                                        @endif
                                         <td>
                                             @if($li->status == null)
                                                 Sedang diproses
@@ -179,8 +193,7 @@
                                             </form>
                                             @elseif($li->status == 'Ya' & $li->harga_produk == 0)
                                                 <a class="btn btn-primary" href="/cv/pesanan-masuk/pesanan/{{$li->id}}">Custom</a>
-                                            @elseif($li->status == 'Ya' & $li->harga_produk != 0 & $li->desain == null)
-                                                <a class="btn btn-primary" href="/cv/pesanan-masuk/pesanan/{{$li->id}}">Custom</a>
+                                            
                                             @endif
                                         </td>
                                     </tr>

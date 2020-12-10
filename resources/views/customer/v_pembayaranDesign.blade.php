@@ -4,16 +4,16 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- popup  -->
-    @error('bank')
-    <script>
+@if(session('bayar'))
+<script>
     swal({
-        title: "Data harap diisi",
+        title: "Data berhasil disimpan",
         
-        icon: "warning",
+        icon: "success",
         button: "Ok",
     });
     </script>
-    @enderror
+@endif
 <main>
 <!--? slider Area Start-->
     <div class="slider-area ">
@@ -64,10 +64,10 @@
                         <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                             <thead class="dark-bg">
                                 <tr>
-                                    <!-- <th>Nama</th> -->
+                                    <th>Nama CV </th>
                                     <th>Bank tujuan</th>
-                                    <th>Nama rekening</th>
-                                    <th>Nomer rekening</th>
+                                    <th>Nama rekening pengirim</th>
+                                    <th>Nomer rekening pengirim</th>
                                     <th>Bukti pembayaran</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
@@ -77,10 +77,11 @@
                             <tbody>
                             @foreach($data as $li)                     
                                 <tr>
+                                    <td>{{$li->nama_cv}}</td>
                                     <td>{{$li->bank_tujuan}}</td>
                                     <td>{{$li->nama_rekening_pengirim}}</td>
                                     <td>{{$li->no_rek_pengirim}}</td>
-                                    <td style="width: 50%; height: 100%;"><img src="{{url($li->bukti_pembayaran)}}" alt="" width="40%"></td>
+                                    <td ><img src="{{url($li->bukti_pembayaran)}}" alt="" width="200px"></td>
                                     <td>
                                         @if($li->status_bayar == null)
                                             Sedang diproses
@@ -93,7 +94,7 @@
                                     </td>
                                     @if($li->status_bayar == 'Ya')
                                     <td>
-                                        <a href="/invoice/{{$li->id_pembayaran}}" target="_blank"><i class="fas fa-print"></i>Print</a>
+                                        <a href="/invoice/{{$li->id_pembayaran}}" target="_blank" style="color: black;"><i class="fas fa-print"></i>Cetak</a>
                                     </td>
                                     @endif
                                 </tr>

@@ -85,10 +85,11 @@
                     
 					  <div class="tab-pane active" id="Penerimaan" role="tabpanel" aria-labelledby="Penerimaan-tab">
 					    <br>
-					      <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
-					          <thead class="dark-bg">
-                                    <tr>
+                        <table class="table-responsive table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead style="background-color: #ddd;">
+                                <tr class="text-center">
                                         <!-- <th>Nama</th> -->
+                                        <th>Nama CV</th>
                                         <th>Nama produk design</th>
                                         <th>Nama customer</th>
                                         <th>Variasi produk</th>
@@ -96,6 +97,7 @@
                                         <th>Email</th>
                                         <th>No telp</th>
                                         <th>Status</th>
+                                        <th>Design Visual 3D</th>
                                         <th>Aksi</th>
                                         <!-- <th>1</th> -->
                                     </tr>
@@ -105,6 +107,7 @@
                                 @foreach($data as $li)
                                     @if($li->deskripsi == null & $li->batal == null)
                                     <tr>
+                                        <td>{{$li->nama_cv}}</td>
                                         <td>{{$li->nama_produk_design}}</td>
                                         <td>{{$li->nama_customer}}</td>
                                         <td>{{$li->variasi}}</td>
@@ -120,9 +123,12 @@
                                                 Ditolak
                                             @endif
                                         </td>
+                                        @if($li->foto != null)
+                                            <td><img src="{{url($li->foto)}}" alt="" width="200px"></td>
+                                        @endif
                                         <td>
                                             @if($li->status == 'Ya')
-                                                <a href="customer/pemesanan-design/bayar/{{$li->id}}" class="btn">Bayar</a>
+                                                <a href="pemesanan-design/bayar/{{$li->id_pesan}}" class="btn">Bayar</a>
                                                 <!-- <button type="submit" class="btn">Bayar</button> -->
                                             
                                             @endif
@@ -147,6 +153,7 @@
                             <thead style="background-color: #ddd;">
                             <tr class="text-center">
                                 <!-- <th>Nama</th> -->
+                                <th>Nama CV</th>
                                 <th>Deskripsi produk</th>
                                 <th>Nama produk design</th>
                                 <th>Nama customer</th>
@@ -154,8 +161,8 @@
                                 <th>Harga produk</th>
                                 <th>Email</th>
                                 <th>No telp</th>
+                                <th>Hasil desgin custom</th>
                                 <th>Status</th>
-                                <th>Hasil desgin</th>
                                 <th>Aksi</th>
 
                                 <!-- <th>Tanggapi</th> -->
@@ -166,6 +173,7 @@
                         @if($li->deskripsi != null & $li->batal == null) 
                         <tbody>
                             <tr>
+                                <td>{{$li->nama_cv}}</td>
                                 <td>{{$li->deskripsi}}</td>
                                 <td>{{$li->nama_produk_design}}</td>
                                 <td>{{$li->nama_customer}}</td>
@@ -173,6 +181,11 @@
                                 <td>Rp {{$li->harga_produk}}</td>
                                 <td>{{$li->email}}</td>
                                 <td>{{$li->no_tlp}}</td>
+                                <td >
+                                    @if($li->id_pembayaran != null & $li->desain != null)
+                                    <img src="{{url($li->desain)}}" alt="" width="200px">
+                                    @endif
+                                </td>
                                 <td>
                                     @if($li->status == null)
                                         Sedang diproses
@@ -183,14 +196,9 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if($li->id_pembayaran != null & $li->desain != null)
-                                    <img src="{{url($li->desain)}}" alt="" >
-                                    @endif
-                                </td>
-                                <td>
                                     @if($li->id_pembayaran == null)
                                         @if($li->status == 'Ya')
-                                            <a href="pemesanan-design/bayar/{{$li->id}}" class="btn">Bayar</a>
+                                            <a href="pemesanan-design/bayar/{{$li->id_pesan}}" class="btn">Bayar</a>
                                             <!-- <button type="submit" class="btn">Bayar</button> -->
 
                                         @endif

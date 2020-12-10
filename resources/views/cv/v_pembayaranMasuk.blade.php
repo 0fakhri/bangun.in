@@ -66,11 +66,13 @@
                         <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" >
                             <thead class="dark-bg">
                                 <tr>
-                                    <!-- <th>Nama</th> -->
+                                    <th>Nama customer</th>
                                     <th>Bank tujuan</th>
-                                    <th>Nama rekening</th>
-                                    <th>Nomer rekening</th>
+                                    <th>Nama rekening pengirim</th>
+                                    <th>Nomer rekening pengirim</th>
                                     <th>Bukti pembayaran</th>
+                                    <th>Status</th>
+                                    
                                     <th>Aksi</th>
                                     
                                 </tr>
@@ -78,13 +80,24 @@
                         
                             <tbody>
                                 @foreach($data as $li)
-                                @if($li->status_bayar == null)
+                                
                                 <tr>
+                                    <td>{{$li->nama_customer}}</td>
                                     <td>{{$li->bank_tujuan}}</td>
                                     <td>{{$li->nama_rekening_pengirim}}</td>
                                     <td>{{$li->no_rek_pengirim}}</td>
-                                    <td style="width: 50%; height: 100%;"><img src="{{url($li->bukti_pembayaran)}}" alt="" width="40%"></td>
+                                    <td><img src="{{url($li->bukti_pembayaran)}}" alt="" width="200px"></td>
+                                    <td>
+                                        @if($li->status_bayar == 'Ya')
+                                            Disetujui
+                                        @elseif($li->status_bayar == 'Tidak')
+                                            Ditolak
+                                        @else
+                                            Belum diproses
+                                        @endif
+                                    </td>
                                     
+                                    @if($li->status_bayar == null)
                                     <td>
                                         <form action="/verifBayar" method="post">
                                             @csrf
@@ -99,8 +112,9 @@
                                             <button type="submit" class="btn">Ditolak</button>
                                         </form>
                                     </td>
+                                    @endif
                                 </tr>
-                                @endif
+                                
                             @endforeach
                             </tbody>
                         
