@@ -17,7 +17,7 @@
 @error('harga')
     <script>
     swal({
-        title: "Data harap diisi",
+        title: "Data harus diisi",
         
         icon: "warning",
         button: "Ok",
@@ -66,7 +66,7 @@
                             <h3>Hasil Design Custom</h3>
                             <form class="row contact_form" action="/postHarga" method="POST">
                                 @csrf
-                                <input type="hidden" name="id" value="{{$li->id}}">
+                                <input type="hidden" name="id" value="{{$li->id_pesan}}">
                                 <!-- <div class="col-md-12 form-group">
                                     <textarea class="@error('deskripsi') is-invalid @enderror form-control" name="deskripsi" id="message" rows="1" placeholder="Deskripsi">{{$li->deskripsi}}</textarea>
                                 </div> -->
@@ -82,7 +82,7 @@
                             <h3>Design Visual 3D</h3>
                                 <form class="row contact_form" action="/postDesain" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <input type="hidden" name="id" value="{{$li->id}}">
+                                    <input type="hidden" name="id" value="{{$li->id_pesan}}">
                                     <!-- <div class="col-md-12 form-group">
                                         <textarea class="@error('deskripsi') is-invalid @enderror form-control" name="deskripsi" id="message" rows="1" placeholder="Deskripsi">{{$li->deskripsi}}</textarea>
                                     </div> -->

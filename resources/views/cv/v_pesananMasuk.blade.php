@@ -106,13 +106,13 @@
                                             @if($li->status == null)
                                             <form action="/verifikasi" method="post">
                                                 @csrf
-                                                <input type="hidden" name="id" value="{{ $li->id }}">
+                                                <input type="hidden" name="id" value="{{ $li->id_pesan }}">
                                                 <input type="hidden" name="status" value="Ya">
                                                 <button type="submit" class="btn">Iya</button>
                                             </form>
                                             <form action="/verifikasi" method="post">
                                                 @csrf
-                                                <input type="hidden" name="id" value="{{ $li->id }}">
+                                                <input type="hidden" name="id" value="{{ $li->id_pesan }}">
                                                 <input type="hidden" name="status" value="Tidak">
                                                 <button type="submit" class="btn">Tidak</button>
                                             </form>
@@ -162,7 +162,7 @@
                                         <td>{{$li->no_tlp}}</td>
                                         <td>
                                         @if($li->status == 'Ya' & $li->harga_produk != 0 & $li->desain == null)
-                                                <a class="btn btn-primary" href="/cv/pesanan-masuk/pesanan/{{$li->id}}">Design Visual 3D</a>
+                                                <a class="btn btn-primary" href="/cv/pesanan-masuk/pesanan/{{$li->id_pesan}}">Design Visual 3D</a>
                                         @endif
                                         </td>
                                         @if($li->desain != null)
@@ -181,18 +181,18 @@
                                             @if($li->status == null)
                                             <form action="/verifikasi" method="post">
                                                 @csrf
-                                                <input type="hidden" name="id" value="{{ $li->id }}">
+                                                <input type="hidden" name="id" value="{{ $li->id_pesan }}">
                                                 <input type="hidden" name="status" value="Ya">
                                                 <button type="submit" class="btn">Iya</button>
                                             </form>
                                             <form action="/verifikasi" method="post">
                                                 @csrf
-                                                <input type="hidden" name="id" value="{{ $li->id }}">
+                                                <input type="hidden" name="id" value="{{ $li->id_pesan }}">
                                                 <input type="hidden" name="status" value="Tidak">
                                                 <button type="submit" class="btn">Tidak</button>
                                             </form>
                                             @elseif($li->status == 'Ya' & $li->harga_produk == 0)
-                                                <a class="btn btn-primary" href="/cv/pesanan-masuk/pesanan/{{$li->id}}">Custom</a>
+                                                <a class="btn btn-primary" href="/cv/pesanan-masuk/pesanan/{{$li->id_pesan}}">Tambah harga</a>
                                             
                                             @endif
                                         </td>

@@ -127,14 +127,14 @@
                                             <td><img src="{{url($li->foto)}}" alt="" width="200px"></td>
                                         @endif
                                         <td>
-                                            @if($li->status == 'Ya')
+                                            @if($li->status == 'Ya' & $li->id_pembayaran == null)
                                                 <a href="pemesanan-design/bayar/{{$li->id_pesan}}" class="btn">Bayar</a>
                                                 <!-- <button type="submit" class="btn">Bayar</button> -->
                                             
                                             @endif
                                             <form action="/batal" method="post">
                                                 @csrf
-                                                <input type="hidden" name="id" value="{{$li->id}}">
+                                                <input type="hidden" name="id" value="{{$li->id_pesan}}">
                                                 <input type="hidden" name="pembatalan" value="ya" >
                                                 <button type="submit" class="btn">Batalkan pesanan</button>
                                             </form>
@@ -161,7 +161,7 @@
                                 <th>Harga produk</th>
                                 <th>Email</th>
                                 <th>No telp</th>
-                                <th>Hasil desgin custom</th>
+                                <th>Hasil design custom</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
 
@@ -204,7 +204,7 @@
                                         @endif
                                         <form action="/batal" method="post">
                                             @csrf
-                                            <input type="hidden" name="id" value="{{$li->id}}">
+                                            <input type="hidden" name="id" value="{{$li->id_pesan}}">
                                             <input type="hidden" name="pembatalan" value="ya" >
                                             <button type="submit" class="btn">Batalkan pesanan</button>
                                         </form>

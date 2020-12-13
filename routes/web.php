@@ -17,11 +17,11 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/login', 'LoginController@login')->name('login');
+Route::get('/login', 'c_login@login')->name('login');
 Route::get('/register', 'RegisterController@index')->name('register');
-Route::post('/postlogin', 'LoginController@postlogin');
+Route::post('/postlogin', 'c_login@postlogin');
 Route::post('/regCu', 'RegisterController@create');
-Route::get('/logout', 'LoginController@logout')->name('logout');
+Route::get('/logout', 'c_login@logout')->name('logout');
 
 
 
@@ -67,4 +67,7 @@ Route::group(['middleware' => ['auth', 'CheckRole:customer']], function () {
     Route::get('/customer/pembayaran-design', 'c_pembayaranDesign@setPembayaran');
     Route::post('/postPembayaran', 'c_formPembayaran@inputPembayaran');
     Route::get('/invoice/{id}', 'c_pembayaranDesign@invoice');
+    Route::get('/pembangunan/{id}', 'c_formRencanaPembangunan@setFormRencanaPembangunan');
+    Route::post('/postBangun', 'c_formRencanaPembangunan@inputRencanaPembangunan');
+    Route::get('/customer/rencana-pembangunan', 'c_rencanaPembangunan@setRencanaPembangunan');
 });

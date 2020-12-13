@@ -154,7 +154,11 @@ Phone: (555) 555-5555</textarea> -->
         <td><textarea class="qty" readonly>{{$li->nama_rekening_pengirim}}</textarea></td>
         <td><span class="" readonly>{{$li->harga_produk}}</span></td>
       </tr>
-      <img src="{{url($li->desain)}}" alt="">
+      <tr>
+      @if($li->desain != null)
+        <img src="{{url($li->desain)}}" alt="">
+      </tr>
+      @endif
       @elseif($li->deskripsi == null)
       <tr>
           <th>Nama Customer</th>
@@ -176,7 +180,9 @@ Phone: (555) 555-5555</textarea> -->
 		      <td><textarea class="qty" readonly>{{$li->nama_rekening_pengirim}}</textarea></td>
 		      <td><span class="" readonly>{{$li->harga_produk}}</span></td>
       </tr>
-      <img src="{{url($li->foto)}}" alt="">
+      <tr>
+        <img src="{{url($li->foto)}}" alt="">
+      </tr>
       @endif
       
       

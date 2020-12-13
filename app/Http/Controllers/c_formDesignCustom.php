@@ -16,36 +16,36 @@ class c_formDesignCustom extends Controller
 
    public function requestFormDesignActionCv($id){
 
-        $get = m_pesanan::where('id',$id)->get();
+        $get = m_pesanan::where('id_pesan',$id)->get();
         // dd($get);
         return view('cv.v_formDesignCustom',['data'=>$get]);
    }
 
-   public function inputPesanan(Request $request){
+//    public function inputPesanan(Request $request){
 
-        $getid = Auth()->User()->id;
-        $idcus = Customer::where('user_id',$getid)->get();
-        // dd($getid);
-        foreach ($idcus as $li){
-            $idnya = $li->id;
-        }
-        // dd($request['idcv']);
+//         $getid = Auth()->User()->id;
+//         $idcus = Customer::where('user_id',$getid)->get();
+//         // dd($getid);
+//         foreach ($idcus as $li){
+//             $idnya = $li->id;
+//         }
+//         // dd($request['idcv']);
 
-        $request->validate([
-            'harga' => 'required',
+//         $request->validate([
+//             'harga' => 'required',
             
-        ],[
-            'harga.required' => 'Data harus diisi',
+//         ],[
+//             'harga.required' => 'Data harus diisi',
             
-        ]);
+//         ]);
 
-        m_pesanan::create([
-            'harga'  => $request['deskripsi'],
-        ]);
-        // return redirect()->route('seller/sms',[$id]);
-        return redirect('/customer/pemesanan-design')->with('sukses' , 'Data berhasil disimpan');
-        // return redirect('/detail/{{$id}}')->with('sukses', 'Data berhasil disimpan');
-    }
+//         m_pesanan::where()update([
+//             'harga'  => $request['deskripsi'],
+//         ]);
+//         // return redirect()->route('seller/sms',[$id]);
+//         return redirect('/customer/pemesanan-design')->with('sukses' , 'Data berhasil disimpan');
+//         // return redirect('/detail/{{$id}}')->with('sukses', 'Data berhasil disimpan');
+//     }
 
     
 
@@ -59,7 +59,7 @@ class c_formDesignCustom extends Controller
         $id = $request->id;
         //dd($request->all());
         // dd($id);
-        $produk = m_pesanan::find($id);
+        $produk = m_pesanan::where('id_pesan',$id);
         // dd($produk);
 
         $file = $request->file('img');
@@ -69,6 +69,9 @@ class c_formDesignCustom extends Controller
         // dd($newName);
         Storage::putFileAs('public/img', $request->file('img'), $newName);
 
+        m_pesanan::where('id_pesan',$id)->update([
+            'desain' => 'storage/img/' . $newName
+        ]);
         $produk->desain = 'storage/img/' . $newName;
         // $produk->harga = $request->harga;
         $produk->save();
@@ -84,12 +87,16 @@ class c_formDesignCustom extends Controller
         ]);
         $id = $request->id;
         //dd($request->all());
-        // dd($id);
-        $produk = m_pesanan::find($id);
+        
+        // dd($request['harga']);
+        // dd(m_pesanan::where('id_pesan',$id)->get());
+        m_pesanan::where('id_pesan',$id)->update([
+            'harga_produk' => $request['harga'],
+            ]);
         // dd($produk);
         // $produk->deskripsi = $request->deskripsi;
-        $produk->harga_produk = $request->harga;
-        $produk->save();
+        // $produk->harga_produk = $request->harga;
+        // $produk->save();
 
         return redirect('/cv/pesanan-masuk')->with('sukses', 'Data berhasil disimpan');
     }

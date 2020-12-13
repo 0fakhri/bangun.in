@@ -15,7 +15,7 @@ class c_pembayaranMasuk extends Controller
             $idnya = $li->id;
         }
         // dd($idnya);
-        $get = m_pembayaran::join('pesanan','pembayaran.id_pesanan','=','pesanan.id')->where('cv_id',$idnya)->get();
+        $get = m_pembayaran::join('pesanan','pembayaran.id_pesanan','=','pesanan.id_pesan')->where('cv_id',$idnya)->get();
         // dd($get);
         return view('cv.v_pembayaranMasuk',['data'=>$get]);
     }

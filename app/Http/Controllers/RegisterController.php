@@ -13,21 +13,12 @@ use Illuminate\Support\Facades\Validator;
 class RegisterController extends Controller {
 
     protected function validator(array $data) {
-        $customMessage = [
-            'email.required'     => 'Email wajib diisi',
-            'email.unique'       => 'Email yang anda masukan telah terdaftar, silahkan gunakan email lain',
-            'password.required'  => 'Kata sandi wajib diisi',
-            'password.string'    => 'Kata sandi harus terdiri dari teks',
-            'password.min'       => 'Kata sandi minimal terdiri sebanyak :min karakter',
-            'password.confirmed' => 'Pastikan kata sandi konfirmasi sesuai',
-        ];
         $dataValidator = [
-            'nama'      => ['required', 'string', 'min:5', 'max:128'],
             'email'     => ['required', 'string', 'email', 'max:255', 'unique:user'],
             'password'  => ['required', 'string', 'min:8', 'confirmed'],
 
         ];
-        return Validator::make($data, $dataValidator, $customMessage);
+        return Validator::make($data, $dataValidator);
     }
 
     /**
@@ -46,6 +37,13 @@ class RegisterController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create(Request $data) {
+
+        $data->validate([
+            'nama' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'img' => 'image|mimes:jpeg,png,jpg,svg',
+        ]);
 
         $user =  User::create([
             'role'      => $data['role'],

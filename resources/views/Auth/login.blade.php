@@ -2,15 +2,28 @@
 
 @section('content')
 
-@if(session('pesan'))
-<!-- Modal -->
-    <div class="alert alert-danger" role="alert">
-    {{session('pesan')}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@if(session('null'))
+<script>
+    swal({
+        title: "Data harus diisi",
+        
+        icon: "warning",
+        button: "Ok",
+    });
+    </script>
 @endif
+@if(session('salah'))
+<script>
+    swal({
+        title: "Maaf data yang anda masukkan tidak valid. Harap periksa kembali",
+    
+        icon: "warning",
+        button: "Ok",
+    });
+    </script>
+@endif
+
 
 <main class="login-bg">
         <!-- login Area Start -->

@@ -1,15 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-@if(session('error'))
-<!-- Modal -->
-    <div class="alert alert-danger" role="alert">
-      {{session('error')}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    </div>
-  @endif
+
+@error('nama')
+    <script>
+    swal({
+        title: "Data harap diisi",
+        
+        icon: "warning",
+        button: "Ok",
+    });
+    </script>
+@enderror
+
     <main class="login-bg">
         <!-- Register Area Start -->
         <div class="register-form-area" >
@@ -30,7 +33,7 @@
                                     </li>
                                     <li class="nav-item">
                                       <a class="nav-link" id="CV-tab" data-toggle="tab" href="#CV" role="tab" aria-controls="profile"
-                                      aria-selected="false" style="color: rgb(92, 92, 92);">CV Perencana</a>
+                                      aria-selected="false" style="color: rgb(92, 92, 92);">CV Bagian Perencana</a>
                                     </li>
                                 </ul>
                             </div>
@@ -64,10 +67,18 @@
                                             <input name="password" type="password" placeholder="Masukkan Password" class="@error('name') is-invalid @enderror">
                                         </div>
                                         @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        <div class="single-input-fields">
+                                            <label>Alamat</label>
+                                        <input name="alamat" type="text" placeholder="Alamat">
+                                        </div>
+                                        <div class="single-input-fields">
+                                            <label>No Telpon</label>
+                                            <input name="notelp" type="number" placeholder="No Telpon">
+                                        </div>
                                         <!-- <div class="single-input-fields">
                                             <label>Confirm Password</label>
                                             <input name="password_confirmation" type="password" placeholder="Confirm Password" >
@@ -104,7 +115,10 @@
                                             <label>Alamat</label>
                                             <input name="alamat" type="text" placeholder="Alamat">
                                         </div>
-                                        
+                                        <div class="single-input-fields">
+                                            <label>No Telpon</label>
+                                            <input name="notelp" type="number" placeholder="No Telpon">
+                                        </div>
                                         <div class="single-input-fields">
                                             <label>Upload Bukti</label>
                                             <input type="file" name="img" placeholder="Bukti">

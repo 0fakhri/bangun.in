@@ -90,8 +90,8 @@
                                 <ul class="d-flex align-items-center" >
                                     <li><a href="#">Profil</a>
                                         <ul class="submenu">
-                                            <li><a href="/profil">Anu profil</a></li>
-                                            <li><a href="/logout">Logout</a></li>
+                                            <!-- <li><a href="/profil">Anu profil</a></li> -->
+                                            <li><a href="" data-toggle="modal" data-target="#exampleModal">Logout</a></li>
                                         </ul>
                                     </li>
                                     <li>
@@ -126,6 +126,28 @@
         <!-- Header End -->
     </header>
     <!-- header end -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Apakah anda yakin ingin keluar?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                <a href="/logout" class="btn btn-primary">Ya</a>
+                <!-- <button type="button" class="btn btn-primary">Ya</button> -->
+            </div>
+            </div>
+        </div>
+    </div>
 
     @yield('content')
 

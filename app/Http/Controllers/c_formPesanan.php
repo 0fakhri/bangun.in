@@ -88,7 +88,7 @@ class c_formPesanan extends Controller
             'produk' => 'required',
             'notlp' => 'required',
             'luas' => 'required',
-            'deskripsi' => 'required',
+            'deskripsi' => 'required|max:255',
         ],[
             'nama.required' => 'Data harus diisi',
             'harga.required' => 'Data harus diisi',
@@ -120,11 +120,14 @@ class c_formPesanan extends Controller
         $id = $request->id;
         //dd($request->all());
         // dd($id);
-        $produk = m_pesanan::find($id);
+        // $produk = m_pesanan::find($id);
+        m_pesanan::where('id_pesan',$id)->update([
+            'batal' => $request->pembatalan
+        ]);
         // dd($produk);
         
-        $produk->batal = $request->pembatalan;
-        $produk->save();
+        // $produk->batal = $request->pembatalan;
+        // $produk->save();
 
         return redirect('/customer/pemesanan-design')->with('batal', 'Data berhasil disimpan');
         
