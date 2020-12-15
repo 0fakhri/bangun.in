@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\m_dataCustomer;
 use App\m_dataCV;
 use App\User;
 use Illuminate\Http\Request;
@@ -37,9 +38,16 @@ class RegisterController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create(Request $data) {
-
+        // dd($data['notlp']);
+        // dd($data['nama_cv']);
+        // dd($data['alamatcv']);
+        // dd($data['notlpcv']);
+        // dd($data['img']);
+        
         $data->validate([
             'nama' => 'required',
+            'alamat' => 'required',
+            'notlp' => 'required',
             'email' => 'required',
             'password' => 'required',
             'img' => 'image|mimes:jpeg,png,jpg,svg',
@@ -52,9 +60,11 @@ class RegisterController extends Controller {
         ]);
 
         if ($data['role'] == "customer") {
-            Customer::create([
+            m_dataCustomer::create([
                 'user_id' => $user->id,
                 'nama'    => $data['nama'],
+                'alamat'  => $data['alamat'],
+                'noTelp'  => $data['notlp'],
             ]);
         }
         elseif ($data['role'] == "cv") {
@@ -68,9 +78,10 @@ class RegisterController extends Controller {
 
             m_dataCV::create([
                 'user_id' => $user->id,
-                'nama_cv' => $data['nama_cv'],
-                'alamat' => $data['alamat'],
-                'license' => 'storage/img' . $newName,
+                'nama_cv' => $data['nama'],
+                'alamat'  => $data['alamat'],
+                'noTelp'  => $data['notlp'],
+                'license' => 'storage/img/' . $newName,
             ]);
 
         }
@@ -79,7 +90,7 @@ class RegisterController extends Controller {
         // $user_details = new User($data);
         // $user->save();
         // $user->user()->save($user_details);
-        return redirect('login');
+        return redirect('/login');
     }
 
     /**

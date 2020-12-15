@@ -51,6 +51,16 @@
         </div>
       </li> -->
       <li class="nav-item">
+        <a class="nav-link" href="/admin/data-cv">
+          <i class="fas fa-handshake"></i>
+          <span>Data Cv</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/data-customer">
+          <i class="fas fa-handshake"></i>
+          <span>Data Customer</span></a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="/admin/data-produk">
           <i class="fas fa-handshake"></i>
           <span>Data Produk</span></a>

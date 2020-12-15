@@ -63,7 +63,7 @@
 					<div class="tab-content" id="myTabContent">
 					  <div class="tab-pane active" id="Penerimaan" role="tabpanel" aria-labelledby="Penerimaan-tab">
 					    <br>
-					      <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+					      <table class="table-responsive table-bordered" id="dataTable" width="100%" cellspacing="0">
                             Pesanan masuk    
                           <thead class="dark-bg">
                                     <tr>
@@ -127,7 +127,7 @@
 					      	</table>
 					  </div>
                       
-					      <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+					      <table class="table-responsive table-bordered" id="dataTable" width="100%" cellspacing="0">
                             Custom  
                           <thead class="dark-bg">
                                     <tr>
@@ -160,13 +160,12 @@
                                         <td>Rp {{$li->harga_produk}}</td>
                                         <td>{{$li->email}}</td>
                                         <td>{{$li->no_tlp}}</td>
-                                        <td>
-                                        @if($li->status == 'Ya' & $li->harga_produk != 0 & $li->desain == null)
-                                                <a class="btn btn-primary" href="/cv/pesanan-masuk/pesanan/{{$li->id_pesan}}">Design Visual 3D</a>
-                                        @endif
-                                        </td>
-                                        @if($li->desain != null)
-                                        <td><img src="{{url($li->desain)}}" alt="" width="200px"></td>
+                                        @if($li->status == 'Ya' & $li->harga_produk != 0 & $li->desain == null & $li->id_pembayaran != null)
+                                            <td> <a class="btn btn-primary" href="/cv/pesanan-masuk/pesanan/{{$li->id_pesan}}">Design Visual 3D</a></td>
+                                        @elseif($li->desain != null)
+                                            <td><img src="{{url($li->desain)}}" alt="" width="200px"></td>
+                                        @else
+                                            <td></td>
                                         @endif
                                         <td>
                                             @if($li->status == null)
@@ -193,7 +192,6 @@
                                             </form>
                                             @elseif($li->status == 'Ya' & $li->harga_produk == 0)
                                                 <a class="btn btn-primary" href="/cv/pesanan-masuk/pesanan/{{$li->id_pesan}}">Tambah harga</a>
-                                            
                                             @endif
                                         </td>
                                     </tr>

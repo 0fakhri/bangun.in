@@ -29,11 +29,14 @@ Route::group(['middleware' => ['auth', 'CheckRole:admin']], function(){
     Route::get('/admin/home', 'c_home@indexAdmin');
     Route::get('/admin/data-produk', 'c_designRumah@indexAdmin');
     Route::get('/admin/data-pembayaran', 'c_dataPembayaran@setPembayaran');
+    Route::get('/admin/data-cv', 'c_dataCv@setDataCv');
+    Route::get('/admin/data-customer', 'c_dataCustomer@setDataCustomer');
+    Route::post('/verifAkun', 'c_dataCv@updateDataCv');
 });
 
 
 Route::group(['middleware' => ['auth', 'CheckRole:cv']], function () {
-    Route::get('/cv/home', 'c_home@indexCv');
+    Route::get('/cv/home', 'c_home@setDataCv');
     Route::get('/cv/data-produk', 'c_designRumah@indexCv');
     Route::get('/cv/data-produk/create', 'c_designRumah@createView')->name('produk');
     Route::post('/cv/data-produk/post', 'c_designRumah@create')->name('tambahProduk');
@@ -47,12 +50,17 @@ Route::group(['middleware' => ['auth', 'CheckRole:cv']], function () {
     Route::post('/verifBayar', 'c_pembayaranMasuk@updatePembayaran');
     Route::get('/cv/pembayaran-masuk', 'c_pembayaranMasuk@setPembayaran');
     // Route::get('/cv/pesanan-masuk/pesanan/{id}/desain', 'c_formDesignCustom@setFormDesignCustom');
-    Route::get('/form-profil', 'c_home@formProfil');
-    Route::post('/postProfil', 'c_home@updateProfil');
+    Route::get('/form-profil', 'c_formDataCv@setFormDataCv');
+    Route::post('/postProfil', 'c_formDataCv@updateDataCv');
+    Route::post('/updateBangun', 'c_formRencanaPembangunanMasuk@updateRencanaPembangunan');
+    Route::get('/cv/rencana-pembangunan-masuk', 'c_rencanaPembangunanMasuk@setRencanaPembangunan');
 });
 
 Route::group(['middleware' => ['auth', 'CheckRole:customer']], function () {
-    Route::get('/customer/home', 'c_home@indexCustomer');
+    Route::get('/customer/home', 'c_home@setDataCustomer');
+    Route::get('/form-customer', 'c_formDataCustomer@setFormDataCustomer');
+    Route::post('/postcustomer', 'c_formDataCustomer@updateDataCustomer');
+
     Route::get('/customer/data-produk', 'c_designRumah@indexCustomer');
     Route::get('/customer/pemesanan-design', 'c_pemesananDesign@pemesanandesignaction');
     Route::get('/profil-cv/{id}', 'c_profilCV@profilCVaction');

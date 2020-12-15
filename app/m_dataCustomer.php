@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class m_dataCustomer extends Model
 {
     use Notifiable;
     protected $table = 'customer';
@@ -16,7 +16,7 @@ class Customer extends Model
      * @var array
      */
     protected $fillable = [
-        'nama', 'user_id',
+        'nama', 'user_id', 'alamat', 'noTelp'
     ];
 
     public function user(){

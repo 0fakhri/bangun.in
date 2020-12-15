@@ -23,11 +23,11 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-8 col-md-8">
                             <div class="hero__caption hero__caption2">
-                                <h1 data-animation="fadeInUp" data-delay=".4s" >Pembayaran Design</h1>
+                                <h1 data-animation="fadeInUp" data-delay=".4s" >Rencana Pembangunan</h1>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="/customer/home">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="/customer/pembayaran-design">Pembayaran Design</a></li> 
+                                        <li class="breadcrumb-item"><a href="/customer/rencana-pembangunan">Rencana Pembangunan</a></li> 
                                     </ol>
                                 </nav>
                             </div>

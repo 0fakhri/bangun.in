@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\m_dataCustomer;
 use App\m_dataCV;
 use App\m_dataProduk;
 use App\m_pesanan;
@@ -31,7 +32,7 @@ class c_formPesanan extends Controller
 
         $id=$request['idDetail'];
         $getid = Auth()->User()->id;
-        $idcus = Customer::where('user_id',$getid)->get('id');
+        $idcus = m_dataCustomer::where('user_id',$getid)->get('id');
 
         foreach ($idcus as $li){
             $idnya = $li->id;
@@ -74,7 +75,7 @@ class c_formPesanan extends Controller
 
         $id=$request['idcv'];
         $getid = Auth()->User()->id;
-        $idcus = Customer::where('user_id',$getid)->get('id');
+        $idcus = m_dataCustomer::where('user_id',$getid)->get('id');
 
         foreach ($idcus as $li){
             $idnya = $li->id;

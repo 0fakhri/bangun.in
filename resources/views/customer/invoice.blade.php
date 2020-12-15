@@ -148,7 +148,7 @@ Phone: (555) 555-5555</textarea> -->
 		  <tr class="item-row">
         <td><textarea class="cost" readonly>{{$li->nama_customer}}</textarea></td>
         <td><textarea class="cost" readonly>{{$li->nama_cv}}</textarea></td>
-        <td class="item-name"><div class="delete-wpr"><textarea readonly>{{$li->nama_produk_design}}</textarea><a class="delete" href="javascript:;" title="Remove row">X</a></div></td>
+        <td><textarea readonly>{{$li->nama_produk_design}}</textarea><a class="delete" href="javascript:;" title="Remove row">X</a></div></td>
         <td class="description"><textarea readonly>{{$li->deskripsi}}</textarea></td>
         <td><textarea class="cost" readonly>{{$li->bank_tujuan}}</textarea></td>
         <td><textarea class="qty" readonly>{{$li->nama_rekening_pengirim}}</textarea></td>

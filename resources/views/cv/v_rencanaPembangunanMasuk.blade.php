@@ -1,10 +1,10 @@
-@extends('customer.layout.app')
+@extends('cv.layout.app')
 @section('content')
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- popup  -->
-@if(session('bayar'))
+@if(session('bangun'))
 <script>
     swal({
         title: "Data berhasil disimpan",
@@ -23,11 +23,11 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-8 col-md-8">
                             <div class="hero__caption hero__caption2">
-                                <h1 data-animation="fadeInUp" data-delay=".4s" >Pembayaran Design</h1>
+                                <h1 data-animation="fadeInUp" data-delay=".4s" >Rencana Pembangunan Masuk</h1>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="/customer/home">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="/customer/pembayaran-design">Pembayaran Design</a></li> 
+                                        <li class="breadcrumb-item"><a href="/cv/rencana-pembangunan-masuk">Rencana Pembangunan Masuk</a></li> 
                                     </ol>
                                 </nav>
                             </div>
@@ -45,7 +45,7 @@
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-8 col-md-10">
                     <div class="section-tittle mb-60 text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
-                        <h2>Pembayaran design</h2>
+                        <h2>Rencana Pembangunan Masuk</h2>
                     </div>
                 </div>
             </div>
@@ -64,12 +64,14 @@
                         <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                             <thead class="dark-bg">
                                 <tr>
-                                    <th>Nama CV </th>
-                                    <th>Bank tujuan</th>
-                                    <th>Nama rekening pengirim</th>
-                                    <th>Nomer rekening pengirim</th>
-                                    <th>Bukti pembayaran</th>
+                                @foreach($data as $li)
+                                @endforeach
+                                    <th>Tanggal survey </th>
+                                    <th>Alamat cod</th>
                                     <th>Status</th>
+                                    @if($li->status_bangun != null)
+                                    <th>Alasan penolakan</th>
+                                    @endif
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -77,31 +79,19 @@
                             <tbody>
                             @foreach($data as $li)                     
                                 <tr>
-                                    <td>{{$li->nama_cv}}</td>
-                                    <td>{{$li->bank_tujuan}}</td>
-                                    <td>{{$li->nama_rekening_pengirim}}</td>
-                                    <td>{{$li->no_rek_pengirim}}</td>
-                                    <td ><img src="{{url($li->bukti_pembayaran)}}" alt="" width="200px"></td>
+                                    <td>{{$li->tanggal_survey}}</td>
+                                    <td>{{$li->alamat_cod}}</td>
                                     <td>
-                                        @if($li->status_bayar == null)
-                                            Sedang diproses
-                                        @elseif($li->status_bayar == 'Ya')
+                                        @if($li->status_bangun == null)
+                                            Belum diproses
+                                        @elseif($li->status_bangun == 'Ya')
                                             Disetujui
                                             
                                         @else
                                             Ditolak
                                         @endif
                                     </td>
-                                    @if($li->status_bayar == 'Ya' )
-                                    <td>
-                                        <a href="/invoice/{{$li->id_pembayaran}}" target="_blank" style="color: black;"><i class="fas fa-print"></i>Cetak</a>
-                                    </td>
-                                    @endif
-                                    @if($li->status_bayar == 'Ya')
-                                    <td>
-                                        <a href="/pembangunan/{{$li->id_pembayaran}}" class="btn">Lanjutkan Pembangunan</a>
-                                    </td>
-                                    @endif
+                                    
                                 </tr>
                             @endforeach
                             </tbody>

@@ -132,12 +132,14 @@
                                                 <!-- <button type="submit" class="btn">Bayar</button> -->
                                             
                                             @endif
+                                            @if($li->id_pembayaran == null)
                                             <form action="/batal" method="post">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{$li->id_pesan}}">
                                                 <input type="hidden" name="pembatalan" value="ya" >
                                                 <button type="submit" class="btn">Batalkan pesanan</button>
                                             </form>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endif

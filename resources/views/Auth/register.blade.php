@@ -2,7 +2,48 @@
 
 @section('content')
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@error('email')
+    <script>
+    swal({
+        title: "Data harap diisi",
+        
+        icon: "warning",
+        button: "Ok",
+    });
+    </script>
+@enderror
+@error('pw')
+    <script>
+    swal({
+        title: "Data harap diisi",
+        
+        icon: "warning",
+        button: "Ok",
+    });
+    </script>
+@enderror
 @error('nama')
+    <script>
+    swal({
+        title: "Data harap diisi",
+        
+        icon: "warning",
+        button: "Ok",
+    });
+    </script>
+@enderror
+@error('notlp')
+    <script>
+    swal({
+        title: "Data harap diisi",
+        
+        icon: "warning",
+        button: "Ok",
+    });
+    </script>
+@enderror
+@error('alamat')
     <script>
     swal({
         title: "Data harap diisi",
@@ -45,7 +86,7 @@
                                         <!-- <div class="input-box"> -->
                                         <div class="single-input-fields">
                                             <label>Nama lengkap</label>
-                                            <input name="nama" type="text" placeholder="Masukkan nama lengkap" class="@error('name') is-invalid @enderror">
+                                            <input name="nama" type="text" placeholder="Masukkan nama lengkap" class="@error('nama') is-invalid @enderror">
                                             @error('name')
                                                 <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -54,7 +95,7 @@
                                         </div>
                                         <div class="single-input-fields">
                                             <label>Email</label>
-                                            <input name="email" type="email" placeholder="Masukkan email" class="@error('name') is-invalid @enderror">
+                                            <input name="email" type="email" placeholder="Masukkan email" class="@error('email') is-invalid @enderror">
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                 <strong>{{session('error')}}</strong>
@@ -64,7 +105,7 @@
                                         <input type="hidden" name="role" value="customer">
                                         <div class="single-input-fields">
                                             <label>Password</label>
-                                            <input name="password" type="password" placeholder="Masukkan Password" class="@error('name') is-invalid @enderror">
+                                            <input name="password" type="password" placeholder="Masukkan Password" class="@error('pw') is-invalid @enderror">
                                         </div>
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
@@ -73,11 +114,11 @@
                                         @enderror
                                         <div class="single-input-fields">
                                             <label>Alamat</label>
-                                        <input name="alamat" type="text" placeholder="Alamat">
+                                        <input name="alamat" type="text" placeholder="Alamat" class="@error('alamat') is-invalid @enderror">
                                         </div>
                                         <div class="single-input-fields">
                                             <label>No Telpon</label>
-                                            <input name="notelp" type="number" placeholder="No Telpon">
+                                            <input name="notlp" type="number" placeholder="No Telpon" class="@error('notlp') is-invalid @enderror">
                                         </div>
                                         <!-- <div class="single-input-fields">
                                             <label>Confirm Password</label>
@@ -96,15 +137,15 @@
                                     <!-- <div class="input-box"> -->
                                         <div class="single-input-fields">
                                             <label>Nama CV</label>
-                                            <input name="nama_cv" type="text" placeholder="Masukkan nama CV">
+                                            <input name="nama" type="text" placeholder="Masukkan nama CV" class="@error('nama') is-invalid @enderror">
                                         </div>
                                         <div class="single-input-fields">
                                             <label>Email</label>
-                                            <input name="email" type="email" placeholder="Masukkan email">
+                                            <input name="email" type="email" placeholder="Masukkan email" class="@error('email') is-invalid @enderror">
                                         </div>
                                         <div class="single-input-fields">
                                             <label>Password</label>
-                                            <input name="password" type="password" placeholder="Masukkan Password">
+                                            <input name="password" type="password" placeholder="Masukkan Password" class="@error('pw') is-invalid @enderror">
                                         </div>
                                         <input type="hidden" name="role" value="cv">
                                         <!-- <div class="single-input-fields">
@@ -113,15 +154,15 @@
                                         </div> -->
                                         <div class="single-input-fields">
                                             <label>Alamat</label>
-                                            <input name="alamat" type="text" placeholder="Alamat">
+                                            <input name="alamat" type="text" placeholder="Alamat" class="@error('alamat') is-invalid @enderror">
                                         </div>
                                         <div class="single-input-fields">
                                             <label>No Telpon</label>
-                                            <input name="notelp" type="number" placeholder="No Telpon">
+                                            <input name="notlp" type="number" placeholder="No Telpon" class="@error('notlp') is-invalid @enderror">
                                         </div>
                                         <div class="single-input-fields">
-                                            <label>Upload Bukti</label>
-                                            <input type="file" name="img" placeholder="Bukti">
+                                            <label>Upload License</label>
+                                            <input type="file" name="img" placeholder="Bukti" class="@error('license') is-invalid @enderror">
                                         </div>
                                         <!-- form Footer -->
                                         <div class="register-footer">

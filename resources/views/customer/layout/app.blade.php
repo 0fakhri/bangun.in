@@ -98,12 +98,12 @@
                         <div class="main-menu  d-none d-lg-block header-right1 d-flex align-items-center">
                             <div class="search">
                                 <ul class="d-flex align-items-center">
-                                    <li><a href="#">Profil</a>
+                                    <li><a href="" data-toggle="modal" data-target="#exampleModal">Logout</a></li>
+                                    <!-- <li><a href="#">Profil</a>
                                         <ul class="submenu">
-                                            <!-- <li><a href="/logout">Logout</a></li> -->
                                             <li><a href="" data-toggle="modal" data-target="#exampleModal">Logout</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                     <li>
                                         <!-- Search Box -->
                                         <!-- <form action="#" class="form-box f-right ">

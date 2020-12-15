@@ -43,7 +43,7 @@
                                 <div class="input-box">
                                     <div class="single-input-fields">
                                         <label>Email</label>
-                                        <input name="email" class="@error('email') is-invalid @enderror" type="text" placeholder="Msukkan email">
+                                        <input name="email" class="@error('email') is-invalid @enderror" type="text" placeholder="Masukkan email">
                                         
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">

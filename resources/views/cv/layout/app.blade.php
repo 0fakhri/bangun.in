@@ -72,6 +72,7 @@
                                         <li><a href="/cv/data-produk">Data produk</a></li>
                                         <li><a href="/cv/pesanan-masuk">Pesanan masuk</a></li>
                                         <li><a href="/cv/pembayaran-masuk">Pembayaran masuk</a></li>
+                                        <li><a href="/cv/rencana-pembangunan-masuk">Rencana Pembangunan Masuk</a></li>
                                         <!-- <li><a href="blog.html">Blog</a>
                                             <ul class="submenu">
                                                 <li><a href="blog.html">Blog</a></li>
@@ -88,12 +89,12 @@
                             <nav>
                             <div class="search">
                                 <ul class="d-flex align-items-center" >
-                                    <li><a href="#">Profil</a>
+                                    <li><a href="" data-toggle="modal" data-target="#exampleModal">Logout</a></li>
+                                    <!-- <li><a href="#">Profil</a>
                                         <ul class="submenu">
-                                            <!-- <li><a href="/profil">Anu profil</a></li> -->
                                             <li><a href="" data-toggle="modal" data-target="#exampleModal">Logout</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                     <li>
                                         <!-- Search Box -->
                                         <!-- <form action="#" class="form-box f-right ">

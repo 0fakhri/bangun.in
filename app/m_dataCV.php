@@ -15,7 +15,7 @@ class m_dataCV extends Model
         'alamat', 
         'status_akun', 
         'license', 
-        'logo', 
+        'logo',
         'noTelp', 
         'deskripsi_cv', 
         'bank1', 

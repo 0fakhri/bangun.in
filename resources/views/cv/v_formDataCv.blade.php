@@ -145,11 +145,11 @@
                         <div class="row">
                             <div class="col-xl-6 col-lg-8 col-md-8">
                                 <div class="hero__caption hero__caption2">
-                                    <h1 data-animation="fadeInUp" data-delay=".4s" >Profil</h1>
+                                    <h1 data-animation="fadeInUp" data-delay=".4s" >Form Data CV</h1>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="/customer/home">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="#">Profil</a></li> 
+                                            <li class="breadcrumb-item"><a href="#">Form Data CV</a></li> 
                                         </ol>
                                     </nav>
                                 </div>
@@ -169,7 +169,7 @@
                         <div class="col-lg-8">
                         @foreach($data as $li)
                         @endforeach
-                            <h3>Profil</h3>
+                            <!-- <h3>Profil</h3> -->
                             <form class="row contact_form" action="/postProfil" method="POST" enctype="multipart/form-data">
                                 @csrf
 
@@ -187,14 +187,14 @@
                                     <input type="text" class="@error('alamat') is-invalid @enderror form-control"  name="alamat" placeholder="Alamat" value="{{$li->alamat}}"/>
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <input type="number" class="@error('noTlp') is-invalid @enderror form-control"  name="notlp" placeholder="No Telp" value="{{$li->notlp}}"/>
+                                    <input type="number" class="@error('noTlp') is-invalid @enderror form-control"  name="notlp" placeholder="No Telp" value="{{$li->noTelp}}"/>
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <label>License</label>
                                     <img src="{{url($li->license)}}" alt="">
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <input type="text" class="@error('deskripsi') is-invalid @enderror form-control"  name="deskripsi" placeholder="Deskripsi" value="{{$li->deskripsi}}"/>
+                                    <input type="text" class="@error('deskripsi') is-invalid @enderror form-control"  name="deskripsi" placeholder="Deskripsi" value="{{$li->deskripsi_cv}}"/>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="single_field">

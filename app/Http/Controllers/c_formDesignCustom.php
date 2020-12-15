@@ -72,9 +72,9 @@ class c_formDesignCustom extends Controller
         m_pesanan::where('id_pesan',$id)->update([
             'desain' => 'storage/img/' . $newName
         ]);
-        $produk->desain = 'storage/img/' . $newName;
+        // $produk->desain = 'storage/img/' . $newName;
         // $produk->harga = $request->harga;
-        $produk->save();
+        // $produk->save();
 
         return redirect('/cv/pesanan-masuk')->with('sukses', 'Data berhasil disimpan');
         

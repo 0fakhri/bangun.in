@@ -17,7 +17,7 @@ class c_pesananMasuk extends Controller
          $idnya = $li->id;
      }
       // dd($idnya);
-      $get = m_pesanan::leftJoin('desain_rumah','pesanan.id_desain','=','desain_rumah.id_desain')->where('pesanan.cv_id',$idnya)->get();
+      $get = m_pesanan::leftJoin('desain_rumah','pesanan.id_desain','=','desain_rumah.id_desain')->leftJoin('pembayaran','pesanan.id_pesan','=','pembayaran.id_pesanan')->where('pesanan.cv_id',$idnya)->get();
       // $get2 = m_desainCustom::where('cv_id',$idnya)->get();
       // dd($get);
    	return view('cv.v_pesananMasuk',['data'=>$get]);
