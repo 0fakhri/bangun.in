@@ -32,14 +32,14 @@
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">Profil CV</h3>
+              <h3 class="panel-title">Profil Customer</h3>
             </div>
             <div class="panel-body">
               <div class="row">
                 @foreach($data as $li)
                 @endforeach
 
-                <div class="col-md-3 col-lg-3 " align="center"> <img alt="Logo CV" src="@if($li->logo != null){{url($li->logo)}}@endif" class="img-circle img-responsive"> </div>
+                <div class=" col-lg-3 " align="center">  </div>
                 
                 <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
                   <dl>

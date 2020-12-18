@@ -52,8 +52,13 @@ Route::group(['middleware' => ['auth', 'CheckRole:cv']], function () {
     // Route::get('/cv/pesanan-masuk/pesanan/{id}/desain', 'c_formDesignCustom@setFormDesignCustom');
     Route::get('/form-profil', 'c_formDataCv@setFormDataCv');
     Route::post('/postProfil', 'c_formDataCv@updateDataCv');
+
     Route::post('/updateBangun', 'c_formRencanaPembangunanMasuk@updateRencanaPembangunan');
     Route::get('/cv/rencana-pembangunan-masuk', 'c_rencanaPembangunanMasuk@setRencanaPembangunan');
+    Route::post('/verifBangun', 'c_rencanaPembangunanMasuk@updateRencanaPembangunan');
+
+    Route::get('/cv/alasan-tolak/{id}', 'c_formPenolakan@setFormPenolakan');
+    Route::post('/postAlasan', 'c_formPenolakan@updateRencanaPembangunan');
 });
 
 Route::group(['middleware' => ['auth', 'CheckRole:customer']], function () {
@@ -78,4 +83,6 @@ Route::group(['middleware' => ['auth', 'CheckRole:customer']], function () {
     Route::get('/pembangunan/{id}', 'c_formRencanaPembangunan@setFormRencanaPembangunan');
     Route::post('/postBangun', 'c_formRencanaPembangunan@inputRencanaPembangunan');
     Route::get('/customer/rencana-pembangunan', 'c_rencanaPembangunan@setRencanaPembangunan');
+    Route::post('/batalBangun/{id}', 'c_rencanaPembangunan@deleteRencanaPembangunan');
+    Route::post('/ubahBangun', 'c_formRencanaPembangunan@updateRencanaPembangunan');
 });

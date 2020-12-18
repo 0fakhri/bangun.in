@@ -19,4 +19,36 @@ class c_rencanaPembangunan extends Controller
         // dd($get);
         return view('customer.v_rencanaPembangunan',['data'=>$get]);
     }
+
+    public function updatePesanan(Request $request){
+
+        $request->validate([
+            'status' => 'required',
+        ]);
+  
+        $id = $request->id;
+        // dd($request->status);
+        // dd($id);
+        m_rencanaPembangunan::where('id_pesan',$id)->update([
+          'status' => $request->status
+      ]);
+      //   dd($produk);
+  
+        // $produk->status = $request->status;
+        // $produk->save();
+  
+        return redirect('/cv/pesanan-masuk')->with('sukses', 'Data berhasil disimpan');
+    }
+    // ->find($id)
+    
+    public function deleteRencanaPembangunan(Request $data){
+
+        $data->validate([
+            'id' => 'required',
+        ]);
+        $id = $data->id;
+
+        m_rencanaPembangunan::where('id_bangun', $id)->delete();
+        return redirect('/customer/rencana-pembangunan')->with('hapus','berhasil hapus');
+    }
 }

@@ -18,4 +18,17 @@ class c_rencanaPembangunanMasuk extends Controller
         // dd($get);
         return view('cv.v_rencanaPembangunanMasuk',['data'=>$get]);
     }
+
+    public function updateRencanaPembangunan(Request $data){
+        // dd($data['img']);
+        $data->validate([
+            'id' => 'required',
+        ]);
+        $id = $data['id'];
+        m_rencanaPembangunan::where('id_bangun',$id)->update([
+            'status_bangun' => $data['status'],
+        ]);
+
+        return redirect('cv/rencana-pembangunan-masuk');
+    }
 }

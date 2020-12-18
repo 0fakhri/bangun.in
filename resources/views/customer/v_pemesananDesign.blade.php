@@ -151,7 +151,7 @@
                       <!-- <div class="table-responsive tab-pane active" id="custom" role="tabpanel" aria-labelledby="custom-tab"> -->
                       <div class="table-responsive tab-pane active" id="custom" role="tabpanel" aria-labelledby="custom-tab">
                           <br>
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table-responsive table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead style="background-color: #ddd;">
                             <tr class="text-center">
                                 <!-- <th>Nama</th> -->

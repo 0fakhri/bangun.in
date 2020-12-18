@@ -14,6 +14,16 @@
     });
     </script>
 @endif
+@if(session('ubah'))
+<script>
+    swal({
+        title: "Data berhasil disimpan",
+        
+        icon: "success",
+        button: "Ok",
+    });
+    </script>
+@endif
 <main>
 <!--? slider Area Start-->
     <div class="slider-area ">
@@ -61,17 +71,16 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane active" id="Penerimaan" role="tabpanel" aria-labelledby="Penerimaan-tab">
                     <br>
-                        <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
-                            <thead class="dark-bg">
-                                <tr>
+                        <table class="table table-responsive table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                            <thead class="background-color: #ddd;">
+                                <tr class="text-center">
                                 @foreach($data as $li)
                                 @endforeach
                                     <th>Tanggal survey </th>
                                     <th>Alamat cod</th>
                                     <th>Status</th>
-                                    @if($li->status_bangun != null)
                                     <th>Alasan penolakan</th>
-                                    @endif
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                         
@@ -83,14 +92,27 @@
                                     <td>
                                         @if($li->status_bangun == null)
                                             Sedang diproses
-                                        @elseif($li->status_bangun == 'Ya')
+                                        @elseif($li->status_bangun == 'Diterima')
                                             Disetujui
-                                            
                                         @else
                                             Ditolak
                                         @endif
                                     </td>
-                                    
+                                    <td>
+                                        @if($li->alasan_tolak != null)
+                                            {{$li->alasan_tolak}}
+                                        @else
+
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($li->status_bangun == 'Ditolak')
+                                            <a href="/pembangunan/{{$li->id_pembayaran}}" class="btn">Ubah</a>
+                                        @endif
+                                        <a type="button" class="btn" data-toggle="modal" data-target="#batal{{$li->id_bangun}}">
+                                            Batal
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -108,6 +130,34 @@
     
 </main>
 
-    
+<!-- Modal -->
+@foreach($data as $li)
+<div class="modal fade" id="batal{{$li->id_bangun}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="exampleModalLabel">Apakah anda yakin ingin membatalkan rencana pembangunan?</h5> -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{$li->id_bangun}} Apakah anda yakin ingin membatalkan rencana pembangunan?
+      </div>
+      <div class="modal-footer">
+        <form action="/batalBangun" method="post">
+            @csrf
+            <input type="hidden" name="id" value="{{$li->id_bangun}}">
+            <!-- <input type="hidden" name="pembatalan" value="ya" > -->
+            <!-- <a href=""></a> -->
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn">Batalkan pesanan</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
+
 
 @endsection

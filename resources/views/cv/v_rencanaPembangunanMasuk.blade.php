@@ -4,7 +4,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- popup  -->
-@if(session('bangun'))
+@if(session('tolak'))
 <script>
     swal({
         title: "Data berhasil disimpan",
@@ -14,6 +14,7 @@
     });
     </script>
 @endif
+
 <main>
 <!--? slider Area Start-->
     <div class="slider-area ">
@@ -84,14 +85,28 @@
                                     <td>
                                         @if($li->status_bangun == null)
                                             Belum diproses
-                                        @elseif($li->status_bangun == 'Ya')
+                                        @elseif($li->status_bangun == 'Diterima')
                                             Disetujui
-                                            
                                         @else
                                             Ditolak
                                         @endif
                                     </td>
-                                    
+                                    <td>
+                                        {{$li->alasan_tolak}}
+                                    </td>
+                                    <td>
+                                        @if($li->status_bangun == null)
+                                        <form action="/verifBangun" method="post">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $li->id_bangun }}">
+                                            <input type="hidden" name="status" value="Diterima">
+                                            <button type="submit" class="btn">Iya</button>
+                                        </form>
+                                        <a href="/cv/alasan-tolak/{{$li->id_bangun}}" class="btn">Tidak</a>
+                                        @else
+                                        
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
