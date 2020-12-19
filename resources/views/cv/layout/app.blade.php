@@ -168,19 +168,19 @@
                                  </div>
                                  <div class="footer-tittle">
                                      <div class="footer-pera">
-                                         <p>Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.</p>
+                                         <p>Bangunin.</p>
                                      </div>
                                  </div>
                                  <!-- social -->
                                  <div class="footer-social">
                                      <a href="#"><i class="fab fa-twitter"></i></a>
-                                     <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                                      <a href="#"><i class="fab fa-pinterest-p"></i></a>
                                  </div>
                              </div>
                          </div>
                      </div>
-                     <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4">
+                     <!-- <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4">
                          <div class="single-footer-caption mb-50">
                              <div class="footer-tittle">
                                  <h4>Quick links</h4>
@@ -215,7 +215,7 @@
                                  </ul>
                              </div>
                          </div>
-                     </div>
+                     </div> -->
                  </div>
              </div>
          </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\m_dataCV;
+use App\m_pesanan;
 use App\m_rencanaPembangunan;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class c_rencanaPembangunanMasuk extends Controller
         foreach ($idcus as $li){
             $idnya = $li->id;
         }
-        $get = m_rencanaPembangunan::join('pembayaran','pembangunan.pembayaran_id','=','pembayaran.id_pembayaran')->join('pesanan','pembayaran.id_pesanan','=','pesanan.id_pesan')->where('cv_id',$idnya)->get();
+        $get = m_pesanan::leftJoin('pembayaran','pesanan.id_pesan','=','pembayaran.id_pesanan')->leftJoin('pembangunan','pembayaran.id_pembayaran','=','pembangunan.pembayaran_id')->where('cv_id',$idnya)->get();
         // dd($get);
         return view('cv.v_rencanaPembangunanMasuk',['data'=>$get]);
     }

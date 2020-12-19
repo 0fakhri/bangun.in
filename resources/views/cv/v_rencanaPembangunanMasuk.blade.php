@@ -78,7 +78,8 @@
                             </thead>
                         
                             <tbody>
-                            @foreach($data as $li)                     
+                            @foreach($data as $li)
+                                @if($li->tanggal_survey != null)                
                                 <tr>
                                     <td>{{$li->tanggal_survey}}</td>
                                     <td>{{$li->alamat_cod}}</td>
@@ -108,6 +109,7 @@
                                         @endif
                                     </td>
                                 </tr>
+                                @endif
                             @endforeach
                             </tbody>
                         

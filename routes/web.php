@@ -14,7 +14,7 @@
 
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('welcome');
 });
 
 Route::get('/login', 'c_login@login')->name('login');
@@ -83,6 +83,6 @@ Route::group(['middleware' => ['auth', 'CheckRole:customer']], function () {
     Route::get('/pembangunan/{id}', 'c_formRencanaPembangunan@setFormRencanaPembangunan');
     Route::post('/postBangun', 'c_formRencanaPembangunan@inputRencanaPembangunan');
     Route::get('/customer/rencana-pembangunan', 'c_rencanaPembangunan@setRencanaPembangunan');
-    Route::post('/batalBangun/{id}', 'c_rencanaPembangunan@deleteRencanaPembangunan');
+    Route::post('/batalBangun', 'c_rencanaPembangunan@deleteRencanaPembangunan');
     Route::post('/ubahBangun', 'c_formRencanaPembangunan@updateRencanaPembangunan');
 });
