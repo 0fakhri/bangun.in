@@ -75,6 +75,7 @@
                                         <th>Email</th>
                                         <th>No telp</th>
                                         <th>Status</th>
+                                        <th>Alasan Ditolak</th>
                                         <th>Design rumah</th>
                                         <th>Aksi</th>
                                         
@@ -101,6 +102,7 @@
                                                 Ditolak
                                             @endif
                                         </td>
+                                        <td>{{$li->alasan_ditolak}}</td>
                                         <td><img src="{{url($li->foto)}}" alt="" width="200px"></td>
                                         <td>
                                             @if($li->status == null)
@@ -110,12 +112,15 @@
                                                 <input type="hidden" name="status" value="Ya">
                                                 <button type="submit" class="btn">Iya</button>
                                             </form>
-                                            <form action="/verifikasi" method="post">
+
+                                            <a href="/cv/alasan-ditolak/{{$li->id_pesan}}" class="btn">Tidak</a>
+
+                                            <!-- <form action="/verifikasi" method="post">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{ $li->id_pesan }}">
                                                 <input type="hidden" name="status" value="Tidak">
                                                 <button type="submit" class="btn">Tidak</button>
-                                            </form>
+                                            </form> -->
                                             
                                             @endif
                                         </td>

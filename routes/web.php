@@ -57,6 +57,9 @@ Route::group(['middleware' => ['auth', 'CheckRole:cv']], function () {
     Route::get('/cv/rencana-pembangunan-masuk', 'c_rencanaPembangunanMasuk@setRencanaPembangunan');
     Route::post('/verifBangun', 'c_rencanaPembangunanMasuk@updateRencanaPembangunan');
 
+    Route::get('/cv/alasan-ditolak/{id}', 'c_formPenolakanPesanan@setFormPenolakan');
+    Route::post('/pesanAlasan', 'c_formPenolakanPesanan@updateRencanaPembangunan');
+
     Route::get('/cv/alasan-tolak/{id}', 'c_formPenolakan@setFormPenolakan');
     Route::post('/postAlasan', 'c_formPenolakan@updateRencanaPembangunan');
 });

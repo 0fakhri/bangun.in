@@ -73,11 +73,11 @@
                 <div class="row">
                 <div class="col-xl-12">
                         <ul class="nav nav-tabs" id="myTab" role="tablist" style="background-color: #696969">
-						  <li class="nav-item" role="presentation">
-						    <a class="nav-link active" id="Penerimaan-tab" data-toggle="tab" href="#Penerimaan" role="tab" aria-controls="Penerimaan" aria-selected="true">Pemesanan Design</a>
-						  </li>
                             <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="custom-tab" data-toggle="tab" href="#custom" role="tab" aria-controls="custom" aria-selected="true">Custom</a>
+                                <a class="nav-link active" id="Penerimaan-tab" data-toggle="tab" href="#Penerimaan" role="tab" aria-controls="Penerimaan" aria-selected="true">Pemesanan Design</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="custom-tab" data-toggle="tab" href="#custom" role="tab" aria-controls="custom" aria-selected="true">Custom</a>
                             </li>
 						</ul>					
                     <!-- Tab panes -->
@@ -97,6 +97,7 @@
                                         <th>Email</th>
                                         <th>No telp</th>
                                         <th>Status</th>
+                                        <th>Alasan Ditolak</th>
                                         <th>Design Visual 3D</th>
                                         <th>Aksi</th>
                                         <!-- <th>1</th> -->
@@ -122,6 +123,9 @@
                                             @else
                                                 Ditolak
                                             @endif
+                                        </td>
+                                        <td>
+                                            {{$li->alasan_ditolak}}
                                         </td>
                                         @if($li->foto != null)
                                             <td><img src="{{url($li->foto)}}" alt="" width="200px"></td>
@@ -165,6 +169,7 @@
                                 <th>No telp</th>
                                 <th>Hasil design custom</th>
                                 <th>Status</th>
+                                <th>Alasan Ditolak</th>
                                 <th>Aksi</th>
 
                                 <!-- <th>Tanggapi</th> -->
@@ -196,6 +201,9 @@
                                     @else
                                         Ditolak
                                     @endif
+                                </td>
+                                <td>
+                                    {{$li->alasan_ditolak}}
                                 </td>
                                 <td>
                                     @if($li->id_pembayaran == null)
