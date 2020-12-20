@@ -17,7 +17,7 @@ class c_pembayaranDesign extends Controller
             $idnya = $li->id;
         }
         // dd($idnya);
-        $get = m_pembayaran::join('pesanan','pembayaran.id_pesanan','=','pesanan.id_pesan')->join('cv_perencana','pesanan.cv_id','=','cv_perencana.id')->where('customer_id',$idnya)->get();
+        $get = m_pembayaran::leftjoin('pembangunan','pembayaran.id_pembayaran','=','pembangunan.pembayaran_id')->join('pesanan','pembayaran.id_pesanan','=','pesanan.id_pesan')->join('cv_perencana','pesanan.cv_id','=','cv_perencana.id')->where('customer_id',$idnya)->get();
         // dd($get);
         return view('customer.v_pembayaranDesign',['data'=>$get]);
     }

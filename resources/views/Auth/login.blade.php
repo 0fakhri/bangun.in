@@ -24,6 +24,16 @@
     </script>
 @endif
 
+@if(session('daftar'))
+<script>
+    swal({
+        title: "Registrasi Berhasil",
+        
+        icon: "success",
+        button: "Ok",
+    });
+    </script>
+@endif
 
 <main class="login-bg">
         <!-- login Area Start -->

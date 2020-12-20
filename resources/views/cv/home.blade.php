@@ -9,7 +9,7 @@
 @if(session('sukses'))
 <script>
     swal({
-        title: "Data berhasil disimpan",
+        title: "Data berhasil diubah",
         
         icon: "success",
         button: "Ok",
@@ -57,7 +57,7 @@
                   <table class="table table-user-information" >
                     <tbody>
                       <tr>
-                        <td>Nama CV:</td>
+                        <td>Nama CV Bagian Perencana:</td>
                         <td>{{$li->nama_cv}}</td>
                       </tr>
                       <tr>

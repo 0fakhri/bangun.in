@@ -71,6 +71,7 @@
                                     <th>Bukti pembayaran</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
+                                    <th>Pembangunan</th>
                                 </tr>
                             </thead>
                         
@@ -92,12 +93,14 @@
                                             Ditolak
                                         @endif
                                     </td>
-                                    @if($li->status_bayar == 'Ya' )
                                     <td>
+                                    @if($li->status_bayar == 'Ya' )
                                         <a href="/invoice/{{$li->id_pembayaran}}" target="_blank" style="color: black;"><i class="fas fa-print"></i>Cetak</a>
-                                    </td>
+                                    @else
+                                    
                                     @endif
-                                    @if($li->status_bayar == 'Ya')
+                                    </td>
+                                    @if($li->status_bayar == 'Ya' & $li->id_bangun == null)
                                     <td>
                                         <a href="/pembangunan/{{$li->id_pembayaran}}" class="btn">Lanjutkan Pembangunan</a>
                                     </td>

@@ -70,9 +70,9 @@
                                     <th>Tanggal survey </th>
                                     <th>Alamat cod</th>
                                     <th>Status</th>
-                                    @if($li->status_bangun != null)
+                                    
                                     <th>Alasan penolakan</th>
-                                    @endif
+                                    
                                     <th>Aksi</th>
                                 </tr>
                             </thead>

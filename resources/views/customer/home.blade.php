@@ -9,7 +9,7 @@
 @if(session('sukses'))
 <script>
     swal({
-        title: "Data berhasil disimpan",
+        title: "Data berhasil diubah",
         
         icon: "success",
         button: "Ok",

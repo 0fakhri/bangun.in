@@ -90,7 +90,7 @@ class RegisterController extends Controller {
         // $user_details = new User($data);
         // $user->save();
         // $user->user()->save($user_details);
-        return redirect('/login');
+        return redirect('/login')->with('daftar', 'mantab');
     }
 
     /**

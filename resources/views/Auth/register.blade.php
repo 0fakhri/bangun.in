@@ -136,7 +136,7 @@
                                         @csrf
                                     <!-- <div class="input-box"> -->
                                         <div class="single-input-fields">
-                                            <label>Nama CV</label>
+                                            <label>Nama CV Bagian Perencana</label>
                                             <input name="nama" type="text" placeholder="Masukkan nama CV" class="@error('nama') is-invalid @enderror">
                                         </div>
                                         <div class="single-input-fields">
@@ -161,7 +161,7 @@
                                             <input name="notlp" type="number" placeholder="No Telpon" class="@error('notlp') is-invalid @enderror">
                                         </div>
                                         <div class="single-input-fields">
-                                            <label>Upload License</label>
+                                            <label>Upload Lisensi</label>
                                             <input type="file" name="img" placeholder="Bukti" class="@error('license') is-invalid @enderror">
                                         </div>
                                         <!-- form Footer -->

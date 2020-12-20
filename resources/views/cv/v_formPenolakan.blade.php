@@ -52,7 +52,7 @@
                             @foreach($get as $li)
                             
                             
-                            <h3>Alasan Penolakan</h3>
+                            <h3>Alasan Ditolak</h3>
                             <form class="row contact_form" action="/postAlasan" method="POST">
                                 @csrf
                                 <input type="hidden" name="id" value="{{$li->id_bangun}}">

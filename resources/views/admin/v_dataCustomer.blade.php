@@ -7,7 +7,7 @@
 <div class="card shadow mb-4">
   <div class="card-header py-3">
     <div class="col-sm-12 col-md-6">
-    <h6 class="m-0 font-weight-bold text-primary">Data produk</h6>
+    <h6 class="m-0 font-weight-bold text-primary">Data Akun Customer</h6>
     </div>
   </div>
   <div class="card-body" style="font-size: 15px;">
