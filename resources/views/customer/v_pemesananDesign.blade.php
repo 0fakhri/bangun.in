@@ -134,15 +134,16 @@
                                             @if($li->status == 'Ya' & $li->id_pembayaran == null)
                                                 <a href="pemesanan-design/bayar/{{$li->id_pesan}}" class="btn">Bayar</a>
                                                 <!-- <button type="submit" class="btn">Bayar</button> -->
-                                            
-                                            @endif
-                                            @if($li->id_pembayaran == null)
+                                            @elseif($li->status == 'Tidak')
+                                    
+                                            @else
                                             <form action="/batal" method="post">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{$li->id_pesan}}">
                                                 <input type="hidden" name="pembatalan" value="ya" >
                                                 <button type="submit" class="btn">Batalkan pesanan</button>
                                             </form>
+                                                
                                             @endif
                                         </td>
                                     </tr>
@@ -210,14 +211,17 @@
                                         @if($li->status == 'Ya')
                                             <a href="pemesanan-design/bayar/{{$li->id_pesan}}" class="btn">Bayar</a>
                                             <!-- <button type="submit" class="btn">Bayar</button> -->
-
-                                        @endif
+                                        @elseif($li->status == 'Tidak')
+                                        
+                                        @else
                                         <form action="/batal" method="post">
                                             @csrf
                                             <input type="hidden" name="id" value="{{$li->id_pesan}}">
                                             <input type="hidden" name="pembatalan" value="ya" >
                                             <button type="submit" class="btn">Batalkan pesanan</button>
                                         </form>
+                                        @endif
+                                        
                                     
                                     @endif
                                 </td>

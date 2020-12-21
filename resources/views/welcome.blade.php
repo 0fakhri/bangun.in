@@ -146,7 +146,8 @@ kategori yang mereka inginkan dan memudahkan CV Bagian Perencana dalam mendapatk
 klien.</p>
                                     <!-- Hero-btn -->
                                     <div class="hero__btn" data-animation="fadeInUp" data-delay=".7s">
-                                        <a href="/login" class="btn hero-btn">Coba</a>
+                                        <a href="/login" class="btn">Login</a>
+                                        <a href="/register" class="btn">Daftar</a>
                                     </div>
                                 </div>
                             </div>
@@ -170,7 +171,8 @@ klien.</p>
                 <!-- <p class="pera-bottom">Suspendisse varius enim in eros elementum 
                     tristique. Duis cursus, mi quis viverra ornare, eros 
                 dolor interdum nulla.</p> -->
-                <a href="#" class="btn">Coba</a>
+                <a href="/login" class="btn">Login</a>
+                <a href="/register" class="btn">Daftar</a>
             </div>
 
         </div>

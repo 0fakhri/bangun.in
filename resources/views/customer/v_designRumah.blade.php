@@ -68,7 +68,11 @@
                                 <a href="/profil-cv/{{ $li->id }}">
                                     <div class="single-new-arrival mb-50 text-center" >
                                         <div class="popular-img">
+                                            @if($li->logo !=null)
+                                            <img src=" {{url($li->logo)}} " alt="">
+                                            @else
                                             <img src=" https://ipac.page/images/brand-logo-1.jpg " alt="">
+                                            @endif
                                         </div>
                                         <div class="popular-caption">
                                             <h3><a href="/profil-cv/{{ $li->id }}">{{ $li->nama_cv }}</a></h3>

@@ -24,6 +24,16 @@
     });
     </script>
 @endif
+@if(session('hapus'))
+<script>
+    swal({
+        title: "Rencana pembangunan berhasil dibatalkan",
+        
+        icon: "success",
+        button: "Ok",
+    });
+    </script>
+@endif
 <main>
 <!--? slider Area Start-->
     <div class="slider-area ">
@@ -109,9 +119,13 @@
                                         @if($li->status_bangun == 'Ditolak')
                                             <a href="/pembangunan/{{$li->id_pembayaran}}" class="btn">Ubah</a>
                                         @endif
+                                        @if($li->status_bangun == null)
                                         <a type="button" class="btn" data-toggle="modal" data-target="#batal{{$li->id_bangun}}">
                                             Batal
                                         </a>
+                                        @else
+                                        
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -142,7 +156,7 @@
         </button>
       </div>
       <div class="modal-body">
-        {{$li->id_bangun}} Apakah anda yakin ingin membatalkan rencana pembangunan?
+        Apakah anda yakin ingin membatalkan rencana pembangunan?
       </div>
       <div class="modal-footer">
         <form action="/batalBangun" method="post">
@@ -150,8 +164,8 @@
             <input type="hidden" name="id" value="{{$li->id_bangun}}">
             <!-- <input type="hidden" name="pembatalan" value="ya" > -->
             <!-- <a href=""></a> -->
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn">Batalkan pesanan</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+            <button type="submit" class="btn">Iya</button>
         </form>
       </div>
     </div>
