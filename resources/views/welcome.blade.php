@@ -44,7 +44,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/loder.png" alt="">
+                    <img src="{{ asset('logo.jpeg') }}" alt="" width="200px">
                 </div>
             </div>
         </div>
@@ -59,11 +59,11 @@
                         <div class="header-left d-flex align-items-center">
                             <!-- Logo -->
                             <div class="logo">
-                                <a href="index-2.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                <!-- <a href="index-2.html"><img src="assets/img/logo/logo.png" alt=""></a> -->
                             </div>
                             <!-- Logo-2 -->
                             <div class="logo2">
-                                <a href="index-2.html"><img src="assets/img/logo/logo2.png" alt=""></a>
+                                <!-- <a href="index-2.html"><img src="assets/img/logo/logo2.png" alt=""></a> -->
                             </div>
                             <!-- Main-menu -->
                             <div class="main-menu  d-none d-lg-block">
@@ -187,7 +187,7 @@ klien.</p>
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-cat mb-50 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
                     <div class="cat-icon">
-                        <img src="assets/img/icon/services1.svg" alt="">
+                        <!-- <img src="assets/img/icon/services1.svg" alt=""> -->
                     </div>
                     <div class="cat-cap">
                         <!-- <h5>Fast & Free Delivery</h5>
@@ -198,7 +198,7 @@ klien.</p>
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-cat mb-50 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
                     <div class="cat-icon">
-                        <img src="assets/img/icon/services2.svg" alt="">
+                        <!-- <img src="assets/img/icon/services2.svg" alt=""> -->
                     </div>
                     <div class="cat-cap">
                         <!-- <h5>Secure Payment</h5>
@@ -209,7 +209,7 @@ klien.</p>
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-cat mb-50 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
                     <div class="cat-icon">
-                        <img src="assets/img/icon/services3.svg" alt="">
+                        <!-- <img src="assets/img/icon/services3.svg" alt=""> -->
                     </div>
                     <div class="cat-cap">
                         <!-- <h5>Money Back Guarantee</h5>
@@ -220,7 +220,7 @@ klien.</p>
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-cat mb-50 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
                     <div class="cat-icon">
-                        <img src="assets/img/icon/services4.svg" alt="">
+                        <!-- <img src="assets/img/icon/services4.svg" alt=""> -->
                     </div>
                     <div class="cat-cap">
                         <!-- <h5>Online Support</h5>
@@ -244,11 +244,11 @@ klien.</p>
                         <div class="single-footer-caption mb-30">
                             <!-- logo -->
                             <div class="footer-logo mb-35">
-                                <a href="index-2.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
+                                <a href="index-2.html"><img src="{{ asset('logo.jpeg') }}" alt="" width="200px"></a>
                             </div>
                             <div class="footer-tittle">
                                 <div class="footer-pera">
-                                    <p>Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.</p>
+                                    <p>Bangun.in</p>
                                 </div>
                             </div>
                             <!-- social -->
@@ -260,7 +260,7 @@ klien.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4">
+                <!-- <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4">
                     <div class="single-footer-caption mb-50">
                         <div class="footer-tittle">
                             <h4>Quick links</h4>
@@ -295,7 +295,7 @@ klien.</p>
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

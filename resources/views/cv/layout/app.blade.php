@@ -43,7 +43,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <!-- <img src="assets/img/logo/loder.png" alt=""> -->
+                <img src="{{ asset('logo.jpeg') }}" alt="" width="200px">
                 </div>
             </div>
         </div>
@@ -58,11 +58,11 @@
                         <div class="header-left d-flex align-items-center">
                             <!-- Logo -->
                             <div class="logo">
-                                <a href="/cv/home"><img src="assets/img/logo/logo.png" alt=""></a>
+                                <a href="/cv/home"><img src="{{ asset('logo.jpeg') }}" alt="" width="200px"></a>
                             </div>
                             <!-- Logo-2 -->
                             <div class="logo2">
-                                <a href="/cv/home"><img src="assets/img/logo/logo2.png" alt=""></a>
+                                <!-- <a href="/cv/home"><img src="assets/img/logo/logo2.png" alt=""></a> -->
                             </div>
                             <!-- Main-menu -->
                             <div class="main-menu  d-none d-lg-block">
